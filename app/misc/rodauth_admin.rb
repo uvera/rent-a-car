@@ -112,10 +112,10 @@ class RodauthAdmin < Rodauth::Rails::Auth
     logout_redirect "/"
 
     # Redirect to login page after password reset.
-    reset_password_redirect { login_path }
+    reset_password_redirect { rodauth(:admin).login_path }
 
     # Ensure requiring login follows login route changes.
-    require_login_redirect { login_path }
+    require_login_redirect { rodauth(:admin).login_path }
 
     # ==> Deadlines
     # Change default deadlines for some actions.
