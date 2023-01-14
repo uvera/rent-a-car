@@ -3,4 +3,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  constraints Rodauth::Rails.authenticated(:admin) do
+    namespace :admin do
+      resources :dashboard, only: [:index]
+    end
+  end
 end
