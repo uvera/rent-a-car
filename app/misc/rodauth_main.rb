@@ -141,13 +141,13 @@ class RodauthMain < Rodauth::Rails::Auth
     # verify_login_change_deadline_interval Hash[days: 2]
     # remember_deadline_interval Hash[days: 30]
 
-    before_create_account { account[:type] = account_type }
+    before_create_account { account[:kind] = account_type }
   end
 
   private
 
   def account_table_ds
-    super.where(type: account_type)
+    super.where(kind: account_type)
   end
 
   def account_type
