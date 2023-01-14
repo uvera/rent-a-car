@@ -1,0 +1,27 @@
+networks:
+  imgeer:
+    name: racs
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: postgres-racs
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./init-citext-extension.sh:/docker-entrypoint-initdb.d/init-citext-extension.sh
+    networks:
+      imgeer:
+        aliases:
+          - postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+volumes:
+  postgres:
+    driver: local
+
+
