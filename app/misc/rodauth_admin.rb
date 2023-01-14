@@ -127,5 +127,7 @@ class RodauthAdmin < Rodauth::Rails::Auth
     prefix "/admin"
     session_key_prefix "admin_"
     remember_cookie_key "_admin_remember"
+
+    rails_controller { Admin::RodauthController }
   end
 end
