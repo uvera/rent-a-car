@@ -13,7 +13,6 @@ default: &default
 development:
   <<: *default
   database: racs_development
-  database: db/development.sqlite3
   host: localhost
   user: postgres
   password: postgres
