@@ -65,3 +65,5 @@ end
 gem "shakapacker", "= 6.5"
 
 gem "rodauth-rails", "~> 1.7"
+
+gem "pg", "~> 1.4"
