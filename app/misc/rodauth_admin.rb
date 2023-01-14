@@ -123,5 +123,9 @@ class RodauthAdmin < Rodauth::Rails::Auth
     # reset_password_deadline_interval Hash[hours: 6]
     # verify_login_change_deadline_interval Hash[days: 2]
     # remember_deadline_interval Hash[days: 30]
+
+    prefix "/admin"
+    session_key_prefix "admin_"
+    remember_cookie_key "_admin_remember"
   end
 end

@@ -20,6 +20,6 @@ class RodauthApp < Rodauth::Rails::App
     # end
 
     # ==> Secondary configurations
-    # r.rodauth(:admin) # route admin rodauth requests
+    r.rodauth(:admin) # route admin rodauth requests
   end
 end
