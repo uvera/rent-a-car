@@ -29,9 +29,6 @@ class RodauthAdmin < Rodauth::Rails::Auth
     # bcrypt has a maximum input length of 72 bytes, truncating any extra bytes.
     password_maximum_bytes 72
 
-    # Set password when creating account instead of when verifying.
-    verify_account_set_password? false
-
     # Redirect back to originally requested location after authentication.
     # login_return_to_requested_location? true
     # two_factor_auth_return_to_requested_location? true # if using MFA
@@ -49,15 +46,6 @@ class RodauthAdmin < Rodauth::Rails::Auth
     # Use a custom mailer for delivering authentication emails.
     create_reset_password_email do
       RodauthMailer.reset_password(self.class.configuration_name, account_id, reset_password_key_value)
-    end
-    create_verify_account_email do
-      RodauthMailer.verify_account(self.class.configuration_name, account_id, verify_account_key_value)
-    end
-    create_verify_login_change_email do |_login|
-      RodauthMailer.verify_login_change(self.class.configuration_name, account_id, verify_login_change_key_value)
-    end
-    create_password_changed_email do
-      RodauthMailer.password_changed(self.class.configuration_name, account_id)
     end
     # create_reset_password_notify_email do
     #   RodauthMailer.reset_password_notify(self.class.configuration_name, account_id)
@@ -122,9 +110,6 @@ class RodauthAdmin < Rodauth::Rails::Auth
     # ==> Redirects
     # Redirect to home page after logout.
     logout_redirect "/"
-
-    # Redirect to wherever login redirects to after account verification.
-    verify_account_redirect { login_redirect }
 
     # Redirect to login page after password reset.
     reset_password_redirect { login_path }
