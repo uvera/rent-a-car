@@ -1,10 +1,8 @@
-class RodauthMain < Rodauth::Rails::Auth
+class RodauthAdmin < Rodauth::Rails::Auth
   configure do
     # List of authentication features that are loaded.
-    enable :create_account, :verify_account, :verify_account_grace_period,
-      :login, :logout, :remember,
-      :reset_password, :change_password, :change_password_notify,
-      :change_login, :verify_login_change, :close_account
+    enable :login, :logout, :remember,
+      :reset_password, :change_password, :change_password_notify
 
     # See the Rodauth documentation for the list of available config options:
     # http://rodauth.jeremyevans.net/documentation.html
@@ -140,17 +138,5 @@ class RodauthMain < Rodauth::Rails::Auth
     # reset_password_deadline_interval Hash[hours: 6]
     # verify_login_change_deadline_interval Hash[days: 2]
     # remember_deadline_interval Hash[days: 30]
-
-    before_create_account { account[:type] = account_type }
-  end
-
-  private
-
-  def account_table_ds
-    super.where(type: account_type)
-  end
-
-  def account_type
-    self.class.configuration_name&.to_s || "main"
   end
 end

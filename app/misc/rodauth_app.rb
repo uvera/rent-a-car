@@ -3,7 +3,7 @@ class RodauthApp < Rodauth::Rails::App
   configure RodauthMain
 
   # secondary configuration
-  # configure RodauthAdmin, :admin
+  configure RodauthAdmin, :admin
 
   route do |r|
     rodauth.load_memory # autologin remembered users
