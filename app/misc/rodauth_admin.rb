@@ -132,5 +132,8 @@ class RodauthAdmin < Rodauth::Rails::Auth
     remember_cookie_key "_admin_remember"
 
     rails_controller { Admin::RodauthController }
+    logout_view do
+      nil
+    end
   end
 end
