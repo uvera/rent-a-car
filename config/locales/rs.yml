@@ -7,5 +7,7 @@ rs:
       en: Engleski
       rs: Srpski
   navbar:
+    buttons:
+      logout: Odjavi se
     links:
       cars: Automobili

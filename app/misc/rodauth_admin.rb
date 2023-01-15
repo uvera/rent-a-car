@@ -132,6 +132,7 @@ class RodauthAdmin < Rodauth::Rails::Auth
     remember_cookie_key "_admin_remember"
 
     rails_controller { Admin::RodauthController }
+    logout_button { I18n.t('navbar.buttons.logout') }
     logout_view do
       nil
     end

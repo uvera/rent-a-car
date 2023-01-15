@@ -7,5 +7,7 @@ en:
       en: English
       rs: Serbian
   navbar:
+    buttons:
+      logout: Logout
     links:
       cars: Cars
