@@ -11,13 +11,15 @@
     </button>
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="flex flex-col md:items-center gap-2 p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:gap-0 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-        <% items = [["Cars", admin_dashboard_cars_path]] %>
-        <% items.each do |(name, link)| %>
+        <% navbar_links.each do |(name, link)| %>
           <li>
             <%= link_to_unless_current name, link, class: "block py-2 pl-3 pr-4 text-white bg-gray-700 rounded md:bg-transparent md:text-gray-700 md:p-0 dark:text-white" do
               link_to name, link, class: "block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
             end
             %>
+          </li>
+          <li>
+            <%= render partial: 'admin/locale_picker' %>
           </li>
           <li>
             <%= render partial: 'admin/rodauth/logout' %>

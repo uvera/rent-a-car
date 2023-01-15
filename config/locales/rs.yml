@@ -1,0 +1,11 @@
+---
+rs:
+  locales:
+    button:
+      title: Jezici
+    names:
+      en: Engleski
+      rs: Srpski
+  navbar:
+    links:
+      cars: Automobili

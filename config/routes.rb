@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   constraints Rodauth::Rails.authenticated(:admin) do
+    resource :locale, only: [] do
+      post :set_locale
+    end
     namespace :admin do
       resources :dashboard, only: [] do
         get "/", to: redirect('admin/dashboard/cars'), on: :collection
