@@ -83,7 +83,10 @@ class RodauthAdmin < Rodauth::Rails::Auth
 
     # ==> Remember Feature
     # Remember all logged in users.
-    after_login { remember_login }
+    after_login do 
+      remember_login
+      redirect Rails.application.routes.url_helpers.admin_dashboard_index_path
+    end
 
     # Or only remember users that have ticked a "Remember Me" checkbox on login.
     # after_login { remember_login if param_or_nil("remember") }

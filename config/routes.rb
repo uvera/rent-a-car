@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   # root "articles#index"
   constraints Rodauth::Rails.authenticated(:admin) do
     namespace :admin do
-      resources :dashboard, only: [:index]
+      resources :dashboard, only: [] do
+        get "/", to: redirect('admin/dashboard/cars'), on: :collection
+      end
+
+      namespace :dashboard do
+        resources :cars, only: [:index]
+      end
     end
   end
 end
