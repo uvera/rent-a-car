@@ -15,6 +15,7 @@
     "compression-webpack-plugin": "9",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^4.2.2",
+    "flowbite": "^1.6.2",
     "mini-css-extract-plugin": "^2.7.2",
     "postcss": "^8.4.21",
     "postcss-flexbugs-fixes": "^5.0.2",
