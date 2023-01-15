@@ -62,3 +62,5 @@ gem "shakapacker", "= 6.5"
 gem "rodauth-rails", "~> 1.7"
 
 gem "pg", "~> 1.4"
+
+gem "pry", "~> 0.14.2"
