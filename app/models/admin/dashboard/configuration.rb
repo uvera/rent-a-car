@@ -14,8 +14,8 @@ module Admin
 
       AVAILABLE_CONFIGURATIONS = AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
 
-      def self.value_for(key)
-        find_by(key:).value || {}
+      def self.value_for(key, default = nil)
+        find_by(key:)&.value || default
       end
 
       def view_template
