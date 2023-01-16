@@ -16,3 +16,6 @@
 
 import "./application.scss";
 import "flowbite";
+import toastDismisser from "./util/toastDismisser";
+
+toastDismisser()

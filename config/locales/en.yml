@@ -1,5 +1,15 @@
 ---
 en:
+  configurations:
+    car_brands: Car brands
+  flash:
+    update:
+      error: Error occurred.
+      success: Successful update.
+  forms:
+    buttons:
+      cancel: Cancel
+      save: Save
   locales:
     button:
       title: Languages
@@ -11,3 +21,4 @@ en:
       logout: Logout
     links:
       cars: Cars
+      configurations: Configurations

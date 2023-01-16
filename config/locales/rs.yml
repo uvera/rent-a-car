@@ -1,5 +1,15 @@
 ---
 rs:
+  configurations:
+    car_brands: Marke automobila
+  flash:
+    update:
+      error: Došlo je do greške.
+      success: Uspešno sačuvano.
+  forms:
+    buttons:
+      cancel: Poništi
+      save: Sačuvaj
   locales:
     button:
       title: Jezici
@@ -11,3 +21,4 @@ rs:
       logout: Odjavi se
     links:
       cars: Automobili
+      configurations: Konfiguracija

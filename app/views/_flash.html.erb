@@ -1,0 +1,3 @@
+<% flash.each do |type, msg| %>
+  <%= render partial: "/toast_#{type}", locals: { msg: msg } %>
+<% end %>
