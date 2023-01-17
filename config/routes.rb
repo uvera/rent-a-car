@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
       namespace :dashboard do
         resources :cars, only: [:index]
-        resources :configurations, except: [:destroy], param: :key
+        resources :configurations, except: [:destroy]
       end
     end
   end

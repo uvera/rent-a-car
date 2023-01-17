@@ -9,6 +9,7 @@ class JsonbSerializers
     case value
     when Array, Hash then JSON.dump(value)
     when String then value
+    when Numeric then value.to_s
     when NilClass then nil
     end
   end

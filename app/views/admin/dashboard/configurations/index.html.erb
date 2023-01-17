@@ -2,7 +2,7 @@
   <ul class="w-1/2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
     <% @configuration_keys.each do |key| %>
       <% if @configuration_map[key] %>
-        <%= link_to edit_admin_dashboard_configuration_path(key) do %>
+        <%= link_to edit_admin_dashboard_configuration_path(@configuration_map[key]) do %>
           <li class="p-4 text-blue-700"><%= I18n.t("configurations.#{key}") %></li>
         <% end %>
       <% else %>
