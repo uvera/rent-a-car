@@ -17,5 +17,9 @@
 import "../application.scss";
 import "flowbite";
 import toastDismisser from "../util/toastDismisser";
+import ReactOnRails from "react-on-rails";
+import TagInput from "../components/common/./forms/tagInput";
 
-toastDismisser()
+ReactOnRails.register({ TagInput });
+
+toastDismisser();

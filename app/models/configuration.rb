@@ -5,7 +5,7 @@ class Configuration < ApplicationRecord
   validates_presence_of :value, allow_blank: true
 
   AVAILABLE_CONFIGURATION_VIEWS = {
-    'car_brands' => 'default_form'
+    'car_brands' => 'car_brands'
   }.freeze
 
   AVAILABLE_CONFIGURATIONS = AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
