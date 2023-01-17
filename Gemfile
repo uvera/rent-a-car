@@ -69,3 +69,4 @@ gem "pry", "~> 0.14.2"
 
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
+gem "react_on_rails", "= 13.2"
