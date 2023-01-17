@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
     namespace :admin do
       resources :dashboard, only: [] do
-        get "/", to: redirect('admin/dashboard/cars'), on: :collection
+        get '/', to: redirect('admin/dashboard/cars'), on: :collection
       end
 
       namespace :dashboard do
