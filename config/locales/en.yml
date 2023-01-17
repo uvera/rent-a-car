@@ -2,6 +2,7 @@
 en:
   configurations:
     car_brands: Car brands
+    toast_timeout: Toast timeout
   flash:
     update:
       error: Error occurred.

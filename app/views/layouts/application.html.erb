@@ -12,6 +12,7 @@
 
 <body class="h-screen">
 <%= render partial: '/flash' %>
+<%= react_component 'Configuration.ToastDismisser', props: { timeout: Configuration.value_for('toast_timeout', 2500) } %>
 <%= content_for?(:content) ? yield(:content) : yield %>
 </body>
 </html>

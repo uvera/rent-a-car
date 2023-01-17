@@ -2,6 +2,7 @@
 rs:
   configurations:
     car_brands: Marke automobila
+    toast_timeout: Trajanje notifikacije
   flash:
     update:
       error: Došlo je do greške.

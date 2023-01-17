@@ -8,7 +8,7 @@ class Configuration < ApplicationRecord
     'car_brands' => 'car_brands'
   }.freeze
 
-  AVAILABLE_CONFIGURATIONS = AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
+  AVAILABLE_CONFIGURATIONS = ['toast_timeout'] + AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
 
   def self.value_for(key, default = nil)
     find_by(key:)&.value || default
