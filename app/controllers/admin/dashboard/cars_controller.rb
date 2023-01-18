@@ -25,7 +25,6 @@ module Admin
         @car = Car.find_by(id: params[:id])
         @car.assign_attributes(car_params)
         @car.release_date = Date.new(car_params[:release_date]&.to_i)
-        binding.pry
 
         if @car.save
           redirect_to admin_dashboard_cars_path, notice: I18n.t('flash.update.success')

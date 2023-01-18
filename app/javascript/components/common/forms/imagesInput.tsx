@@ -1,15 +1,12 @@
 import React, { ChangeEventHandler, useEffect, useRef, useState } from "react";
 import { useCsrf } from "../../../util/useCsrf";
+import axios from "axios";
 
 type ImagesInputProps = {
   previousImages: Array<{ url: string; deletionUrl: string }>;
-  objectName: string;
-  fieldName: string;
-};
-
-type UploadedFileImage = {
-  url: string;
-  type: "uploaded";
+  uploadUrl: string;
+  uploadParam: string;
+  refreshUrl: string;
 };
 
 type ExistingFileImage = {
@@ -20,13 +17,13 @@ type ExistingFileImage = {
 
 const ImagesInput = ({
   previousImages,
-  objectName,
-  fieldName,
+  uploadUrl,
+  uploadParam,
+  refreshUrl,
 }: ImagesInputProps) => {
   const fileInputRef = useRef<HTMLInputElement>();
   const [uploadedFiles, setUploadedFiles] = useState<Array<File>>([]);
-  const [uploadedFileUrls, setUploadedFileUrls] = useState<Array<string>>([]);
-  const { token: csrfToken, param: csrfParam } = useCsrf();
+  const { token: csrfToken } = useCsrf();
   const [existingImages, setExistingImages] = useState<
     Array<ExistingFileImage>
   >(() => previousImages.map((image) => ({ ...image, type: "existing" })));
@@ -38,34 +35,44 @@ const ImagesInput = ({
   const fileChange: ChangeEventHandler<HTMLInputElement> = (event) =>
     setUploadedFiles(Array.from(event.target.files));
 
-  const removeUploadedFileByIdx = (idx: number) => {
-    setUploadedFiles((prev) => {
-      const newFiles = [...prev];
-      newFiles.splice(idx, 1);
-      return newFiles;
-    });
-  };
-
   const removeImageByUrl = (url: string, idx: number) => {
-    fetch(url, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": csrfToken,
-      },
-    }).then(() => {
-      setExistingImages((prev) => {
-        const newFiles = [...prev];
-        newFiles.splice(idx, 1);
-        return newFiles;
+    axios
+      .delete(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": csrfToken,
+        },
+      })
+      .then(() => {
+        setExistingImages((prev) => {
+          const newFiles = [...prev];
+          newFiles.splice(idx, 1);
+          return newFiles;
+        });
       });
-    });
   };
 
   useEffect(() => {
-    const urls = uploadedFiles.map((file) => URL.createObjectURL(file));
-    setUploadedFileUrls(urls);
-    return () => urls.forEach((url) => URL.revokeObjectURL(url));
+    if (!uploadedFiles.length) {
+      return;
+    }
+
+    const promises = uploadedFiles.map(async (file) => {
+      const body = new FormData();
+      body.set(uploadParam, file);
+      await axios.post(uploadUrl, body, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "X-CSRF-Token": csrfToken,
+        },
+      });
+    });
+    Promise.all(promises).then(() => {
+      axios.get(refreshUrl).then((r) => {
+        setUploadedFiles([]);
+        setExistingImages(r.data.images);
+      });
+    });
   }, [uploadedFiles]);
 
   return (
@@ -108,13 +115,6 @@ const ImagesInput = ({
               key={item.url}
               url={item.url}
               remove={() => removeImageByUrl(item.deletionUrl, idx)}
-            />
-          ))}
-          {uploadedFileUrls.map((url, idx) => (
-            <ImageDisplay
-              key={url}
-              url={url}
-              remove={() => removeUploadedFileByIdx(idx)}
             />
           ))}
         </div>

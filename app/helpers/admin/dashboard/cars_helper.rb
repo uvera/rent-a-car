@@ -22,7 +22,10 @@ module Admin::Dashboard::CarsHelper
     react_component 'Common.Forms.ImagesInput', props: {
       previousImages: previous_images_for(car),
       objectName: 'car',
-      fieldName: 'images'
+      fieldName: 'images',
+      uploadUrl: admin_dashboard_car_images_path(car.id),
+      uploadParam: 'file',
+      refreshUrl: admin_dashboard_car_images_path(car.id)
     }
   end
 
