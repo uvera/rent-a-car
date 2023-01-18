@@ -1,5 +1,21 @@
 ---
 en:
+  cars:
+    body_types:
+      convertible: Convertible
+      coupe: Coupe
+      hatchback: Hatchback
+      minivan: Minivan
+      sedan: Sedan
+      suv: SUV
+    brands:
+      audi: Audi
+      bmw: BMW
+    engine_types:
+      diesel: Diesel
+      electric: Electric
+      gas: Gas
+      hybrid: Hybrid
   configurations:
     car_brands: Car brands
     toast_timeout: Toast timeout

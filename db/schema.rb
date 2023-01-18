@@ -73,6 +73,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_130348) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "cars", force: :cascade do |t|
+    t.string "brand", null: false
+    t.string "name", null: false
+    t.date "release_date", null: false
+    t.string "engine_type", null: false
+    t.decimal "deposit", default: "0.0", null: false
+    t.numrange "gas_consumption_range", null: false
+    t.string "body_configuration", null: false
+    t.decimal "price_in_eur", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "configurations", force: :cascade do |t|
     t.string "key", null: false
     t.jsonb "value", default: {}, null: false

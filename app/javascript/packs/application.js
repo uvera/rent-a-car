@@ -19,8 +19,10 @@ import "flowbite";
 import ReactOnRails from "react-on-rails";
 import TagInput from "../components/common/./forms/tagInput";
 import ToastDismisser from "../components/common/configurations/toastDismisser";
+import { ImagesInput } from "../components/common/forms/imagesInput";
 
 ReactOnRails.register({
   TagInput,
   "Configuration.ToastDismisser": ToastDismisser,
+  "Common.Forms.ImagesInput": ImagesInput,
 });

@@ -1,0 +1,15 @@
+---
+en:
+  activerecord:
+    attributes:
+      car:
+        body_configuration: Body configuration
+        brand: Brand
+        deposit: Deposit
+        engine_type: Engine type
+        price_in_eur: Price
+        gas_consumption_range: Gas consumption range
+        name: Name
+        release_date: Release date
+    models:
+      car: Car

@@ -1,0 +1,28 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value
+
+# == Schema Information
+#
+# Table name: cars
+#
+#  id                    :bigint           not null, primary key
+#  body_configuration    :string           not null
+#  brand                 :string           not null
+#  deposit               :decimal(, )      default(0.0), not null
+#  engine_type           :string           not null
+#  gas_consumption_range :numrange         not null
+#  name                  :string           not null
+#  price_in_eur          :decimal(, )      not null
+#  release_date          :date             not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#

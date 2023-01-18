@@ -1,0 +1,15 @@
+---
+rs:
+  activerecord:
+    attributes:
+      car:
+        body_configuration: Tip automobila
+        brand: Brend
+        deposit: Depozit
+        engine_type: Tip motora
+        price_in_eur: Cena
+        gas_consumption_range: Potrošnja
+        name: Naziv (Model)
+        release_date: Godina proizvodnje
+    models:
+      car: Car

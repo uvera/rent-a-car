@@ -1,5 +1,21 @@
 ---
 rs:
+  cars:
+    body_types:
+      convertible: Kabriolet
+      coupe: Kupe
+      hatchback: Hečbek
+      minivan: Minivan
+      sedan: Sedan
+      suv: Džip
+    brands:
+      audi: Audi
+      bmw: BMW
+    engine_types:
+      diesel: Dizel
+      electric: Električna
+      gas: Benzin
+      hybrid: Hibrid
   configurations:
     car_brands: Marke automobila
     toast_timeout: Trajanje notifikacije
