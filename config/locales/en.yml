@@ -39,6 +39,7 @@ en:
     names:
       en: English
       rs: Serbian
+      ru: Russian
   navbar:
     buttons:
       logout: Logout

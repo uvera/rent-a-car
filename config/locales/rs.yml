@@ -39,6 +39,7 @@ rs:
     names:
       en: Engleski
       rs: Srpski
+      ru: Ruski
   navbar:
     buttons:
       logout: Odjavi se
