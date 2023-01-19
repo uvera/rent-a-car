@@ -3,10 +3,11 @@ module Admin
     class CarsController < DashboardController
       def index
         scope = Car.all
-        if params[:search].present?
-          scope = scope.full_search(params[:search])
+
+        if search_params[:search].present?
+          scope = scope.full_search(search_params[:search])
         end
-        scope = scope.ransack(params.except(:search)).result
+        scope = scope.ransack(search_params.except(:search)).result
         @pagy, @cars = pagy_countless(scope, items: 4)
         respond_to do |format|
           format.html
@@ -56,7 +57,12 @@ module Admin
       def car_params
         @car_params ||= params.require(:car).permit(:body_configuration, :brand, :deposit, :engine_type, :name,
                                                     :transmission, :horsepower,
-                                                    :price_in_eur, :release_date, gas_consumption_range: [], images: [])
+                                                    :format, :price_in_eur, :release_date,
+                                                    gas_consumption_range: [], images: [])
+      end
+
+      def search_params
+        params.permit(:search, brand_in: [], engine_type_in: [], body_configuration_in: [])
       end
     end
   end
