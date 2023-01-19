@@ -48,4 +48,11 @@ const turboReloadJs = () => {
   Flowbite.initDismisses();
   Flowbite.initCollapses();
 };
-document.addEventListener("turbo:load", () => turboReloadJs());
+
+document.addEventListener("turbo:load", turboReloadJs);
+document.addEventListener("turbo:before-stream-render", function (event) {
+  event.preventDefault();
+
+  event.detail.newStream.performAction();
+  ReactOnRails.reactOnRailsPageLoaded();
+});
