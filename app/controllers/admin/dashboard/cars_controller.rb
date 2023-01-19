@@ -26,10 +26,9 @@ module Admin
       def create
         @car = create_new_car
         if @car.save
-          redirect_to admin_dashboard_cars_path, notice: I18n.t('flash.update.success')
+          redirect_success
         else
-          flash[:error] = I18n.t('flash.update.error')
-          render 'new'
+          form_respond('new')
         end
       end
 
@@ -39,14 +38,30 @@ module Admin
         @car.release_date = Date.new(car_params[:release_date]&.to_i)
 
         if @car.save
-          redirect_to admin_dashboard_cars_path, notice: I18n.t('flash.update.success')
+          redirect_success
         else
-          flash[:error] = I18n.t('flash.update.error')
-          render 'new'
+          form_respond('edit')
         end
       end
 
       private
+
+      def redirect_success
+        redirect_to admin_dashboard_cars_path(format: :html), notice: I18n.t('flash.update.success')
+      end
+
+      def form_respond(template)
+        respond_to do |format|
+          format.html do
+            flash[:error] = I18n.t('flash.update.error')
+            render template
+          end
+          format.turbo_stream do
+            flash.now[:error] = I18n.t('flash.update.error')
+            render template
+          end
+        end
+      end
 
       def create_new_car
         Car.new(car_params).tap do |car|
