@@ -43,4 +43,6 @@ document.addEventListener("turbo:load", () => {
   Flowbite.initDials();
   Flowbite.initDismisses();
   Flowbite.initCollapses();
+
+  ReactOnRails.reactOnRailsPageLoaded();
 });
