@@ -72,3 +72,4 @@ gem 'rubocop-rails', require: false
 gem "react_on_rails", "= 13.2"
 gem "aws-sdk-s3"
 gem "ruby-vips"
+gem "pg_search"
