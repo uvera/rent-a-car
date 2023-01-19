@@ -15,6 +15,7 @@
 // const imagePath = (name) => images(name, true)
 
 import "../application.scss";
+import React from "react";
 import "tw-elements";
 import * as Flowbite from "flowbite";
 import "@hotwired/turbo-rails";
@@ -24,14 +25,17 @@ import ToastDismisser from "../components/common/configurations/toastDismisser";
 import { ImagesInput } from "../components/common/forms/imagesInput";
 import MultiSelect from "../components/common/forms/multiSelect";
 
-ReactOnRails.register({
+const components = {
   TagInput,
   "Configuration.ToastDismisser": ToastDismisser,
   "Common.Forms.ImagesInput": ImagesInput,
   "Common.Forms.MultiSelect": MultiSelect,
-});
+};
 
-document.addEventListener("turbo:load", () => {
+ReactOnRails.register(components);
+ReactOnRails.setOptions({ turbo: true });
+
+const turboReloadJs = () => {
   Flowbite.initDropdowns();
   Flowbite.initCarousels();
   Flowbite.initModals();
@@ -43,6 +47,5 @@ document.addEventListener("turbo:load", () => {
   Flowbite.initDials();
   Flowbite.initDismisses();
   Flowbite.initCollapses();
-
-  ReactOnRails.reactOnRailsPageLoaded();
-});
+};
+document.addEventListener("turbo:load", () => turboReloadJs());
