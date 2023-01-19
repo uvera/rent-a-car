@@ -20,7 +20,7 @@ services:
         aliases:
           - minio
   postgres:
-    image: postgres:14
+    image: postgres:15
     container_name: postgres-racs
     ports:
       - "5432:5432"
