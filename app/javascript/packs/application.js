@@ -17,6 +17,7 @@
 import "../application.scss";
 import "tw-elements";
 import "flowbite";
+import "@hotwired/turbo-rails";
 import ReactOnRails from "react-on-rails";
 import TagInput from "../components/common/./forms/tagInput";
 import ToastDismisser from "../components/common/configurations/toastDismisser";
