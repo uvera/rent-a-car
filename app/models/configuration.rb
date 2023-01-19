@@ -4,9 +4,7 @@ class Configuration < ApplicationRecord
   validates_uniqueness_of :key
   validates_presence_of :value, allow_blank: true
 
-  AVAILABLE_CONFIGURATION_VIEWS = {
-    'car_brands' => 'car_brands'
-  }.freeze
+  AVAILABLE_CONFIGURATION_VIEWS = {}.freeze
 
   AVAILABLE_CONFIGURATIONS = ['toast_timeout'] + AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
 
