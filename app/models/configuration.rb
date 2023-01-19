@@ -23,7 +23,7 @@ end
 #
 #  id         :bigint           not null, primary key
 #  key        :string           not null
-#  value      :jsonb            not null
+#  value      :jsonb
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
