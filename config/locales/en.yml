@@ -1,5 +1,7 @@
 ---
 en:
+  actions:
+    edit: Edit
   cars:
     body_types:
       convertible: Convertible

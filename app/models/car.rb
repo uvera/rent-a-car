@@ -1,4 +1,6 @@
 class Car < ApplicationRecord
+  include PgSearch::Model
+
   include CarBrands
   include CarEngineTypes
   include CarBodyConfigurations
@@ -19,6 +21,12 @@ class Car < ApplicationRecord
   enum :brand, AVAILABLE_CAR_BRANDS_ENUM_HASH
   enum :engine_type, CAR_ENGINE_TYPES_ENUM_HASH
   enum :body_configuration, AVAILABLE_CAR_BODY_CONF_ENUM_HASH
+
+  pg_search_scope :full_search, against: [:brand, :name], using: {
+    dmetaphone: {},
+    trigram: {},
+    tsearch: { prefix: true }
+  }
 
   private
 

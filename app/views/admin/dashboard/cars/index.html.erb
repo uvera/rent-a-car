@@ -1,5 +1,8 @@
-<div class="flex w-auto items-center justify-center">
-  <div>
-   <p class="text-lg text-center">Dashboard</p>
+<div class="flex flex-col">
+  <%= render partial: 'search_form' %>
+  <div class="flex flex-wrap gap-5">
+    <% @cars.each do |car| %>
+      <%= render partial: 'index_car_view', locals: { car: car } %>
+    <% end %>
   </div>
 </div>

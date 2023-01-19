@@ -1,5 +1,7 @@
 ---
 rs:
+  actions:
+    edit: Izmena
   cars:
     body_types:
       convertible: Kabriolet

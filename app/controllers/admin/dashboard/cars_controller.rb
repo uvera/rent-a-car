@@ -1,7 +1,13 @@
 module Admin
   module Dashboard
     class CarsController < DashboardController
-      def index; end
+      def index
+        scope = Car.all
+        if params[:search].present?
+          scope = scope.full_search(params[:search])
+        end
+        @cars = scope
+      end
 
       def edit
         @car = Car.find(params[:id])
