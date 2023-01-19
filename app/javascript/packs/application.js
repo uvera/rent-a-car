@@ -15,15 +15,17 @@
 // const imagePath = (name) => images(name, true)
 
 import "../application.scss";
-import 'tw-elements';
+import "tw-elements";
 import "flowbite";
 import ReactOnRails from "react-on-rails";
 import TagInput from "../components/common/./forms/tagInput";
 import ToastDismisser from "../components/common/configurations/toastDismisser";
 import { ImagesInput } from "../components/common/forms/imagesInput";
+import MultiSelect from "../components/common/forms/multiSelect";
 
 ReactOnRails.register({
   TagInput,
   "Configuration.ToastDismisser": ToastDismisser,
   "Common.Forms.ImagesInput": ImagesInput,
+  "Common.Forms.MultiSelect": MultiSelect,
 });

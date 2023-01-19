@@ -6,6 +6,7 @@ module Admin
         if params[:search].present?
           scope = scope.full_search(params[:search])
         end
+        scope = scope.ransack(params.except(:search)).result
         @cars = scope
       end
 

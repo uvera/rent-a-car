@@ -24,6 +24,17 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     super
   end
 
+  def react_multi_select(method, choices = [], options = {})
+    options.reverse_merge!(select_label: '...', default_values: [])
+
+    @template.react_component 'Common.Forms.MultiSelect', props: {
+      choices: choices,
+      defaultValues: options[:default_values],
+      name: method,
+      selectLabel: options[:select_label],
+    }
+  end
+
   def num_range_field(method, _options = {})
     range = @object.send(method)
 
@@ -55,6 +66,6 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
      focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
       dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
     STRING
-                          )
+    )
   end
 end
