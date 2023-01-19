@@ -41,7 +41,7 @@ module Admin
       def admin_dashboard_cars_turbo_pagination_path(**options)
         additional_params = params.permit(:format, :page,
                                           :search, brand_in: [],
-                                                   engine_type_in: [], body_configuration_in: [])
+                                          engine_type_in: [], body_configuration_in: [])
                                   .except(:page, :format)
 
         admin_dashboard_cars_path(**options, **additional_params, format: :turbo_stream)
@@ -52,7 +52,10 @@ module Admin
       # param [Car] car
       def previous_images_for(car)
         car.images.map do |attachment|
-          { url: url_for(attachment), deletionUrl: admin_dashboard_car_image_path(car_id: car.id, id: attachment.id) }
+          {
+            url: url_for(attachment),
+            deletionUrl: car.id? ? admin_dashboard_car_image_path(car_id: car.id, id: attachment.id) : nil
+          }
         end
       end
     end
