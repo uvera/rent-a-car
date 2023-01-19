@@ -1,5 +1,7 @@
 type ToastDismisserProps = {
   timeout?: number;
+  msg: string;
+  type: string;
 };
 const ToastDismisser = ({ timeout }: ToastDismisserProps) => {
   setTimeout(() => {

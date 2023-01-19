@@ -1,5 +1,10 @@
 <div id="flashes" class="relative">
   <% flash.each do |type, msg| %>
     <%= render partial: "/toast_#{type}", locals: { msg: msg } %>
+    <%= react_component 'Configuration.ToastDismisser',
+                        props: { msg: msg,
+                                 type: type,
+                                 timeout: Configuration.value_for('toast_timeout', 2500)
+                        } %>
   <% end %>
 </div>
