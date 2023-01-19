@@ -39,6 +39,14 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     field_one + field_two
   end
 
+  def error_messages_for(method)
+
+    errors = @object.errors.full_messages_for(method)
+    return nil unless errors.any?
+
+    @template.content_tag(:span, errors.join(', '), class: 'text-red-500')
+  end
+
   private
 
   def wrap_class(options)

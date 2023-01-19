@@ -2,12 +2,15 @@
   <div class="flex flex-col w-2/3 justify-center m-auto h-full gap-y-4">
     <%= f.label :name %>
     <%= f.text_field :name %>
+    <%= f.error_messages_for :name %>
 
     <%= f.label :deposit %>
     <%= f.number_field :deposit %>
+    <%= f.error_messages_for :deposit %>
 
     <%= f.label :price_in_eur %>
     <%= f.number_field :price_in_eur %>
+    <%= f.error_messages_for :price_in_eur %>
 
     <%= f.label :release_date %>
     <%= f.select :release_date, (Date.today - 23.years).year..Date.today.year %>
@@ -25,6 +28,7 @@
     <div class="flex flex-row gap-x-4">
       <%= f.num_range_field :gas_consumption_range %>
     </div>
+    <%= f.error_messages_for :gas_consumption_range %>
 
     <%= car_images_upload_input(@car) %>
 
