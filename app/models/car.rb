@@ -4,6 +4,7 @@ class Car < ApplicationRecord
   include CarBrands
   include CarEngineTypes
   include CarBodyConfigurations
+  include CarTransmissionTypes
 
   has_many_attached :images
 
@@ -17,10 +18,12 @@ class Car < ApplicationRecord
   validates :name, presence: true
   validates :price_in_eur, presence: true
   validates :release_date, presence: true
+  validates :horsepower, presence: true, numericality: { greater_than: 0 }
 
   enum :brand, AVAILABLE_CAR_BRANDS_ENUM_HASH
   enum :engine_type, CAR_ENGINE_TYPES_ENUM_HASH
   enum :body_configuration, AVAILABLE_CAR_BODY_CONF_ENUM_HASH
+  enum :transmission, AVAILABLE_CAR_TRANSM_TYPES_ENUM_HASH
 
   pg_search_scope :full_search, against: [:brand, :name], using: {
     dmetaphone: {},
@@ -53,9 +56,11 @@ end
 #  deposit               :decimal(, )      default(0.0), not null
 #  engine_type           :string           not null
 #  gas_consumption_range :numrange         not null
+#  horsepower            :decimal(, )      default(0.0), not null
 #  name                  :string           not null
 #  price_in_eur          :decimal(, )      not null
 #  release_date          :date             not null
+#  transmission          :string           default("manual"), not null
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #

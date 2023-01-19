@@ -4,6 +4,7 @@ en:
     attributes:
       car:
         body_configuration: Body configuration
+        transmission: Transmission
         brand: Brand
         deposit: Deposit
         engine_type: Engine type

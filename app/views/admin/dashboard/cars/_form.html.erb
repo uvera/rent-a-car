@@ -8,6 +8,10 @@
     <%= f.number_field :deposit %>
     <%= f.error_messages_for :deposit %>
 
+    <%= f.label :horsepower %>
+    <%= f.number_field :horsepower %>
+    <%= f.error_messages_for :horsepower %>
+
     <%= f.label :price_in_eur %>
     <%= f.number_field :price_in_eur %>
     <%= f.error_messages_for :price_in_eur %>
@@ -20,6 +24,9 @@
 
     <%= f.label :engine_type %>
     <%= f.select :engine_type, car_engine_types_for_select %>
+
+    <%= f.label :transmission %>
+    <%= f.select :transmission, car_transmission_types_for_select %>
 
     <%= f.label :body_configuration %>
     <%= f.select :body_configuration, car_body_configuration_types_for_select %>

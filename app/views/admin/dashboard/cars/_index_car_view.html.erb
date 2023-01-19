@@ -24,6 +24,10 @@
             <%= I18n.t("cars.engine_types.#{car.engine_type}") %>
           </li>
           <li>
+            <%= Car.human_attribute_name(:transmission) %> :
+            <%= I18n.t("cars.transmission_types.#{car.transmission}") %>
+          </li>
+          <li>
             <%= Car.human_attribute_name(:gas_consumption_range) %> :
             <%= car.gas_consumption_range.begin %> - <%= car.gas_consumption_range.end %> L
           </li>

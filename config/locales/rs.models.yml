@@ -4,6 +4,7 @@ rs:
     attributes:
       car:
         body_configuration: Tip automobila
+        transmission: Prenos
         brand: Brend
         deposit: Depozit
         engine_type: Tip motora

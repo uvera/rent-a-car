@@ -16,9 +16,11 @@ end
 #  deposit               :decimal(, )      default(0.0), not null
 #  engine_type           :string           not null
 #  gas_consumption_range :numrange         not null
+#  horsepower            :decimal(, )      default(0.0), not null
 #  name                  :string           not null
 #  price_in_eur          :decimal(, )      not null
 #  release_date          :date             not null
+#  transmission          :string           default("manual"), not null
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #

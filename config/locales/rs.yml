@@ -13,6 +13,9 @@ rs:
     brands:
       audi: Audi
       bmw: BMW
+    transmission_types:
+      manual: Manuelni
+      automatic: Automatski
     engine_types:
       diesel: Dizel
       electric: Električna

@@ -13,6 +13,9 @@ en:
     brands:
       audi: Audi
       bmw: BMW
+    transmission_types:
+      manual: Manual
+      automatic: Automatic
     engine_types:
       diesel: Diesel
       electric: Electric

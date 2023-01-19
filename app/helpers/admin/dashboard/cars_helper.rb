@@ -11,6 +11,12 @@ module Admin::Dashboard::CarsHelper
     end
   end
 
+  def car_transmission_types_for_select
+    Car::AVAILABLE_CAR_TRANSM_TYPES.map do |engine|
+      [I18n.t("cars.transmission_types.#{engine}"), engine.to_s]
+    end
+  end
+
   def car_body_configuration_types_for_select
     Car::AVAILABLE_CAR_BODY_CONF.map do |body|
       [I18n.t("cars.body_types.#{body}"), body.to_s]

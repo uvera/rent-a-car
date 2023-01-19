@@ -51,6 +51,7 @@ module Admin
 
       def car_params
         @car_params ||= params.require(:car).permit(:body_configuration, :brand, :deposit, :engine_type, :name,
+                                                    :transmission, :horsepower,
                                                     :price_in_eur, :release_date, gas_consumption_range: [], images: [])
       end
     end
