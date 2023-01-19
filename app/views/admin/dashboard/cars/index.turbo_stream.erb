@@ -1,0 +1,10 @@
+<%= turbo_stream.append "cars" do %>
+  <%= render partial: 'index_car_view', collection: @cars, as: :car %>
+  <% if @pagy.next.present? %>
+    <%= turbo_stream.replace "pagination" do %>
+      <div class="bottom-5 relative">
+        <%= turbo_frame_tag "pagination", src: admin_dashboard_cars_path(page: @pagy.next, format: :turbo_stream), loading: :lazy %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

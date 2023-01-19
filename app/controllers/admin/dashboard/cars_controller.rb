@@ -7,7 +7,11 @@ module Admin
           scope = scope.full_search(params[:search])
         end
         scope = scope.ransack(params.except(:search)).result
-        @cars = scope
+        @pagy, @cars = pagy_countless(scope, items: 4)
+        respond_to do |format|
+          format.html
+          format.turbo_stream
+        end
       end
 
       def edit

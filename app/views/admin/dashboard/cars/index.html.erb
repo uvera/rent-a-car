@@ -7,9 +7,7 @@
       </button>
     <% end %>
   </div>
-  <div class="flex flex-wrap justify-center gap-5 p-4">
-    <% @cars.each do |car| %>
-      <%= render partial: 'index_car_view', locals: { car: car } %>
-    <% end %>
+  <div id="cars" class="flex flex-wrap justify-center gap-5 p-4">
   </div>
 </div>
+<%= turbo_frame_tag "pagination", src: admin_dashboard_cars_path(format: :turbo_stream), loading: :lazy %>
