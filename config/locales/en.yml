@@ -27,6 +27,7 @@ en:
       success: Successful update.
   forms:
     buttons:
+      new: Create new
       cancel: Cancel
       save: Save
   locales:

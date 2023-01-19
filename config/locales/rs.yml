@@ -27,6 +27,7 @@ rs:
       success: Uspešno sačuvano.
   forms:
     buttons:
+      new: Kreiraj novi
       cancel: Poništi
       save: Sačuvaj
   locales:
