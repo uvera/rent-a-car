@@ -24,6 +24,21 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     super
   end
 
+  def num_range_field(method, _options = {})
+    range = @object.send(method)
+
+    begin_range = 0
+    end_range = 0
+    if range.is_a?(Range)
+      begin_range = range.begin
+      end_range = range.end
+    end
+
+    field_one = number_field(:method, value: begin_range, name: "#{@object_name}[#{method}][]", **options)
+    field_two = number_field(:method, value: end_range, name: "#{@object_name}[#{method}][]", **options)
+    field_one + field_two
+  end
+
   private
 
   def wrap_class(options)
@@ -32,6 +47,6 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
      focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
       dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
     STRING
-    )
+                          )
   end
 end

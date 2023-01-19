@@ -23,9 +23,10 @@ module Admin::Dashboard::CarsHelper
       previousImages: previous_images_for(car),
       objectName: 'car',
       fieldName: 'images',
-      uploadUrl: admin_dashboard_car_images_path(car.id),
+      uploadUrl: car.new_record? ? nil : admin_dashboard_car_images_path(car.id),
       uploadParam: 'file',
-      refreshUrl: admin_dashboard_car_images_path(car.id)
+      refreshUrl: car.new_record? ? nil : admin_dashboard_car_images_path(car.id),
+      addOnly: car.new_record?
     }
   end
 

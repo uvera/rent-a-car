@@ -23,8 +23,7 @@
 
     <%= f.label :gas_consumption_range %>
     <div class="flex flex-row gap-x-4">
-      <%= f.number_field :gas_consumption_range, name: 'car[gas_consumption_range][]' %>
-      <%= f.number_field :gas_consumption_range, name: 'car[gas_consumption_range][]' %>
+      <%= f.num_range_field :gas_consumption_range %>
     </div>
 
     <%= car_images_upload_input(@car) %>

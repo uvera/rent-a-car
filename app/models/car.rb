@@ -7,6 +7,15 @@ class Car < ApplicationRecord
 
   before_save :convert_gas_consumption_range
 
+  validates :body_configuration, presence: true
+  validates :brand, presence: true
+  validates :deposit, presence: true
+  validates :engine_type, presence: true
+  validates :gas_consumption_range, presence: true
+  validates :name, presence: true
+  validates :price_in_eur, presence: true
+  validates :release_date, presence: true
+
   enum :brand, AVAILABLE_CAR_BRANDS_ENUM_HASH
   enum :engine_type, CAR_ENGINE_TYPES_ENUM_HASH
   enum :body_configuration, AVAILABLE_CAR_BODY_CONF_ENUM_HASH
