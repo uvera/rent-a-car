@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+
   add_flash_types :error
   around_action :switch_locale
 
