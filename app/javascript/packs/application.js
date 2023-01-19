@@ -15,6 +15,7 @@
 // const imagePath = (name) => images(name, true)
 
 import "../application.scss";
+import 'tw-elements';
 import "flowbite";
 import ReactOnRails from "react-on-rails";
 import TagInput from "../components/common/./forms/tagInput";

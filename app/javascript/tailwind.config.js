@@ -6,6 +6,8 @@ module.exports = {
     "./app/helpers/**/*.rb",
     "./node_modules/flowbite/**/*.js",
     "./app/javascript/components/**/*.tsx",
+    "./src/**/*.{html,js}",
+    "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   theme: {
     extend: {},
@@ -16,5 +18,6 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
     require("flowbite/plugin"),
+    require("tw-elements/dist/plugin"),
   ],
 };
