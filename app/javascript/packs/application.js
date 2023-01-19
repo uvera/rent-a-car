@@ -16,7 +16,7 @@
 
 import "../application.scss";
 import "tw-elements";
-import "flowbite";
+import * as Flowbite from "flowbite";
 import "@hotwired/turbo-rails";
 import ReactOnRails from "react-on-rails";
 import TagInput from "../components/common/./forms/tagInput";
@@ -29,4 +29,18 @@ ReactOnRails.register({
   "Configuration.ToastDismisser": ToastDismisser,
   "Common.Forms.ImagesInput": ImagesInput,
   "Common.Forms.MultiSelect": MultiSelect,
+});
+
+document.addEventListener("turbo:load", () => {
+  Flowbite.initDropdowns();
+  Flowbite.initCarousels();
+  Flowbite.initModals();
+  Flowbite.initAccordions();
+  Flowbite.initPopovers();
+  Flowbite.initTabs();
+  Flowbite.initTooltips();
+  Flowbite.initDrawers();
+  Flowbite.initDials();
+  Flowbite.initDismisses();
+  Flowbite.initCollapses();
 });
