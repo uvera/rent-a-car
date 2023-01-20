@@ -25,12 +25,14 @@ import ToastDismisser from "../components/common/configurations/toastDismisser";
 import { ImagesInput } from "../components/common/forms/imagesInput";
 import MultiSelect from "../components/common/forms/multiSelect";
 import { debounce } from "../util/debounce";
+import { ToastCloseButton } from "../components/common/toastCloseButton";
 
 const components = {
   TagInput,
   "Configuration.ToastDismisser": ToastDismisser,
   "Common.Forms.ImagesInput": ImagesInput,
   "Common.Forms.MultiSelect": MultiSelect,
+  "Common.ToastCloseButton": ToastCloseButton,
 };
 
 ReactOnRails.register(components);
