@@ -4,13 +4,13 @@ en:
     attributes:
       car:
         body_configuration: Body configuration
-        transmission: Transmission
         brand: Brand
         deposit: Deposit
         engine_type: Engine type
-        price_in_eur: Price
         gas_consumption_range: Gas consumption range
         name: Name
+        price_in_eur: Price
         release_date: Release date
+        transmission: Transmission
     models:
       car: Car

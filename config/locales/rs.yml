@@ -13,14 +13,14 @@ rs:
     brands:
       audi: Audi
       bmw: BMW
-    transmission_types:
-      manual: Manuelni
-      automatic: Automatski
     engine_types:
       diesel: Dizel
       electric: Električna
       gas: Benzin
       hybrid: Hibrid
+    transmission_types:
+      automatic: Automatski
+      manual: Manuelni
   configurations:
     car_brands: Marke automobila
     toast_timeout: Trajanje notifikacije
@@ -30,8 +30,8 @@ rs:
       success: Uspešno sačuvano.
   forms:
     buttons:
-      new: Kreiraj novi
       cancel: Poništi
+      new: Kreiraj novi
       save: Sačuvaj
   locales:
     button:
@@ -46,3 +46,4 @@ rs:
     links:
       cars: Automobili
       configurations: Konfiguracija
+  no_content: Nema sadržaja

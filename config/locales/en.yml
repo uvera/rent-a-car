@@ -13,14 +13,14 @@ en:
     brands:
       audi: Audi
       bmw: BMW
-    transmission_types:
-      manual: Manual
-      automatic: Automatic
     engine_types:
       diesel: Diesel
       electric: Electric
       gas: Gas
       hybrid: Hybrid
+    transmission_types:
+      automatic: Automatic
+      manual: Manual
   configurations:
     car_brands: Car brands
     toast_timeout: Toast timeout
@@ -30,8 +30,8 @@ en:
       success: Successful update.
   forms:
     buttons:
-      new: Create new
       cancel: Cancel
+      new: Create new
       save: Save
   locales:
     button:
@@ -46,3 +46,4 @@ en:
     links:
       cars: Cars
       configurations: Configurations
+  no_content: No content

@@ -4,13 +4,13 @@ ru:
     attributes:
       car:
         body_configuration: Конфигурация кузова
-        transmission: коробка передач
         brand: клеймить
         deposit: депозит
         engine_type: Тип двигателя
-        price_in_eur: цена
         gas_consumption_range: Диапазон расхода газа
         name: Имя
+        price_in_eur: цена
         release_date: Дата выхода
+        transmission: коробка передач
     models:
       car: автомобиль

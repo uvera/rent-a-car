@@ -13,14 +13,14 @@ ru:
     brands:
       audi: Audi
       bmw: BMW
-    transmission_types:
-      manual: Руководство по эксплуатации
-      automatic: автоматический
     engine_types:
       diesel: Дизель
       electric: Электрический
       gas: газ
       hybrid: гибридный
+    transmission_types:
+      automatic: автоматический
+      manual: Руководство по эксплуатации
   configurations:
     car_brands: Марки автомобилей
     toast_timeout: Тайм-аут тоста
@@ -30,8 +30,8 @@ ru:
       success: Успешное обновление.
   forms:
     buttons:
-      new: Создайте новый
       cancel: Отмена
+      new: Создайте новый
       save: сохранять
   locales:
     button:
@@ -46,3 +46,4 @@ ru:
     links:
       cars: автомобильный
       configurations: конфигурация
+  no_content: Без содержания
