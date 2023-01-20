@@ -24,6 +24,7 @@ import TagInput from "../components/common/./forms/tagInput";
 import ToastDismisser from "../components/common/configurations/toastDismisser";
 import { ImagesInput } from "../components/common/forms/imagesInput";
 import MultiSelect from "../components/common/forms/multiSelect";
+import { debounce } from "../util/debounce";
 
 const components = {
   TagInput,
@@ -49,10 +50,16 @@ const turboReloadJs = () => {
   Flowbite.initCollapses();
 };
 
-document.addEventListener("turbo:load", turboReloadJs);
-document.addEventListener("turbo:before-stream-render", function (event) {
-  event.preventDefault();
+const debouncedHandlerForNodes = debounce(() => {
+  const nodes = document.querySelectorAll("[data-signal-react-rerender]");
+  if (nodes.length) {
+    ReactOnRails.reactOnRailsPageLoaded();
 
-  event.detail.newStream.performAction();
-  ReactOnRails.reactOnRailsPageLoaded();
+    nodes.forEach((each) => each.remove());
+  }
+}, 100);
+
+document.addEventListener("turbo:load", turboReloadJs);
+document.addEventListener("turbo:before-stream-render", function () {
+  debouncedHandlerForNodes();
 });
