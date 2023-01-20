@@ -12,7 +12,7 @@
     <% locales = I18n.available_locales %>
     <% locales.each do |locale| %>
       <li>
-        <%= form_with url: set_locale_locale_path, method: :post, class: "block w-auto" do |form| %>
+        <%= form_with url: set_locale_locale_path, method: :post, data: { turbo: false }, class: "block w-auto" do |form| %>
           <input type='hidden' value='<%= locale.to_s %>' name="locale">
           <%= form.submit I18n.t("locales.names.#{locale.to_s}"), class: "w-auto px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
         <% end %>
