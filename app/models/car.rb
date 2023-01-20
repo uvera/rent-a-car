@@ -31,6 +31,10 @@ class Car < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  def self.ransackable_scopes(auth_object = nil)
+    [:full_search]
+  end
+
   private
 
   def convert_gas_consumption_range

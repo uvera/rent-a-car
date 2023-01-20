@@ -24,14 +24,21 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     super
   end
 
+  def ransack_multi_select(method, choices = [], options = {})
+    options.reverse_merge!(ransack: :q)
+    name = "#{options[:ransack]}[#{method}][]" if options[:ransack]
+    react_multi_select(name, choices, options)
+  end
+
   def react_multi_select(method, choices = [], options = {})
+
     options.reverse_merge!(select_label: '...', default_values: [])
 
     @template.react_component 'Common.Forms.MultiSelect', props: {
-      choices: choices,
+      choices:,
       defaultValues: options[:default_values],
       name: method,
-      selectLabel: options[:select_label],
+      selectLabel: options[:select_label]
     }
   end
 
@@ -51,7 +58,6 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def error_messages_for(method)
-
     errors = @object.errors.full_messages_for(method)
     return nil unless errors.any?
 

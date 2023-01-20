@@ -39,10 +39,12 @@ module Admin
       end
 
       def admin_dashboard_cars_turbo_pagination_path(**options)
-        additional_params = params.permit(:format, :page,
-                                          :search, brand_in: [],
-                                          engine_type_in: [], body_configuration_in: [])
-                                  .except(:page, :format)
+        additional_params = params.permit(
+          q: [
+            :full_search, { brand_in: [],
+                            engine_type_in: [], body_configuration_in: [] }
+          ]
+        )
 
         admin_dashboard_cars_path(**options, **additional_params, format: :turbo_stream)
       end
