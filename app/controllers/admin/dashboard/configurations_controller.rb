@@ -38,7 +38,7 @@ module Admin
       private
 
       def entity_params
-        @entity_params ||= params.require(:configuration).permit(:key, :value, value: [])
+        @entity_params ||= params.require(:configuration).permit(:key, :value, value: [], files: [])
       end
     end
   end

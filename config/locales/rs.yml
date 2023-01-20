@@ -23,6 +23,7 @@ rs:
       manual: Manuelni
   configurations:
     car_brands: Marke automobila
+    main_banner: Glavni baner
     toast_timeout: Trajanje notifikacije
   flash:
     update:

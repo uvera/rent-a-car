@@ -2,7 +2,7 @@
 
 module Admin
   module Dashboard
-    class CarImagesController < ActionController::API
+    class CarImagesController < ApplicationController
       def index
         car = Car.find_by(id: params[:car_id])
         images = car.images.map do |attachment|
@@ -15,12 +15,14 @@ module Admin
       def create
         car = Car.find_by(id: params[:car_id])
         return render status: :not_found, json: {} unless car
+
         car.images.attach params[:file]
       end
 
       def destroy
         car = Car.find_by(id: params[:car_id])
         return render status: :not_found, json: {} unless car
+
         car.images.find(params[:id])&.purge_later
         render status: :ok, json: {}
       end

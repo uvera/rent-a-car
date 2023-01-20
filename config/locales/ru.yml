@@ -23,6 +23,7 @@ ru:
       manual: Руководство по эксплуатации
   configurations:
     car_brands: Марки автомобилей
+    main_banner: Главни банер
     toast_timeout: Тайм-аут тоста
   flash:
     update:

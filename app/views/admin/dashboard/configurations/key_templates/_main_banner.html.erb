@@ -1,0 +1,11 @@
+<%= form_for configuration, multipart: true, url: { controller: 'admin/dashboard/configurations', action: configuration.new_record? ? 'create' : 'update' } do |f| %>
+  <div class="flex flex-col w-2/3 justify-center m-auto h-full gap-y-4">
+    <h2>
+      <%= I18n.t("configurations.#{configuration.key}") %>
+    </h2>
+    <%= f.hidden_field :key, value: configuration.key %>
+    <%= react_component "Common.Forms.TipTap", props: { value: configuration.value, inputName: 'configuration[value]' } %>
+    <%= configuration_images_upload_input(configuration) %>
+    <%= form_buttons(back_link: admin_dashboard_configurations_path) %>
+  </div>
+<% end %>

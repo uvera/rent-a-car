@@ -1,10 +1,13 @@
 class Configuration < ApplicationRecord
   serialize :value, ::JsonbSerializers
+  has_many_attached :files
 
-  validates_uniqueness_of :key
-  validates_presence_of :value, allow_blank: true
+  validates :key, uniqueness: true
+  validates :value, presence: { allow_blank: true }
 
-  AVAILABLE_CONFIGURATION_VIEWS = {}.freeze
+  AVAILABLE_CONFIGURATION_VIEWS = {
+    'main_banner' => 'main_banner'
+  }.freeze
 
   AVAILABLE_CONFIGURATIONS = ['toast_timeout'] + AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
 
@@ -14,6 +17,12 @@ class Configuration < ApplicationRecord
 
   def view_template
     AVAILABLE_CONFIGURATION_VIEWS[key] || 'default_form'
+  end
+
+  def image_files
+    files.filter do |file|
+      !(file.content_type =~ /image/).nil?
+    end
   end
 end
 

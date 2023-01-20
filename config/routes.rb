@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  root "landing/home#index"
   constraints Rodauth::Rails.authenticated(:admin) do
     resource :locale, only: [] do
       post :set_locale
@@ -17,7 +18,9 @@ Rails.application.routes.draw do
           post :index
           resources :images, controller: :car_images, only: [:destroy, :create, :index]
         end
-        resources :configurations, except: [:destroy]
+        resources :configurations, except: [:destroy] do
+          resources :images, controller: :configuration_images, only: [:destroy, :create, :index]
+        end
       end
     end
   end

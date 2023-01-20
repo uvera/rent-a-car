@@ -26,6 +26,7 @@ import { ImagesInput } from "../components/common/forms/imagesInput";
 import MultiSelect from "../components/common/forms/multiSelect";
 import { debounce } from "../util/debounce";
 import { ToastCloseButton } from "../components/common/toastCloseButton";
+import TipTapInput from "../components/common/forms/tipTapInput";
 
 const components = {
   TagInput,
@@ -33,6 +34,7 @@ const components = {
   "Common.Forms.ImagesInput": ImagesInput,
   "Common.Forms.MultiSelect": MultiSelect,
   "Common.ToastCloseButton": ToastCloseButton,
+  "Common.Forms.TipTap": TipTapInput,
 };
 
 ReactOnRails.register(components);

@@ -23,6 +23,7 @@ en:
       manual: Manual
   configurations:
     car_brands: Car brands
+    main_banner: Main banner
     toast_timeout: Toast timeout
   flash:
     update:

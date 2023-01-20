@@ -28,7 +28,7 @@ module Admin
       # param [Car] car
       def car_images_upload_input(car)
         react_component 'Common.Forms.ImagesInput', props: {
-          previousImages: previous_images_for(car),
+          previousImages: previous_images_for_car(car),
           objectName: 'car',
           fieldName: 'images',
           uploadUrl: car.new_record? ? nil : admin_dashboard_car_images_path(car.id),
@@ -52,7 +52,7 @@ module Admin
       private
 
       # param [Car] car
-      def previous_images_for(car)
+      def previous_images_for_car(car)
         car.images.map do |attachment|
           {
             url: url_for(attachment),
