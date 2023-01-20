@@ -19,5 +19,6 @@ module.exports = {
     require("@tailwindcss/line-clamp"),
     require("flowbite/plugin"),
     require("tw-elements/dist/plugin"),
+    require("tailwindcss-animate"),
   ],
 };
