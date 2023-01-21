@@ -27,6 +27,7 @@ import MultiSelect from "../components/common/forms/multiSelect";
 import { debounce } from "../util/debounce";
 import { ToastCloseButton } from "../components/common/toastCloseButton";
 import TipTapInput from "../components/common/forms/tipTapInput";
+import { ScrollDisabler as NavbarScrollDisabler } from "../components/common/navbar/scrollDisabler";
 
 const components = {
   TagInput,
@@ -35,6 +36,7 @@ const components = {
   "Common.Forms.MultiSelect": MultiSelect,
   "Common.ToastCloseButton": ToastCloseButton,
   "Common.Forms.TipTap": TipTapInput,
+  "Common.Navbar.ScrollDisabler": NavbarScrollDisabler,
 };
 
 ReactOnRails.register(components);
