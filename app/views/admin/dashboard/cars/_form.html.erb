@@ -17,7 +17,7 @@
     <%= f.error_messages_for :price_in_eur %>
 
     <%= f.label :release_date %>
-    <%= f.select :release_date, (Date.today - 23.years).year..Date.today.year %>
+    <%= f.select :release_date, (Date.today - 90.years).year..Date.today.year %>
 
     <%= f.label :brand %>
     <%= f.select :brand, car_brands_for_select %>
