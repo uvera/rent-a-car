@@ -74,7 +74,7 @@ module Admin
       end
 
       def search_params
-        params.permit(q: [:full_search, { brand_in: [], engine_type_in: [], body_configuration_in: [] }])
+        params.permit(q: [:full_search, { brand_in: [], engine_type_in: [], body_configuration_in: [], transmission_in: [] }])
       end
     end
   end

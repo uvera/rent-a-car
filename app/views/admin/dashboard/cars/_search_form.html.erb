@@ -16,6 +16,7 @@
       <%= form.ransack_multi_select :brand_in, car_brands_for_select, default_values: Array.wrap(params.dig(:q, :brand_in)), select_label: I18n.t('activerecord.attributes.car.brand') %>
       <%= form.ransack_multi_select :engine_type_in, car_engine_types_for_select, default_values: Array.wrap(params.dig(:q, :engine_type_in)), select_label: I18n.t('activerecord.attributes.car.engine_type') %>
       <%= form.ransack_multi_select :body_configuration_in, car_body_configuration_types_for_select, default_values: Array.wrap(params.dig(:q, :body_configuration_in)), select_label: I18n.t('activerecord.attributes.car.body_configuration') %>
+      <%= form.ransack_multi_select :transmission_in, car_transmission_types_for_select, default_values: Array.wrap(params.dig(:q, :transmission_in)), select_label: I18n.t('activerecord.attributes.car.transmission') %>
     </div>
   </div>
 <% end %>
