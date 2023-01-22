@@ -1,10 +1,10 @@
 <% car = @car %>
-<div class="container m-auto flex flex-row justify-center">
-  <div class="p-4 md:border md:border-solid md:border-gray-300 md:rounded-lg md:w-[48rem] flex flex-col items-center">
-    <div class="rounded-t-lg">
-      <%= render partial: 'common/cars/car/carousel', locals: { car: car, image_size_h: '30rem', image_size_w: '60rem' } %>
+<div class="md:container md:m-auto flex flex-row justify-center items-center p-4">
+  <div class="p-4 md:border md:border-solid md:border-gray-300 md:rounded-lg w-full md:w-[48rem] flex flex-col items-center">
+    <div class="rounded-t-lg p-4">
+      <%= render partial: 'common/cars/car/carousel', locals: { car: car, image_size_h_class: 'h-[15em]', image_size_w_class: 'w-[30em]', show_modal: true } %>
     </div>
-    <div class="p-6">
+    <div class="p-6 w-full">
       <h5 class="text-gray-900 text-xl font-medium mb-2">
         <%= I18n.t("cars.brands.#{car.brand}") %>
         <%= car.name %>
@@ -32,12 +32,14 @@
           <%= car.gas_consumption_range.begin %> - <%= car.gas_consumption_range.end %> L
         </li>
 
-        <li>
-          <span><%= Car.human_attribute_name(:description) %>:</span>
-          <div class="prose prose-sm mt-2">
-            <%= car.description.try(:html_safe) %>
-          </div>
-        </li>
+        <% if car.description? %>
+          <li>
+            <span><%= Car.human_attribute_name(:description) %>:</span>
+            <div class="prose prose-sm mt-2 break-words">
+              <%= car.description.try(:html_safe) %>
+            </div>
+          </li>
+        <% end %>
 
         <div class="flex flex-row items-center mt-4">
           <% if car.youtube_link? %>

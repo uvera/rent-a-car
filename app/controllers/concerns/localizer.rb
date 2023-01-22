@@ -18,6 +18,10 @@ module Localizer
           send("#{attribute}_#{first_found_locale}")
         end
       end
+
+      define_method("#{attribute}?") do
+        send(attribute).presence
+      end
     end
   end
 end
