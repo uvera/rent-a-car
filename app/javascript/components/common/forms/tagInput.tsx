@@ -54,23 +54,23 @@ const TagInput = ({ value, fieldName, entityName }: TagInputProps) => {
               onKeyDown={(e) => inputKeyDown(e)}
               onChange={(e) => setCurrentValue(e.target.value)}
               id="input1"
-              className="mt-1 py-3 px-5 w-full border-2 border-blue-300 rounded-2xl outline-none placeholder:text-gray-400 invalid:text-blue-700 invalid:focus:ring-blue-700 invalid:focus:border-blue-700 peer dark:bg-gray-500 dark:text-gray-200 dark:placeholder:text-gray-300 dark:invalid:text-blue-300 dark:border-gray-400"
+              className="mt-1 py-3 px-5 w-full border-2 border-yellow-300 rounded-2xl outline-none placeholder:text-gray-400 invalid:text-yellow-700 invalid:focus:ring-yellow-700 invalid:focus:border-yellow-700 peer dark:bg-gray-500 dark:text-gray-200 dark:placeholder:text-gray-300 dark:invalid:text-yellow-300 dark:border-gray-400"
               type="text"
             />
           </label>
         </div>
         <div
           onClick={() => pushCurrentValue()}
-          className="w-full text-center py-3 px-8 text-sm font-medium bg-blue-500 text-gray-100 rounded-2xl cursor-pointer sm:w-min hover:bg-blue-700 hover:text-gray-50 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-50 mb-4 sm:mb-0"
+          className="w-full text-center py-3 px-8 text-sm font-medium bg-yellow-500 text-gray-100 rounded-2xl cursor-pointer sm:w-min hover:bg-yellow-700 hover:text-gray-50 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-50 mb-4 sm:mb-0"
         >
           <span>Add</span>
         </div>
       </div>
-      <div className="px-2 pt-2 pb-11 mb-3 flex flex-wrap rounded-lg bg-blue-200 dark:bg-gray-400">
+      <div className="px-2 pt-2 pb-11 mb-3 flex flex-wrap rounded-lg bg-yellow-200 dark:bg-gray-400">
         {tags.map((tag) => (
           <span
             key={tag}
-            className="flex flex-wrap pl-4 pr-2 py-2 m-1 justify-between items-center text-sm font-medium rounded-xl cursor-pointer bg-blue-500 text-gray-200 hover:bg-blue-600 hover:text-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-100"
+            className="flex flex-wrap pl-4 pr-2 py-2 m-1 justify-between items-center text-sm font-medium rounded-xl cursor-pointer bg-yellow-500 text-gray-200 hover:bg-yellow-600 hover:text-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-100"
           >
             {tag}
             <svg
