@@ -5,7 +5,7 @@ module Landing
     # @param [String] key
     def render_tiptap_configuration(key)
       configuration = ::Configuration.find_by(key:)
-      value = configuration.value || ''
+      value = configuration.value[I18n.locale] || configuration.value[:en] || ''
       content_tag(:div, class: 'prose prose-sm') do
         value.gsub(ATTACHMENT_REGEX) do
           index = Regexp.last_match(2).to_i

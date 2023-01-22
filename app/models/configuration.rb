@@ -9,7 +9,7 @@ class Configuration < ApplicationRecord
     'main_banner' => 'main_banner'
   }.freeze
 
-  AVAILABLE_CONFIGURATIONS = ['toast_timeout'] + AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
+  AVAILABLE_CONFIGURATIONS = %w[toast_timeout site_name] + AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
 
   def self.value_for(key, default = nil)
     find_by(key:)&.value || default

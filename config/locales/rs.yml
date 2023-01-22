@@ -24,6 +24,7 @@ rs:
   configurations:
     car_brands: Marke automobila
     main_banner: Glavni baner
+    site_name: Naziv web-sajta
     toast_timeout: Trajanje notifikacije
   flash:
     update:

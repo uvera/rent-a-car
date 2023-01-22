@@ -38,7 +38,8 @@ module Admin
       private
 
       def entity_params
-        @entity_params ||= params.require(:configuration).permit(:key, :value, value: [], files: [])
+        @entity_params ||= params.require(:configuration).permit(:key, :value, value: [*I18n.available_locales],
+                                                                               files: [])
       end
     end
   end

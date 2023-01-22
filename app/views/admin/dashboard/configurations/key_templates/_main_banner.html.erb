@@ -4,7 +4,10 @@
       <%= I18n.t("configurations.#{configuration.key}") %>
     </h2>
     <%= f.hidden_field :key, value: configuration.key %>
-    <%= react_component "Common.Forms.TipTap", props: { value: configuration.value, inputName: 'configuration[value]' } %>
+    <% I18n.available_locales.each do |locale| %>
+      <span class="font-bold"><%= I18n.t("locales.names.#{locale}") %></span>
+      <%= react_component "Common.Forms.TipTap", props: { value: configuration&.value[locale], inputName: "configuration[value][#{locale}]" } %>
+    <% end %>
     <%= configuration_images_upload_input(configuration) %>
     <%= form_buttons(back_link: admin_dashboard_configurations_path) %>
   </div>

@@ -24,6 +24,7 @@ en:
   configurations:
     car_brands: Car brands
     main_banner: Main banner
+    site_name: Website name
     toast_timeout: Toast timeout
   flash:
     update:
