@@ -14,5 +14,6 @@
 <body class="h-screen">
 <%= render partial: '/flash' %>
 <%= content_for?(:content) ? yield(:content) : yield %>
+<%= react_component 'Common.ScrollToTop' %>
 </body>
 </html>
