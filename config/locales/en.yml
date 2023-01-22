@@ -36,6 +36,7 @@ en:
     buttons:
       cancel: Cancel
       discard: Discard
+      download: Download
       new: Create new
       restore: Restore
       save: Save

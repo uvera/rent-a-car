@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "landing/home#index"
+  root 'landing/home#index'
 
   scope module: :landing do
-    resources :cars, only: [:index, :show]
+    resources :cars, only: %i[index show]
   end
 
   resource :locale, only: [] do
@@ -23,10 +23,10 @@ Rails.application.routes.draw do
         resources :cars do
           post :undiscard, on: :member
           post :index
-          resources :images, controller: :car_images, only: [:destroy, :create, :index]
+          resources :images, controller: :car_images, only: %i[destroy create index]
         end
         resources :configurations, except: [:destroy] do
-          resources :images, controller: :configuration_images, only: [:destroy, :create, :index]
+          resources :images, controller: :configuration_images, only: %i[destroy create index]
         end
       end
     end

@@ -36,6 +36,7 @@ rs:
     buttons:
       cancel: Poništi
       discard: Odbaci
+      download: Preuzimanje
       new: Kreiraj novi
       restore: Vratiti
       save: Sačuvaj
