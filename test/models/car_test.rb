@@ -14,6 +14,9 @@ end
 #  body_configuration    :string           not null
 #  brand                 :string           not null
 #  deposit               :decimal(, )      default(0.0), not null
+#  description_en        :string
+#  description_rs        :string
+#  description_ru        :string
 #  discarded_at          :datetime
 #  engine_type           :string           not null
 #  gas_consumption_range :numrange         not null

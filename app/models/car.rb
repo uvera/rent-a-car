@@ -4,6 +4,7 @@ class Car < ApplicationRecord
 
   include Discard::Model
   include PgSearch::Model
+  include Localizer
 
   include CarBrands
   include CarEngineTypes
@@ -35,6 +36,8 @@ class Car < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  localize_column :description
+
   def self.ransackable_scopes(auth_object = nil)
     [:full_search]
   end
@@ -62,6 +65,9 @@ end
 #  body_configuration    :string           not null
 #  brand                 :string           not null
 #  deposit               :decimal(, )      default(0.0), not null
+#  description_en        :string
+#  description_rs        :string
+#  description_ru        :string
 #  discarded_at          :datetime
 #  engine_type           :string           not null
 #  gas_consumption_range :numrange         not null

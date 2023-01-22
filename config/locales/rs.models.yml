@@ -6,6 +6,7 @@ rs:
         body_configuration: Tip automobila
         brand: Brend
         deposit: Depozit
+        description: Opis
         engine_type: Tip motora
         gas_consumption_range: Potrošnja
         name: Naziv (Model)

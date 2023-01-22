@@ -2,7 +2,7 @@
   <div class="flex justify-center">
     <%= link_to I18n.t('landing.home.show_more_cars'), cars_path, class: 'text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' %>
   </div>
-  <div class="flex flex-wrap justify-center gap-5 p-4 scroll-smooth">
+  <div class="grid grid-cols-2 justify-center items-center gap-5 p-4 scroll-smooth">
     <%= render partial: 'landing/common/car_card', collection: @cars, as: :car %>
   </div>
 </div>

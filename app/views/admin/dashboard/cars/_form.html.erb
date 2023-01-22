@@ -41,6 +41,14 @@
     </div>
     <%= f.error_messages_for :gas_consumption_range %>
 
+    <%= f.label :description %>
+    <% I18n.available_locales.each do |locale| %>
+      <% if @car.respond_to?("description_#{locale}") %>
+        <span class="font-bold text-sm"><%= I18n.t("locales.names.#{locale}") %></span>
+        <%= react_component "Common.Forms.TipTap", props: { value: @car.send("description_#{locale}"), inputName: "car[description_#{locale}]" } %>
+      <% end %>
+    <% end %>
+
     <%= car_images_upload_input(@car) %>
 
     <%= signal_react_rerender %>

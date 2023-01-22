@@ -6,6 +6,7 @@ ru:
         body_configuration: Конфигурация кузова
         brand: клеймить
         deposit: депозит
+        description: Описание
         engine_type: Тип двигателя
         gas_consumption_range: Диапазон расхода газа
         name: Имя

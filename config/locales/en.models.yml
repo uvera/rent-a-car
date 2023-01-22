@@ -6,6 +6,7 @@ en:
         body_configuration: Body configuration
         brand: Brand
         deposit: Deposit
+        description: Description
         engine_type: Engine type
         gas_consumption_range: Gas consumption range
         name: Name

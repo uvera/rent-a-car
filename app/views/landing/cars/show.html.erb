@@ -31,6 +31,14 @@
           <%= Car.human_attribute_name(:gas_consumption_range) %> :
           <%= car.gas_consumption_range.begin %> - <%= car.gas_consumption_range.end %> L
         </li>
+
+        <li>
+          <span><%= Car.human_attribute_name(:description) %>:</span>
+          <div class="prose prose-sm mt-2">
+            <%= car.description.try(:html_safe) %>
+          </div>
+        </li>
+
         <div class="flex flex-row items-center mt-4">
           <% if car.youtube_link? %>
             <li>
