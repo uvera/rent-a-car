@@ -1,0 +1,7 @@
+---
+<% group = "{#{I18n.available_locales.join(',')}}" %>
+
+translations:
+  - file: app/javascript/translations.json
+    patterns:
+      - "<%= group %>.*"

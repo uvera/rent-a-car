@@ -116,3 +116,5 @@ yarn-debug.log*
 .yarn-integrity
 
 .idea/*
+
+app/javascript/translations.json
