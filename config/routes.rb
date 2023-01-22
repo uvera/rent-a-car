@@ -5,14 +5,15 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "landing/home#index"
 
-  namespace :landing do
+  scope module: :landing do
     resources :cars, only: [:index, :show]
   end
 
+  resource :locale, only: [] do
+    post :set_locale
+  end
+
   constraints Rodauth::Rails.authenticated(:admin) do
-    resource :locale, only: [] do
-      post :set_locale
-    end
     namespace :admin do
       resources :dashboard, only: [] do
         get '/', to: redirect('admin/dashboard/cars'), on: :collection

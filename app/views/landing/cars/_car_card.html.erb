@@ -1,0 +1,44 @@
+<div class="animate-in fade-in duration-1000">
+  <div class="flex justify-center">
+    <div class="rounded-lg shadow-lg bg-white max-w-sm">
+      <div class="rounded-t-lg">
+        <%= render partial: 'common/cars/car/carousel', locals: { car: car } %>
+      </div>
+      <div class="p-6">
+        <h5 class="text-gray-900 text-xl font-medium mb-2">
+          <%= I18n.t("cars.brands.#{car.brand}") %>
+          <%= car.name %>
+        </h5>
+        <p class="text-gray-700 text-base mb-4">
+        <ul>
+          <li>
+            <%= Car.human_attribute_name(:price_in_eur) %> :
+            <%= car.price_in_eur %> EUR
+          </li>
+          <li>
+            <%= Car.human_attribute_name(:deposit) %> :
+            <%= car.deposit %> EUR
+          </li>
+          <li>
+            <%= Car.human_attribute_name(:engine_type) %> :
+            <%= I18n.t("cars.engine_types.#{car.engine_type}") %>
+          </li>
+          <li>
+            <%= Car.human_attribute_name(:transmission) %> :
+            <%= I18n.t("cars.transmission_types.#{car.transmission}") %>
+          </li>
+          <li>
+            <%= Car.human_attribute_name(:gas_consumption_range) %> :
+            <%= car.gas_consumption_range.begin %> - <%= car.gas_consumption_range.end %> L
+          </li>
+          <% if car.youtube_link? %>
+            <li class="mt-4">
+              <%= link_to I18n.t('landing.home.youtube_link'), car.youtube_link, class: 'text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900' %>
+            </li>
+          <% end %>
+        </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
