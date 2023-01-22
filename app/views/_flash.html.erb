@@ -1,4 +1,4 @@
-<div id="flashes" class="relative">
+<div id="flashes" class="relative z-50">
   <% flash.each do |type, msg| %>
     <%= render partial: "/toast_#{type}", locals: { msg: msg } %>
     <%= react_component 'Configuration.ToastDismisser',

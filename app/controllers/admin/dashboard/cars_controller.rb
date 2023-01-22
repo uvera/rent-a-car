@@ -46,14 +46,13 @@ module Admin
         @car.discard
         respond_to do |format|
           format.turbo_stream do
-            flash.now[:notice] = I18n.t('flash.update.discarded')
-            render 'edit'
+            flash.now[:notice] = I18n.t('flash.update.discard')
           end
           format.html do
-            flash[:notice] = I18n.t('flash.update.discarded')
-            render 'edit'
+            flash[:notice] = I18n.t('flash.update.discard')
           end
         end
+        render 'edit'
       end
 
       def undiscard
@@ -62,13 +61,12 @@ module Admin
         respond_to do |format|
           format.turbo_stream do
             flash.now[:notice] = I18n.t('flash.update.restore')
-            render 'edit'
           end
           format.html do
             flash[:notice] = I18n.t('flash.update.restore')
-            render 'edit'
           end
         end
+        render 'edit'
       end
 
       private
