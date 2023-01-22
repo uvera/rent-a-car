@@ -2,7 +2,7 @@ module Admin
   module Dashboard
     class CarsController < DashboardController
       def index
-        @scope = Car.all
+        @scope = Car.all.with_discarded.order(:name)
         @scope = @scope.ransack(search_params[:q])
 
         @pagy, @cars = pagy_countless(@scope.result, items: 4)
@@ -25,7 +25,7 @@ module Admin
         if @car.save
           redirect_success
         else
-          form_respond('new')
+          form_respond_fail('new')
         end
       end
 
@@ -37,7 +37,37 @@ module Admin
         if @car.save
           redirect_success
         else
-          form_respond('edit')
+          form_respond_fail('edit')
+        end
+      end
+
+      def destroy
+        @car = Car.find_by(id: params[:id])
+        @car.discard
+        respond_to do |format|
+          format.turbo_stream do
+            flash.now[:notice] = I18n.t('flash.update.discarded')
+            render 'edit'
+          end
+          format.html do
+            flash[:notice] = I18n.t('flash.update.discarded')
+            render 'edit'
+          end
+        end
+      end
+
+      def undiscard
+        @car = Car.find_by(id: params[:id])
+        @car.undiscard
+        respond_to do |format|
+          format.turbo_stream do
+            flash.now[:notice] = I18n.t('flash.update.restore')
+            render 'edit'
+          end
+          format.html do
+            flash[:notice] = I18n.t('flash.update.restore')
+            render 'edit'
+          end
         end
       end
 
@@ -47,7 +77,7 @@ module Admin
         redirect_to admin_dashboard_cars_path(format: :html), notice: I18n.t('flash.update.success')
       end
 
-      def form_respond(template)
+      def form_respond_fail(template)
         respond_to do |format|
           format.html do
             flash[:error] = I18n.t('flash.update.error')

@@ -1,4 +1,5 @@
 class Car < ApplicationRecord
+  include Discard::Model
   include PgSearch::Model
 
   include CarBrands
@@ -58,6 +59,7 @@ end
 #  body_configuration    :string           not null
 #  brand                 :string           not null
 #  deposit               :decimal(, )      default(0.0), not null
+#  discarded_at          :datetime
 #  engine_type           :string           not null
 #  gas_consumption_range :numrange         not null
 #  horsepower            :decimal(, )      default(0.0), not null
@@ -71,5 +73,6 @@ end
 #
 # Indexes
 #
-#  index_cars_on_slug  (slug) UNIQUE
+#  index_cars_on_discarded_at  (discarded_at)
+#  index_cars_on_slug          (slug) UNIQUE
 #

@@ -27,12 +27,16 @@ ru:
     toast_timeout: Тайм-аут тоста
   flash:
     update:
+      discard: Запись удалена.
       error: Произошла ошибка.
+      restore: Запись восстановлена.
       success: Успешное обновление.
   forms:
     buttons:
       cancel: Отмена
+      discard: Отказаться
       new: Создайте новый
+      restore: Восстановить
       save: сохранять
   locales:
     button:

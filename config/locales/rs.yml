@@ -27,12 +27,16 @@ rs:
     toast_timeout: Trajanje notifikacije
   flash:
     update:
+      discard: Zapis je odbačen.
       error: Došlo je do greške.
+      restore: Zapis je vraćen.
       success: Uspešno sačuvano.
   forms:
     buttons:
       cancel: Poništi
+      discard: Odbaci
       new: Kreiraj novi
+      restore: Vratiti
       save: Sačuvaj
   locales:
     button:

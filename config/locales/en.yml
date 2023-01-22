@@ -27,12 +27,16 @@ en:
     toast_timeout: Toast timeout
   flash:
     update:
+      discard: Record discarded.
       error: Error occurred.
+      restore: Record restored.
       success: Successful update.
   forms:
     buttons:
       cancel: Cancel
+      discard: Discard
       new: Create new
+      restore: Restore
       save: Save
   locales:
     button:

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
       namespace :dashboard do
         resources :cars do
+          post :undiscard, on: :member
           post :index
           resources :images, controller: :car_images, only: [:destroy, :create, :index]
         end
