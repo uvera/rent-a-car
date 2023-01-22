@@ -76,3 +76,7 @@ gem "pg_search"
 gem "ransack"
 gem "turbo-rails"
 gem "pagy", "~> 6.0"
+
+gem "i18n-js", "~> 4.2"
+
+gem "listen", "~> 3.8"
