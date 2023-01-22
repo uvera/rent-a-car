@@ -1,4 +1,7 @@
 class Car < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   include Discard::Model
   include PgSearch::Model
 

@@ -2,7 +2,7 @@ module Admin
   module Dashboard
     class CarsController < DashboardController
       def index
-        @scope = Car.all.with_discarded.order(:name)
+        @scope = Car.friendly.with_discarded.order(:name)
         @scope = @scope.ransack(search_params[:q])
 
         @pagy, @cars = pagy_countless(@scope.result, items: 4)
@@ -13,7 +13,7 @@ module Admin
       end
 
       def edit
-        @car = Car.find(params[:id])
+        @car = Car.friendly.find(params[:id])
       end
 
       def new
@@ -30,7 +30,7 @@ module Admin
       end
 
       def update
-        @car = Car.find_by(id: params[:id])
+        @car = Car.friendly.find(params[:id])
         @car.assign_attributes(car_params)
         @car.release_date = Date.new(car_params[:release_date]&.to_i)
 
@@ -42,7 +42,7 @@ module Admin
       end
 
       def destroy
-        @car = Car.find_by(id: params[:id])
+        @car = Car.friendly.find(params[:id])
         @car.discard
         respond_to do |format|
           format.turbo_stream do
@@ -56,7 +56,7 @@ module Admin
       end
 
       def undiscard
-        @car = Car.find_by(id: params[:id])
+        @car = Car.friendly.find(params[:id])
         @car.undiscard
         respond_to do |format|
           format.turbo_stream do

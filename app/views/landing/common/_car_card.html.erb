@@ -31,11 +31,18 @@
             <%= Car.human_attribute_name(:gas_consumption_range) %> :
             <%= car.gas_consumption_range.begin %> - <%= car.gas_consumption_range.end %> L
           </li>
-          <% if car.youtube_link? %>
-            <li class="mt-4">
-              <%= link_to I18n.t('landing.home.youtube_link'), car.youtube_link, class: 'text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900' %>
+          <div class="flex flex-row items-center mt-4">
+            <% if car.youtube_link? %>
+              <li>
+                <%= link_to I18n.t('landing.home.youtube_link'), car.youtube_link, class: 'text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900' %>
+              </li>
+            <% end %>
+
+            <li>
+              <%= link_to I18n.t('landing.cars.detail_button'), car, class: "text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900" %>
             </li>
-          <% end %>
+
+          </div>
         </ul>
         </p>
       </div>

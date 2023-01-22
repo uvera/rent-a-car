@@ -1,6 +1,8 @@
 ---
 ru:
   landing:
+    cars:
+      detail_button: Подробности
     home:
       show_more_cars: Показать больше автомобилей
       youtube_link: YouTube видео

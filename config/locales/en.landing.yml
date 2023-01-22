@@ -1,6 +1,8 @@
 ---
 en:
   landing:
+    cars:
+      detail_button: Details
     home:
       show_more_cars: Show more cars
       youtube_link: YouTube video

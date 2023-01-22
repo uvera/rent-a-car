@@ -1,6 +1,8 @@
 ---
 rs:
   landing:
+    cars:
+      detail_button: Detalji
     home:
       show_more_cars: Prikaži još automobila
       youtube_link: YouTube video

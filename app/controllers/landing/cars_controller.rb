@@ -1,7 +1,7 @@
 module Landing
   class CarsController < LandingController
     def index
-      @scope = Car.kept
+      @scope = Car.friendly.kept
       @scope = @scope.ransack(search_params[:q])
 
       @pagy, @cars = pagy_countless(@scope.result, items: 4)
@@ -11,7 +11,9 @@ module Landing
       end
     end
 
-    def show; end
+    def show
+      @car = Car.friendly.find(params[:id])
+    end
 
     private
 
