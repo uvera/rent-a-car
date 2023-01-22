@@ -80,3 +80,5 @@ gem "pagy", "~> 6.0"
 gem "i18n-js", "~> 4.2"
 
 gem "listen", "~> 3.8"
+
+gem "friendly_id", "~> 5.5"

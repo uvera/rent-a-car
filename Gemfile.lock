@@ -127,6 +127,8 @@ GEM
     erubi (1.12.0)
     execjs (2.8.1)
     ffi (1.15.5)
+    friendly_id (5.5.0)
+      activerecord (>= 4.0.0)
     glob (0.4.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -346,6 +348,7 @@ DEPENDENCIES
   capybara
   debug
   dotenv-rails
+  friendly_id (~> 5.5)
   i18n-js (~> 4.2)
   i18n-tasks (~> 1.0.12)
   listen (~> 3.8)
