@@ -4,7 +4,7 @@
       <%= I18n.t("configurations.#{configuration.key}") %>
     </h2>
     <%= f.hidden_field :key, value: configuration.key %>
-    <%= f.text_area :value, rows: '20', class:  %>
+    <%= f.text_area :value, rows: '20' %>
     <%= form_buttons(back_link: admin_dashboard_configurations_path) %>
   </div>
 <% end %>

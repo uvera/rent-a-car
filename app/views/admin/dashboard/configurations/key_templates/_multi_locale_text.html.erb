@@ -1,4 +1,4 @@
-<%= form_for configuration, multipart: true, url: { controller: 'admin/dashboard/configurations', action: configuration.new_record? ? 'create' : 'update' } do |f| %>
+<%= form_for configuration, url: { controller: 'admin/dashboard/configurations', action: configuration.new_record? ? 'create' : 'update' } do |f| %>
   <div class="flex flex-col w-2/3 justify-center m-auto h-full gap-y-4">
     <h2>
       <%= I18n.t("configurations.#{configuration.key}") %>
@@ -6,9 +6,8 @@
     <%= f.hidden_field :key, value: configuration.key %>
     <% I18n.available_locales.each do |locale| %>
       <span class="font-bold"><%= I18n.t("locales.names.#{locale}") %></span>
-      <%= react_component "Common.Forms.TipTap", props: { value: configuration&.value[locale], inputName: "configuration[value][#{locale}]" } %>
+      <%= f.text_area "value[#{locale}]", value: configuration.value.try(:[], locale), rows: '20' %>
     <% end %>
-    <%= configuration_images_upload_input(configuration) %>
     <%= form_buttons(back_link: admin_dashboard_configurations_path) %>
   </div>
 <% end %>

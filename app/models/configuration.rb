@@ -6,13 +6,19 @@ class Configuration < ApplicationRecord
   validates :value, presence: { allow_blank: true }
 
   AVAILABLE_CONFIGURATION_VIEWS = {
-    'main_banner' => 'main_banner'
+    'main_banner' => 'multi_locale_tiptap',
+    'site_name' => 'multi_locale_text'
   }.freeze
 
-  AVAILABLE_CONFIGURATIONS = %w[toast_timeout site_name] + AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
+  AVAILABLE_CONFIGURATIONS = %w[toast_timeout] + AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
 
   def self.value_for(key, default = nil)
     find_by(key:)&.value || default
+  end
+
+  def self.localized_value_for(key, default = nil)
+    value = value_for(key, nil)
+    value.try(:[], I18n.locale) || default
   end
 
   def view_template
