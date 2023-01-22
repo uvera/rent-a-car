@@ -12,5 +12,6 @@ ru:
         price_in_eur: цена
         release_date: Дата выхода
         transmission: коробка передач
+        youtube_link: Youtube link
     models:
       car: автомобиль

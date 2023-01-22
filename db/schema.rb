@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_22_163549) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_22_173836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
   enable_extension "pg_trgm"
@@ -90,6 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_163549) do
     t.decimal "horsepower", default: "0.0", null: false
     t.string "slug"
     t.datetime "discarded_at"
+    t.string "youtube_link"
     t.index ["discarded_at"], name: "index_cars_on_discarded_at"
     t.index ["slug"], name: "index_cars_on_slug", unique: true
   end

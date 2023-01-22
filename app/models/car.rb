@@ -68,6 +68,7 @@ end
 #  release_date          :date             not null
 #  slug                  :string
 #  transmission          :string           default("manual"), not null
+#  youtube_link          :string
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #

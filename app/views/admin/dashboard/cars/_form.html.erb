@@ -28,6 +28,10 @@
     <%= f.label :transmission %>
     <%= f.select :transmission, car_transmission_types_for_select %>
 
+    <%= f.label :youtube_link %>
+    <%= f.text_field :youtube_link %>
+    <%= f.error_messages_for :youtube_link %>
+
     <%= f.label :body_configuration %>
     <%= f.select :body_configuration, car_body_configuration_types_for_select %>
 

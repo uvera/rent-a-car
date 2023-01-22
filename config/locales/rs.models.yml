@@ -12,5 +12,6 @@ rs:
         price_in_eur: Cena
         release_date: Godina proizvodnje
         transmission: Prenos
+        youtube_link: Youtube link
     models:
       car: Car

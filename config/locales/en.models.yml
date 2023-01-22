@@ -12,5 +12,6 @@ en:
         price_in_eur: Price
         release_date: Release date
         transmission: Transmission
+        youtube_link: Youtube link
     models:
       car: Car
