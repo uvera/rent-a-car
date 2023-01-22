@@ -64,7 +64,12 @@ end
 #  name                  :string           not null
 #  price_in_eur          :decimal(, )      not null
 #  release_date          :date             not null
+#  slug                  :string
 #  transmission          :string           default("manual"), not null
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#
+# Indexes
+#
+#  index_cars_on_slug  (slug) UNIQUE
 #

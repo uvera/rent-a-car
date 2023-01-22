@@ -1,0 +1,7 @@
+<% content_for :content do %>
+  <%= render partial: 'layouts/landing/navbar' %>
+  <div class="mt-24 md:mt-32">
+    <%= yield %>
+  </div>
+<% end %>
+<%= render template: "layouts/application" %>

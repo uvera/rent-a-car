@@ -1,0 +1,2 @@
+module Landing::CarsHelper
+end

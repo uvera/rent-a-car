@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root "landing/home#index"
+
+  namespace :landing do
+    resources :cars, only: [:index, :show]
+  end
+
   constraints Rodauth::Rails.authenticated(:admin) do
     resource :locale, only: [] do
       post :set_locale
