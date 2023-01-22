@@ -1,4 +1,4 @@
-<%= turbo_stream.append "cars" do %>
+<%= turbo_stream.send(@pagy.page == 1 ? :update : :append, "cars") do %>
   <% if @cars.any? %>
     <%= render partial: 'landing/common/car_card', collection: @cars, as: :car %>
   <% else %>
