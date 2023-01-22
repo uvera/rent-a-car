@@ -1,6 +1,6 @@
 <%= turbo_stream.append "cars" do %>
   <% if @cars.any? %>
-    <%= render partial: 'car_card', collection: @cars, as: :car %>
+    <%= render partial: 'landing/common/car_card', collection: @cars, as: :car %>
   <% else %>
     <span><%= I18n.t('no_content') %></span>
   <% end %>
