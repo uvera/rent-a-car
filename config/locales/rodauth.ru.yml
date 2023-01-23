@@ -1,4 +1,4 @@
-en:
+ru:
   rodauth:
     already_an_account_with_this_login_message: already an account with this login
     attempt_to_create_unverified_account_error_flash: The account you tried to create is currently awaiting verification
