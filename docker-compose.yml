@@ -15,15 +15,16 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - RAILS_SERVE_STATIC_FILES=yes
-      - MINIO_KEY
-      - MINIO_SECRET
-      - MINIO_URL=http://minio:9000
-      - DATABASE_URL=postgresql://postgres:5432
-      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
-      - DATABASE_USER=${POSTGRES_USER}
-      - SECRET_KEY_BASE
-      - RAILS_LOG_TO_STDOUT=yes
+      REDIS_URL:
+      RAILS_SERVE_STATIC_FILES: 'yes'
+      MINIO_KEY:
+      MINIO_SECRET:
+      MINIO_URL: http://minio:9000
+      DATABASE_URL: postgresql://postgres:5432
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      DATABASE_USER: ${POSTGRES_USER}
+      SECRET_KEY_BASE:
+      RAILS_LOG_TO_STDOUT: 'yes'
     networks:
       racs:
         aliases:
@@ -64,6 +65,16 @@ services:
           - postgres
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis:/data:delegated
+    networks:
+      racs:
+        aliases:
+          - redis
   caddy:
     image: lucaslorentz/caddy-docker-proxy:ci-alpine
     ports:
@@ -85,5 +96,6 @@ volumes:
     driver: local
   minio:
     driver: local
-
+  redis:
+    driver: local
 
