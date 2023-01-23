@@ -10,6 +10,7 @@ en:
       minivan: Minivan
       sedan: Sedan
       suv: SUV
+      van: Van
     brands:
       audi: Audi
       bmw: BMW
