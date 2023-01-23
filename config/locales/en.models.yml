@@ -14,5 +14,12 @@ en:
         release_date: Release date
         transmission: Transmission
         youtube_link: Youtube link
+    errors:
+      models:
+        car:
+          attributes:
+            youtube_link:
+              host_not_allowed: Only youtube.com or youtu.be allowed
+              https_only: Link should be HTTPS only
     models:
       car: Car

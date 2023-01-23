@@ -14,5 +14,12 @@ rs:
         release_date: Godina proizvodnje
         transmission: Prenos
         youtube_link: Youtube link
+    errors:
+      models:
+        car:
+          attributes:
+            youtube_link:
+              host_not_allowed: Samo youtube.com ili youtu.be je dozvoljen
+              https_only: Link treba da bude samo HTTPS
     models:
       car: Car

@@ -14,5 +14,12 @@ ru:
         release_date: Дата выхода
         transmission: коробка передач
         youtube_link: Youtube link
+    errors:
+      models:
+        car:
+          attributes:
+            youtube_link:
+              host_not_allowed: Разрешены только youtube.com или youtu.be
+              https_only: Ссылка должна быть только HTTPS
     models:
       car: автомобиль

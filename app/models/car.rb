@@ -24,13 +24,14 @@ class Car < ApplicationRecord
   validates :price_in_eur, presence: true
   validates :release_date, presence: true
   validates :horsepower, presence: true, numericality: { greater_than: 0 }
+  validates :youtube_link, url: { host: /youtube\.com|youtu\.be/ }
 
   enum :brand, AVAILABLE_CAR_BRANDS_ENUM_HASH
   enum :engine_type, CAR_ENGINE_TYPES_ENUM_HASH
   enum :body_configuration, AVAILABLE_CAR_BODY_CONF_ENUM_HASH
   enum :transmission, AVAILABLE_CAR_TRANSM_TYPES_ENUM_HASH
 
-  pg_search_scope :full_search, against: [:brand, :name], using: {
+  pg_search_scope :full_search, against: %i[brand name], using: {
     dmetaphone: {},
     trigram: {},
     tsearch: { prefix: true }
@@ -38,7 +39,7 @@ class Car < ApplicationRecord
 
   localize_column :description
 
-  def self.ransackable_scopes(auth_object = nil)
+  def self.ransackable_scopes(_auth_object = nil)
     [:full_search]
   end
 
@@ -58,7 +59,6 @@ class Car < ApplicationRecord
 
     self.gas_consumption_range = start_number..end_number
   end
-
 end
 
 # == Schema Information
