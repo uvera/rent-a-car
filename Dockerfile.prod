@@ -25,7 +25,7 @@ RUN bundle install
 COPY . .
 
 
-RUN SECRET_KEY_BASE=SECRET_KEY_BASE RAILS_ENV=production bundle exec i18n export
+RUN bundle exec i18n export
 RUN SECRET_KEY_BASE=SECRET_KEY_BASE RAILS_ENV=production bundle exec rails assets:precompile
 
 ENTRYPOINT ["bash"]
