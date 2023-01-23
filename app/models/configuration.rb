@@ -8,7 +8,8 @@ class Configuration < ApplicationRecord
   AVAILABLE_CONFIGURATION_VIEWS = {
     'main_banner' => 'multi_locale_tiptap',
     'site_name' => 'multi_locale_text',
-    'terms_and_conditions' => 'multi_locale_tiptap'
+    'terms_and_conditions' => 'multi_locale_tiptap',
+    'contact_page' => 'multi_locale_tiptap'
   }.freeze
 
   AVAILABLE_CONFIGURATIONS = %w[toast_timeout] + AVAILABLE_CONFIGURATION_VIEWS.keys.freeze

@@ -1,3 +1,4 @@
-<div class="md:container m-auto md:border md:border-gray-300 md:rounded-lg p-4">
+<div class="md:container m-auto md:border md:border-gray-300 md:rounded-lg p-4 flex flex-col">
+  <h2 class="font-medium leading-tight text-5xl mb-5"><%= I18n.t('navbar.links.terms') %></h2>
   <%= Configuration.localized_value_for(:terms_and_conditions, '').html_safe %>
 </div>

@@ -23,6 +23,7 @@ ru:
       manual: Руководство по эксплуатации
   configurations:
     car_brands: Марки автомобилей
+    contact_page: Контактная страница
     main_banner: Главни банер
     site_name: Название веб-сайта
     terms_and_conditions: Условия
@@ -54,5 +55,6 @@ ru:
     links:
       cars: автомобильный
       configurations: конфигурация
+      contacts: Свяжитесь с нами
       terms: Условия
   no_content: Без содержания

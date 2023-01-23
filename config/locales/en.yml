@@ -23,6 +23,7 @@ en:
       manual: Manual
   configurations:
     car_brands: Car brands
+    contact_page: Contact page
     main_banner: Main banner
     site_name: Website name
     terms_and_conditions: Terms
@@ -54,5 +55,6 @@ en:
     links:
       cars: Cars
       configurations: Configurations
+      contacts: Contact us
       terms: Terms
   no_content: No content

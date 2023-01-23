@@ -23,6 +23,7 @@ rs:
       manual: Manuelni
   configurations:
     car_brands: Marke automobila
+    contact_page: Kontakt stranica
     main_banner: Glavni baner
     site_name: Naziv web-sajta
     terms_and_conditions: Uslovi
@@ -54,5 +55,6 @@ rs:
     links:
       cars: Automobili
       configurations: Konfiguracija
+      contacts: Kontaktirajte nas
       terms: Uslovi
   no_content: Nema sadržaja
