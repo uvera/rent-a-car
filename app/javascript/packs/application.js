@@ -23,6 +23,7 @@ import TagInput from "../components/common/./forms/tagInput";
 import ToastDismisser from "../components/common/configurations/toastDismisser";
 import { ImagesInput } from "../components/common/forms/imagesInput";
 import MultiSelect from "../components/common/forms/multiSelect";
+import SingleSelect from "../components/common/forms/singleSelect";
 import { debounce } from "../util/debounce";
 import { ToastCloseButton } from "../components/common/toastCloseButton";
 import TipTapInput from "../components/common/forms/tiptap/tipTapInput";
@@ -34,6 +35,7 @@ const components = {
   "Configuration.ToastDismisser": ToastDismisser,
   "Common.Forms.ImagesInput": ImagesInput,
   "Common.Forms.MultiSelect": MultiSelect,
+  "Common.Forms.SingleSelect": SingleSelect,
   "Common.ToastCloseButton": ToastCloseButton,
   "Common.Forms.TipTap": TipTapInput,
   "Common.Navbar.ScrollDisabler": NavbarScrollDisabler,

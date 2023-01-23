@@ -20,7 +20,7 @@
     <%= f.select :release_date, (Date.today - 90.years).year..Date.today.year %>
 
     <%= f.label :brand %>
-    <%= f.select :brand, car_brands_for_select %>
+    <%= f.react_select :brand, car_brands_for_select, default_value: @car.brand, select_label: Car.human_attribute_name(:brand) %>
 
     <%= f.label :engine_type %>
     <%= f.select :engine_type, car_engine_types_for_select %>
