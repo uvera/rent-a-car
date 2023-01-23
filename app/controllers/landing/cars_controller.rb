@@ -3,6 +3,7 @@ module Landing
     def index
       @scope = Car.friendly.kept
       @scope = @scope.ransack(search_params[:q])
+      @scope.sorts = 'name asc' if @scope.sorts.empty?
 
       @pagy, @cars = pagy_countless(@scope.result(distinct: true), items: 4)
       respond_to do |format|
