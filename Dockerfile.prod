@@ -24,7 +24,7 @@ RUN bundle install
 
 COPY . .
 
-RUN bundle exec rake assets:precompile
+RUN SECRET_KEY_BASE=SECRET_KEY_BASE RAILS_ENV=production bundle exec rails assets:precompile
 
 ENTRYPOINT ["bash"]
 CMD ["./bin/prod-run"]
