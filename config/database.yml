@@ -27,4 +27,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: racs_production
+  user: <%= ENV["DATABASE_USER"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>

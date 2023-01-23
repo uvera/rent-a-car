@@ -1,8 +1,33 @@
 networks:
   racs:
     name: racs
-
 services:
+  rails-app:
+    container_name: rails-app
+    depends_on:
+      minio:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+    build:
+      context: ./
+      dockerfile: Dockerfile.prod
+    ports:
+      - "3000:3000"
+    environment:
+      - RAILS_SERVE_STATIC_FILES=yes
+      - MINIO_KEY
+      - MINIO_SECRET
+      - MINIO_URL=http://minio:9000
+      - DATABASE_URL=postgresql://postgres:5432
+      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_USER=${POSTGRES_USER}
+      - SECRET_KEY_BASE
+      - RAILS_LOG_TO_STDOUT=yes
+    networks:
+      racs:
+        aliases:
+          - rails
   minio:
     image: quay.io/minio/minio:RELEASE.2023-01-18T04-36-38Z.fips
     container_name: minio-racs
@@ -25,9 +50,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - MINIO_KEY
-      - MINIO_SECRET
-      - MINIO_URL
       - POSTGRES_USER
       - POSTGRES_PASSWORD
     volumes:
