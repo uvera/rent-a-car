@@ -15,9 +15,12 @@ export default ({ value, inputName }: TipTapInputProps) => {
     extensions: [
       StarterKit,
       Link.configure({
-        linkOnPaste: false,
+        linkOnPaste: true,
         protocols: ["https"],
         validate: (href) => /^https?:\/\//.test(href),
+        HTMLAttributes: {
+          class: "text-yellow-600",
+        },
       }),
       Paragraph.configure({
         HTMLAttributes: {
