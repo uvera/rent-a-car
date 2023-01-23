@@ -90,3 +90,5 @@ rs:
     verify_login_change_error_flash: 'Neuspela verifikacija promene kredencijala'
     verify_login_change_notice_flash: 'Vaša promena kredencijala je verifikovana'
     verify_login_change_page_title: 'Verifikujte promenu kredencijala'
+    password_does_not_meet_requirements_message: 'Lozinka se ne podudara sa zahtevima'
+    password_too_short_message: 'Lozinka je kratka'

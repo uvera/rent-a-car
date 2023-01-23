@@ -5,7 +5,7 @@ class RodauthAdmin < Rodauth::Rails::Auth
            :reset_password, :change_password, :change_password_notify,
            :i18n
 
-    i18n_namespace "admin"
+    i18n_namespace 'admin'
 
     # See the Rodauth documentation for the list of available config options:
     # http://rodauth.jeremyevans.net/documentation.html
@@ -115,13 +115,14 @@ class RodauthAdmin < Rodauth::Rails::Auth
 
     # ==> Redirects
     # Redirect to home page after logout.
-    logout_redirect "/"
+    logout_redirect '/'
 
     # Redirect to login page after password reset.
     reset_password_redirect { login_path }
 
     # Ensure requiring login follows login route changes.
     require_login_redirect { login_path }
+    change_password_redirect { login_path }
 
     # ==> Deadlines
     # Change default deadlines for some actions.
@@ -130,9 +131,13 @@ class RodauthAdmin < Rodauth::Rails::Auth
     # verify_login_change_deadline_interval Hash[days: 2]
     # remember_deadline_interval Hash[days: 30]
 
-    prefix "/admin"
-    session_key_prefix "admin_"
-    remember_cookie_key "_admin_remember"
+    prefix '/admin'
+    session_key_prefix 'admin_'
+    remember_cookie_key '_admin_remember'
+
+    before_login_route do
+      redirect Rails.application.routes.url_helpers.admin_dashboard_cars_path if authenticated?
+    end
 
     rails_controller { Admin::RodauthController }
     logout_button { I18n.t('navbar.buttons.logout') }
