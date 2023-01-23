@@ -2,7 +2,10 @@ class RodauthAdmin < Rodauth::Rails::Auth
   configure do
     # List of authentication features that are loaded.
     enable :login, :logout, :remember,
-      :reset_password, :change_password, :change_password_notify
+           :reset_password, :change_password, :change_password_notify,
+           :i18n
+
+    i18n_namespace "admin"
 
     # See the Rodauth documentation for the list of available config options:
     # http://rodauth.jeremyevans.net/documentation.html
@@ -83,7 +86,7 @@ class RodauthAdmin < Rodauth::Rails::Auth
 
     # ==> Remember Feature
     # Remember all logged in users.
-    after_login do 
+    after_login do
       remember_login
       redirect Rails.application.routes.url_helpers.admin_dashboard_index_path
     end
@@ -115,7 +118,7 @@ class RodauthAdmin < Rodauth::Rails::Auth
     logout_redirect "/"
 
     # Redirect to login page after password reset.
-    reset_password_redirect {login_path }
+    reset_password_redirect { login_path }
 
     # Ensure requiring login follows login route changes.
     require_login_redirect { login_path }
