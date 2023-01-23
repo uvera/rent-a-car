@@ -1,23 +1,28 @@
-<%= search_form_for @scope, builder: CustomFormBuilder, url: admin_dashboard_cars_path, method: :get do |form| %>
-  <div class="flex justify-center items-center">
-    <div class="flex flex-col md:flex-row gap-y-2 md:gap-x-4">
-      <div class="mb-3 xl:w-96">
-        <div class="input-group relative flex flex-wrap items-stretch w-full mb-4">
-          <%= form.text_field :full_search, value: params.dig(:q, :full_search), type: 'search', class: "form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
-          %>
-          <button class="btn inline-block px-6 py-2.5 bg-orange-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-800 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="submit" id="button-addon2">
-            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <%= form.ransack_multi_select :brand_in, car_brands_for_select, default_values: Array.wrap(params.dig(:q, :brand_in)), select_label: I18n.t('activerecord.attributes.car.brand') %>
-      <%= form.ransack_multi_select :engine_type_in, car_engine_types_for_select, default_values: Array.wrap(params.dig(:q, :engine_type_in)), select_label: I18n.t('activerecord.attributes.car.engine_type') %>
-      <%= form.ransack_multi_select :body_configuration_in, car_body_configuration_types_for_select, default_values: Array.wrap(params.dig(:q, :body_configuration_in)), select_label: I18n.t('activerecord.attributes.car.body_configuration') %>
-      <%= form.ransack_multi_select :transmission_in, car_transmission_types_for_select, default_values: Array.wrap(params.dig(:q, :transmission_in)), select_label: I18n.t('activerecord.attributes.car.transmission') %>
-      <%= form.ransack_multi_select :s, car_sortables_for_select, default_values: Array.wrap(params.dig(:q, :s)), select_label: I18n.t('forms.cars.sorting.title'), class: 'w-[16rem]' %>
+<%= search_form_for @scope, builder: CustomFormBuilder, url: admin_dashboard_cars_path, method: :get, class: 'w-full' do |form| %>
+  <div class="input-group relative flex flex-wrap mb-4">
+    <%= form.text_field :full_search, value: params.dig(:q, :full_search), type: 'search', class: "form-control relative flex-auto min-w-0 block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
+    %>
+    <button class="btn inline-block px-6 py-2.5 bg-orange-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-800 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="submit" id="button-addon2">
+      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+      </svg>
+    </button>
+  </div>
+  <div id="filters-collapse" data-accordion="filters-collapse">
+    <h2 id="filters-collapse-heading" class="md:hidden">
+      <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#filters-collapse-body" aria-expanded="false" aria-controls="filters-collapse-body">
+        <span><%= I18n.t('forms.filters.title') %></span>
+        <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </h2>
+    <div id="filters-collapse-body" class="mt-2 hidden md:visible grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 auto-rows-fr gap-4 p-5 font-light border border-gray-200 dark:border-gray-700 dark:bg-gray-900 rounded-t-xl">
+      <%= form.ransack_multi_select :brand_in, car_brands_for_select, full_height: true, default_values: Array.wrap(params.dig(:q, :brand_in)), select_label: I18n.t('activerecord.attributes.car.brand') %>
+      <%= form.ransack_multi_select :engine_type_in, car_engine_types_for_select, full_height: true, default_values: Array.wrap(params.dig(:q, :engine_type_in)), select_label: I18n.t('activerecord.attributes.car.engine_type') %>
+      <%= form.ransack_multi_select :body_configuration_in, car_body_configuration_types_for_select, full_height: true, default_values: Array.wrap(params.dig(:q, :body_configuration_in)), select_label: I18n.t('activerecord.attributes.car.body_configuration') %>
+      <%= form.ransack_multi_select :transmission_in, car_transmission_types_for_select, full_height: true, default_values: Array.wrap(params.dig(:q, :transmission_in)), select_label: I18n.t('activerecord.attributes.car.transmission') %>
+      <%= form.ransack_multi_select :s, car_sortables_for_select, full_height: true, default_values: Array.wrap(params.dig(:q, :s)), select_label: I18n.t('forms.cars.sorting.title') %>
     </div>
   </div>
 <% end %>

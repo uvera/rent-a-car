@@ -82,6 +82,8 @@ ru:
           price_in_eur: Цена
           release_date: Дата выхода
         title: Сортировка
+    filters:
+      title: Фильтры
   locales:
     button:
       title: Языки

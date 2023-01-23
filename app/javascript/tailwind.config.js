@@ -10,9 +10,6 @@ module.exports = {
     "./node_modules/tw-elements/dist/js/**/*.js",
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
-  theme: {
-    extend: {},
-  },
   plugins: [
     require("@tailwindcss/forms"),
     require("@tailwindcss/aspect-ratio"),

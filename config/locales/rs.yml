@@ -82,6 +82,8 @@ rs:
           price_in_eur: Cena
           release_date: Datum izlaska
         title: Sortiranje
+    filters:
+      title: Filteri
   locales:
     button:
       title: Jezici

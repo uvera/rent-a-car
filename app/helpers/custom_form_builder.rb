@@ -51,6 +51,7 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
       choices:,
       defaultValues: options[:default_values],
       name: method,
+      fullHeight: options[:full_height],
       className: options[:class],
       selectLabel: options[:select_label]
     }

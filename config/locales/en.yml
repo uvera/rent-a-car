@@ -82,6 +82,8 @@ en:
           price_in_eur: Price
           release_date: Release date
         title: Sorting
+    filters:
+      title: Filters
   locales:
     button:
       title: Languages
