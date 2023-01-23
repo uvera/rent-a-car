@@ -25,6 +25,7 @@ ru:
     car_brands: Марки автомобилей
     main_banner: Главни банер
     site_name: Название веб-сайта
+    terms_and_conditions: Условия
     toast_timeout: Тайм-аут тоста
   flash:
     update:
@@ -53,4 +54,5 @@ ru:
     links:
       cars: автомобильный
       configurations: конфигурация
+      terms: Условия
   no_content: Без содержания

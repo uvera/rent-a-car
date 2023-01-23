@@ -1,7 +1,7 @@
-import React from "react";
-import { EditorContent, useEditor } from "@tiptap/react";
-import { StarterKit } from "@tiptap/starter-kit";
-import Paragraph from "@tiptap/extension-paragraph";
+import { Editor } from "@tiptap/react";
+import React, { useCallback, useState } from "react";
+import { Button, Modal, TextInput } from "flowbite-react";
+import i18n from "../../../../util/i18n";
 
 type ToolbarToolbarButtonProps =
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -24,6 +24,90 @@ const ToolbarButton = ({
   );
 };
 
+const ToolbarLinkButton = ({ editor }: { editor: Editor }) => {
+  const [isModalShown, setModalShown] = useState(false);
+  const [urlFromModal, setUrlFromModal] = useState("");
+
+  const setLink = useCallback(
+    (url: string) => {
+      // cancelled
+      if (url === null) {
+        return;
+      }
+
+      // empty
+      if (url === "") {
+        editor.chain().focus().extendMarkRange("link").unsetLink().run();
+
+        return;
+      }
+
+      // update link
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .setLink({ href: url })
+        .run();
+    },
+    [editor]
+  );
+
+  const openModal = () => {
+    const previousUrl = editor.getAttributes("link").href;
+    setUrlFromModal(previousUrl);
+    setModalShown(true);
+  };
+
+  const closeModal = () => {
+    setModalShown(false);
+    setUrlFromModal("");
+  };
+
+  const submitModal = () => {
+    setLink(urlFromModal);
+    closeModal();
+  };
+
+  if (!editor) {
+    return null;
+  }
+
+  return (
+    <>
+      <Modal show={isModalShown} onClose={() => closeModal()}>
+        <Modal.Header>Link</Modal.Header>
+        <Modal.Body>
+          <TextInput
+            value={urlFromModal}
+            onChange={(e) => setUrlFromModal(e.target.value)}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => submitModal()}>
+            {i18n.t("forms.buttons.save")}
+          </Button>
+          <Button color={"light"} onClick={() => closeModal()}>
+            {i18n.t("forms.buttons.cancel")}
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <ToolbarButton
+        isActive={!!editor.isActive("link")}
+        onClick={() => openModal()}
+      >
+        link
+      </ToolbarButton>
+      <ToolbarButton
+        onClick={() => editor.chain().focus().unsetLink().run()}
+        disabled={!editor.isActive("link")}
+      >
+        unset link
+      </ToolbarButton>
+    </>
+  );
+};
+
 const MenuBar = ({ editor }) => {
   if (!editor) {
     return null;
@@ -31,6 +115,7 @@ const MenuBar = ({ editor }) => {
 
   return (
     <div className="flex flex-wrap justify-center">
+      <ToolbarLinkButton editor={editor} />
       <ToolbarButton
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
@@ -159,35 +244,4 @@ const MenuBar = ({ editor }) => {
   );
 };
 
-type TipTapInputProps = {
-  value: string;
-  inputName: string;
-};
-
-export default ({ value, inputName }: TipTapInputProps) => {
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      Paragraph.configure({
-        HTMLAttributes: {
-          class: "leading-6",
-        },
-      }),
-    ],
-    content: value,
-    editorProps: {
-      attributes: {
-        class:
-          "min-h-[50em] min-w-full border border-gray-300 prose md:prose-md m-5 focus:outline-none",
-      },
-    },
-  });
-
-  return (
-    <div>
-      <input type="hidden" name={inputName} value={editor?.getHTML()}></input>
-      <MenuBar editor={editor} />
-      <EditorContent editor={editor} />
-    </div>
-  );
-};
+export { MenuBar };

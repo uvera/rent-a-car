@@ -8,6 +8,7 @@ module.exports = {
     "./app/javascript/components/**/*.tsx",
     "./src/**/*.{html,js}",
     "./node_modules/tw-elements/dist/js/**/*.js",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {},

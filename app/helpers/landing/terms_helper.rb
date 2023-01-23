@@ -1,0 +1,2 @@
+module Landing::TermsHelper
+end

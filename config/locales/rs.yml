@@ -25,6 +25,7 @@ rs:
     car_brands: Marke automobila
     main_banner: Glavni baner
     site_name: Naziv web-sajta
+    terms_and_conditions: Uslovi
     toast_timeout: Trajanje notifikacije
   flash:
     update:
@@ -53,4 +54,5 @@ rs:
     links:
       cars: Automobili
       configurations: Konfiguracija
+      terms: Uslovi
   no_content: Nema sadržaja

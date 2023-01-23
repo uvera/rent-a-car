@@ -26,7 +26,7 @@ import { ImagesInput } from "../components/common/forms/imagesInput";
 import MultiSelect from "../components/common/forms/multiSelect";
 import { debounce } from "../util/debounce";
 import { ToastCloseButton } from "../components/common/toastCloseButton";
-import TipTapInput from "../components/common/forms/tipTapInput";
+import TipTapInput from "../components/common/forms/tiptap/tipTapInput";
 import ScrollToTop from "../components/common/scrollToTop";
 import { ScrollDisabler as NavbarScrollDisabler } from "../components/common/navbar/scrollDisabler";
 

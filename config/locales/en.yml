@@ -25,6 +25,7 @@ en:
     car_brands: Car brands
     main_banner: Main banner
     site_name: Website name
+    terms_and_conditions: Terms
     toast_timeout: Toast timeout
   flash:
     update:
@@ -53,4 +54,5 @@ en:
     links:
       cars: Cars
       configurations: Configurations
+      terms: Terms
   no_content: No content

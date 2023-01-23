@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   scope module: :landing do
     resources :cars, only: %i[index show]
+    resources :terms, only: %i[index]
   end
 
   resource :locale, only: [] do
