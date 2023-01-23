@@ -14,6 +14,35 @@ rs:
     brands:
       audi: Audi
       bmw: BMW
+      chevrolet: Chevrolet
+      chrysler: Chrysler
+      citroen: Citroen
+      dacia: Dacia
+      dodge: Dodge
+      fiat: Fiat
+      ford: Ford
+      gmc: GMC
+      hyundai: Hyundai
+      jeep: Jeep
+      kia: Kia
+      land_rover: Land Rover
+      lexus: Lexus
+      mazda: Mazda
+      mercedes: Mercedes Benz
+      mini: MINI
+      nissan: Nissan
+      opel: Opel
+      peugeot: Peugeot
+      polestar: Polestar
+      porsche: Porsche
+      renault: Renault
+      seat: Seat
+      skoda: Skoda
+      suzuki: Suzuki
+      tesla: Tesla
+      toyota: Toyota
+      volkswagen: Volkswagen
+      volvo: Volvo
     engine_types:
       diesel: Dizel
       electric: Električna
