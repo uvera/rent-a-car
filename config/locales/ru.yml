@@ -42,6 +42,16 @@ ru:
       new: Создайте новый
       restore: Восстановить
       save: сохранять
+    cars:
+      sorting:
+        asc: прочесывание
+        desc: нисходящий
+        fields:
+          deposit: Депозит
+          name: Имя
+          price_in_eur: Цена
+          release_date: Дата выхода
+        title: Сортировка
   locales:
     button:
       title: Языки

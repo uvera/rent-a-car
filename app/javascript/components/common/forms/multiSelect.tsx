@@ -4,6 +4,7 @@ import React from "react";
 type OptionLabel = string;
 type OptionValue = string;
 type MultiSelectProps = {
+  className: string;
   choices: Array<[OptionLabel, OptionValue]>;
   name: string;
   selectLabel: string;
@@ -11,6 +12,7 @@ type MultiSelectProps = {
 };
 
 const MultiSelect = ({
+  className,
   choices,
   name,
   selectLabel,
@@ -25,6 +27,7 @@ const MultiSelect = ({
   return (
     <>
       <Select
+        className={className}
         placeholder={selectLabel}
         name={name}
         isMulti

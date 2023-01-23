@@ -25,6 +25,15 @@ module Admin
         end
       end
 
+      def car_sortables_for_select
+        %i[price_in_eur release_date name deposit].map do |field|
+          %i[asc desc].map do |order|
+            ["#{I18n.t("forms.cars.sorting.fields.#{field}")} #{I18n.t("forms.cars.sorting.#{order}")}",
+             "#{field} #{order}"]
+          end
+        end.flatten(1)
+      end
+
       # param [Car] car
       def car_images_upload_input(car)
         react_component 'Common.Forms.ImagesInput', props: {

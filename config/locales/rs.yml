@@ -42,6 +42,16 @@ rs:
       new: Kreiraj novi
       restore: Vratiti
       save: Sačuvaj
+    cars:
+      sorting:
+        asc: uzlazno
+        desc: silazno
+        fields:
+          deposit: Cena depozita
+          name: Ime
+          price_in_eur: Cena
+          release_date: Datum izlaska
+        title: Sortiranje
   locales:
     button:
       title: Jezici

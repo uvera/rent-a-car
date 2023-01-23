@@ -42,6 +42,16 @@ en:
       new: Create new
       restore: Restore
       save: Save
+    cars:
+      sorting:
+        asc: ascending
+        desc: descending
+        fields:
+          deposit: Deposit
+          name: Name
+          price_in_eur: Price
+          release_date: Release date
+        title: Sorting
   locales:
     button:
       title: Languages

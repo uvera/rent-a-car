@@ -32,12 +32,13 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
 
   def react_multi_select(method, choices = [], options = {})
 
-    options.reverse_merge!(select_label: '...', default_values: [])
+    options.reverse_merge!(select_label: '...', default_values: [], class: '')
 
     @template.react_component 'Common.Forms.MultiSelect', props: {
       choices:,
       defaultValues: options[:default_values],
       name: method,
+      className: options[:class],
       selectLabel: options[:select_label]
     }
   end
