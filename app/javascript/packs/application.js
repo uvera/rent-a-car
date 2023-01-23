@@ -14,7 +14,6 @@
 // const images = require.context('./images', true)
 // const imagePath = (name) => images(name, true)
 
-import "../application.scss";
 import React from "react";
 import "tw-elements";
 import * as Flowbite from "flowbite";
