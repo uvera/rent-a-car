@@ -28,6 +28,9 @@ services:
       racs:
         aliases:
           - rails
+    labels:
+      caddy: racs-test.theimgeer.me
+      caddy.reverse_proxy: "{{upstreams 3000}}"
   minio:
     image: quay.io/minio/minio:RELEASE.2023-01-18T04-36-38Z.fips
     container_name: minio-racs
@@ -61,7 +64,23 @@ services:
           - postgres
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+  caddy:
+    image: lucaslorentz/caddy-docker-proxy:ci-alpine
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - CADDY_INGRESS_NETWORKS=racs
+    networks:
+      - racs
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - caddy_data:/data
+    restart: unless-stopped
+
 volumes:
+  caddy_data:
+    driver: local
   postgres:
     driver: local
   minio:
