@@ -19,7 +19,7 @@ export default ({ value, inputName }: TipTapInputProps) => {
         protocols: ["https"],
         validate: (href) => /^https?:\/\//.test(href),
         HTMLAttributes: {
-          class: "text-yellow-600",
+          class: "text-orange-600",
         },
       }),
       Paragraph.configure({

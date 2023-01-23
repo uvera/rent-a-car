@@ -18,7 +18,7 @@
         <% admin_navbar_links.each do |(name, link)| %>
           <li>
             <%= link_to_unless request.path.include?(link), name, link, class: "block py-2 pl-3 pr-4 text-white bg-gray-700 rounded md:bg-transparent md:text-gray-700 md:p-0 dark:text-white" do
-              link_to name, link, class: "block py-2 pl-3 pr-4 text-white bg-yellow-700 rounded md:bg-transparent md:text-yellow-700 md:p-0 dark:text-white"
+              link_to name, link, class: "block py-2 pl-3 pr-4 text-white bg-orange-700 rounded md:bg-transparent md:text-orange-700 md:p-0 dark:text-white"
             end
             %>
           </li>

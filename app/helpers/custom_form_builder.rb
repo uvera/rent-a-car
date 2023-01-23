@@ -70,8 +70,8 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   def wrap_class(options)
     options.reverse_merge!(class: <<-STRING.squish
      resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300
-     focus:ring-yellow-500 focus:border-yellow-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-      dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500
+     focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+      dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500
     STRING
     )
   end
