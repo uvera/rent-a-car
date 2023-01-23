@@ -1,1 +1,3 @@
+<% page_title I18n.t('navbar.links.configurations') %>
+<% entity_title I18n.t("configurations.#{@configuration.key}") %>
 <%= render partial: 'form', locals: { configuration: @configuration } %>

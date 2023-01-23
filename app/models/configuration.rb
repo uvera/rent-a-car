@@ -14,6 +14,12 @@ class Configuration < ApplicationRecord
 
   AVAILABLE_CONFIGURATIONS = %w[toast_timeout] + AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
 
+  AVAILABLE_CONFIGURATIONS.each do |configuration|
+    define_singleton_method("value_#{configuration}") do
+      value_for(configuration, nil)
+    end
+  end
+
   def self.value_for(key, default = nil)
     find_by(key:)&.value || default
   end

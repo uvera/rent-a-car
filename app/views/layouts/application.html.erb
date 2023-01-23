@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RentACarV2</title>
+  <title>
+    <%= [
+          site_title,
+          content_for?(:page_title) ? yield(:page_title) : nil,
+          content_for?(:entity_title) ? yield(:entity_title) : nil
+        ].compact.reverse.join(' | ') %>
+  </title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="i18n-locale" content="<%= I18n.locale %>">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
   <%= javascript_pack_tag "application" %>
   <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-
 <body class="h-screen">
 <%= render partial: '/flash' %>
 <%= content_for?(:content) ? yield(:content) : yield %>

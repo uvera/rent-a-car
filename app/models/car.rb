@@ -42,6 +42,10 @@ class Car < ApplicationRecord
     [:full_search]
   end
 
+  def full_name
+    "#{I18n.t("cars.brands.#{brand}")} #{name}"
+  end
+
   private
 
   def convert_gas_consumption_range
