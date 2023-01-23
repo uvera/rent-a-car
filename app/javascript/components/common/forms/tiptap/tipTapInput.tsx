@@ -32,7 +32,7 @@ export default ({ value, inputName }: TipTapInputProps) => {
     editorProps: {
       attributes: {
         class:
-          "min-h-[50em] min-w-full border border-gray-300 prose md:prose-md m-5 focus:outline-none",
+          "min-h-[30ch] md:min-h-[50ch] min-w-full border border-gray-300 prose md:prose-md m-5 focus:outline-none",
       },
     },
   });

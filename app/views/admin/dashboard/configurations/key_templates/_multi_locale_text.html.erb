@@ -6,7 +6,7 @@
     <%= f.hidden_field :key, value: configuration.key %>
     <% I18n.available_locales.each do |locale| %>
       <span class="font-bold"><%= I18n.t("locales.names.#{locale}") %></span>
-      <%= f.text_area "value[#{locale}]", value: configuration.value.try(:[], locale), rows: '20' %>
+      <%= f.text_area "value[#{locale}]", value: configuration.value.try(:[], locale), rows: '5' %>
     <% end %>
     <%= form_buttons(back_link: admin_dashboard_configurations_path) %>
   </div>
