@@ -9,7 +9,6 @@ type MultiSelectProps = {
   name: string;
   selectLabel: string;
   defaultValues: Array<string>;
-  fullHeight?: boolean;
 };
 
 const MultiSelect = ({
@@ -18,7 +17,6 @@ const MultiSelect = ({
   name,
   selectLabel,
   defaultValues,
-  fullHeight,
 }: MultiSelectProps) => {
   const options = choices.map(([label, value]) => ({ label, value }));
 
@@ -29,10 +27,6 @@ const MultiSelect = ({
   return (
     <>
       <Select
-        classNames={{
-          control: () => (fullHeight ? "h-full" : ""),
-          container: () => (fullHeight ? "h-full" : ""),
-        }}
         className={className}
         placeholder={selectLabel}
         name={name}
