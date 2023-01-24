@@ -26,14 +26,14 @@ const SingleSelect = ({
   const options = choices.map(([label, value]) => ({ label, value }));
 
   console.log(defaultValue);
-  const selectDefaultValue = options.find((opt) => opt.value === defaultValue);
+  const selectDefaultValue = options.find((opt) => opt.value === defaultValue) ?? options[0];
 
   const [value, setValue] = useState(selectDefaultValue);
 
   const bgGrayStyles = "bg-gray-50";
   return (
     <>
-      <input name={name} type="hidden" value={value.value} />
+      <input name={name} type="hidden" value={value?.value} />
       <Select
         classNames={{
           singleValue: () => `${bgGrayStyles} z-20`,
