@@ -102,7 +102,7 @@ const ImagesInput = ({
 
   return (
     <>
-      <div className="px-2 pt-2 pb-11 mb-3 flex flex-col rounded-lg border border-gray-300 bg-gray-50 dark:bg-gray-700">
+      <div className="px-2 pt-2 pb-11 mb-3 flex flex-col rounded-lg border border-gray-300 bg-gray-50 dark:bg-gray-700 flex-1">
         <div>
           <input
             name={addOnly ? `${objectName}[${fieldName}][]` : null}

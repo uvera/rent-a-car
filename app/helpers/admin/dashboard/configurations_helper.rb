@@ -14,7 +14,7 @@ module Admin
           uploadParam: 'file',
           refreshUrl: configuration.new_record? ? nil : admin_dashboard_configuration_images_path(configuration.id),
           addOnly: configuration.new_record?
-        }
+        }, html_options: { class: 'flex flex-row justify-center' }
       end
 
       def previous_images_for_configuration(configuration)

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+  default_form_builder CustomFormBuilder
 
   add_flash_types :error
   around_action :switch_locale
