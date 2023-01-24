@@ -1,7 +1,6 @@
 import React from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
-import Paragraph from "@tiptap/extension-paragraph";
 import Link from "@tiptap/extension-link";
 import { MenuBar } from "./menuBar";
 
@@ -13,18 +12,19 @@ type TipTapInputProps = {
 export default ({ value, inputName }: TipTapInputProps) => {
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        paragraph: {
+          HTMLAttributes: {
+            class: "leading-6",
+          },
+        },
+      }),
       Link.configure({
         linkOnPaste: true,
         protocols: ["https"],
         validate: (href) => /^https?:\/\//.test(href),
         HTMLAttributes: {
           class: "text-accent",
-        },
-      }),
-      Paragraph.configure({
-        HTMLAttributes: {
-          class: "leading-6",
         },
       }),
     ],
@@ -39,7 +39,11 @@ export default ({ value, inputName }: TipTapInputProps) => {
 
   return (
     <div>
-      <input type="hidden" name={inputName} value={editor?.getHTML()}></input>
+      <input
+        type="hidden"
+        name={inputName}
+        value={editor?.getHTML() ?? ""}
+      ></input>
       <MenuBar editor={editor} />
       <EditorContent editor={editor} />
     </div>
