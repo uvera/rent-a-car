@@ -15,7 +15,7 @@
   <%= javascript_pack_tag "application" %>
   <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<body class="h-screen">
+<body class="h-screen bg-cultured">
 <%= render partial: '/flash' %>
 <%= content_for?(:content) ? yield(:content) : yield %>
 <%= react_component 'Common.ScrollToTop' %>

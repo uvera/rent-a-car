@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: [
     "./app/views/**/*.html.erb",
@@ -10,6 +12,17 @@ module.exports = {
     "./node_modules/tw-elements/dist/js/**/*.js",
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
+  theme: {
+    extend: {
+      backgroundColor: {
+        cultured: "#F5F4F5",
+        accent: "#DE9E36",
+      },
+      colors: {
+        accent: { DEFAULT: "#DE9E36" },
+      },
+    },
+  },
   plugins: [
     require("@tailwindcss/forms"),
     require("@tailwindcss/aspect-ratio"),
