@@ -25,8 +25,8 @@ const SingleSelect = ({
 }: SingleSelectProps) => {
   const options = choices.map(([label, value]) => ({ label, value }));
 
-  console.log(defaultValue);
-  const selectDefaultValue = options.find((opt) => opt.value === defaultValue) ?? options[0];
+  const selectDefaultValue =
+    options.find((opt) => opt.value === defaultValue) ?? options[0];
 
   const [value, setValue] = useState(selectDefaultValue);
 
