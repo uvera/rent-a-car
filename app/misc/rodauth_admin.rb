@@ -145,4 +145,12 @@ class RodauthAdmin < Rodauth::Rails::Auth
       nil
     end
   end
+
+  def account_table_ds
+    super.where(kind: account_type)
+  end
+
+  def account_type
+    self.class.configuration_name&.to_s || "admin"
+  end
 end
