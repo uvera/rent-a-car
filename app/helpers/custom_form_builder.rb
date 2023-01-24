@@ -12,7 +12,7 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def text_field(method, options = {})
-    super(method, wrap_class(options))
+    super(method, wrap_class(options).reverse_merge(maxlength: 255))
   end
 
   def number_field(method, options = {})
