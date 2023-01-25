@@ -36,7 +36,7 @@ const SingleSelect = ({
       <input name={name} type="hidden" value={value?.value} />
       <Select
         classNames={{
-          singleValue: () => `${bgGrayStyles} z-20`,
+          singleValue: () => `${bgGrayStyles} z-10`,
           control: () => `${bgGrayStyles} border-0`,
           dropdownIndicator: () => bgGrayStyles,
           container: () => selectStyles,
