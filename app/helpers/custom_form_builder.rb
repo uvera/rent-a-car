@@ -16,7 +16,7 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def number_field(method, options = {})
-    super(method, wrap_class(options))
+    super(method, wrap_class(options).reverse_merge(max: 1_000_000))
   end
 
   def select(method, choices = nil, options = {}, html_options = {}, &block)
@@ -56,7 +56,7 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     }
   end
 
-  def num_range_field(method, _options = {})
+  def num_range_field(method, options = {})
     range = @object.send(method)
 
     begin_range = 0

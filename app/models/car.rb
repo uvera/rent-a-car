@@ -17,13 +17,14 @@ class Car < ApplicationRecord
 
   validates :body_configuration, presence: true
   validates :brand, presence: true
-  validates :deposit, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :deposit, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1_000_000 }
   validates :engine_type, presence: true
   validates :gas_consumption_range, presence: true
-  validates :name, presence: true, format: /\A[A-Za-z0-9\ \-_.,'"]+\z/, length: { maximum: 40 }
-  validates :price_in_eur, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :name, presence: true, format: /\A[A-Za-z0-9\ \-_.,'"]+\z/, length: { maximum: 35 }
+  validates :price_in_eur, presence: true,
+                           numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1_000_000 }
   validates :release_date, presence: true
-  validates :horsepower, presence: true, numericality: { greater_than: 0 }
+  validates :horsepower, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 1_000_000 }
   validates :youtube_link, url: { host: /youtube\.com|youtu\.be/ }
   validate :gas_consumption_range_inclusion
   GAS_CONSUMPTION_RANGE_VALID = 1..60

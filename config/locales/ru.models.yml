@@ -19,6 +19,7 @@ ru:
         greater_than: должно быть больше
         greater_than_or_equal_to: должно быть больше
         invalid: недействительно
+        less_than_or_equal_to: должно быть меньше
         too_long: слишком долго
       models:
         car:

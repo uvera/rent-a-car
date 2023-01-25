@@ -20,6 +20,7 @@ rs:
         greater_than: mora biti veći
         greater_than_or_equal_to: mora biti veći
         invalid: nije validan
+        less_than_or_equal_to: mora biti manje
         too_long: predugačak
       models:
         car:
@@ -29,8 +30,10 @@ rs:
               inclusion: nije u granicama od 1 do 60L
             horsepower:
               greater_than_or_equal_to: moraju biti veće
+              less_than_or_equal_to: moraju biti manje
             price_in_eur:
               greater_than_or_equal_to: mora biti veća
+              less_than_or_equal_to: mora biti manja
             youtube_link:
               host_not_allowed: Samo youtube.com ili youtu.be je dozvoljen
               https_only: Link treba da bude samo HTTPS
