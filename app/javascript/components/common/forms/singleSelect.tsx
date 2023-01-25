@@ -12,9 +12,30 @@ type SingleSelectProps = {
 };
 
 const selectStyles = `
-      resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300
+      resize-none block w-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300
          dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
       `;
+
+const controlStyles = `
+      border-0
+`;
+
+const DropdownIndicatorArrow = () => (
+  <svg
+    className="w-4 h-4 ml-1/2 mr-0.5 stroke-gray-500"
+    aria-hidden="true"
+    fill="none"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M19 9l-7 7-7-7"
+    ></path>
+  </svg>
+);
 
 const SingleSelect = ({
   className,
@@ -37,13 +58,16 @@ const SingleSelect = ({
       <Select
         classNames={{
           singleValue: () => `${bgGrayStyles} z-10`,
-          control: () => `${bgGrayStyles} border-0`,
-          dropdownIndicator: () => bgGrayStyles,
+          control: () => `${bgGrayStyles} border-none ${controlStyles}`,
           container: () => selectStyles,
           valueContainer: () => `${bgGrayStyles} border-0`,
           input: () => `${bgGrayStyles} border-none`,
-          menuList: () => bgGrayStyles,
+          loadingIndicator: () => bgGrayStyles,
+          menu: () => "-ml-2 bg-white mt-2 border border-gray-200 rounded-lg",
+          option: () => "p-2 hover:bg-accent rounded-sm",
         }}
+        unstyled
+        components={{ DropdownIndicator: DropdownIndicatorArrow }}
         className={className}
         placeholder={selectLabel}
         onChange={(e) => setValue(e)}
