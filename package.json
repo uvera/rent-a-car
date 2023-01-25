@@ -77,6 +77,7 @@
   ],
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
-    "react-refresh": "^0.14.0"
+    "react-refresh": "^0.14.0",
+    "webpack-bundle-analyzer": "^4.7.0"
   }
 }
