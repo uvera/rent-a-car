@@ -3,7 +3,7 @@
 module Landing
   class HomeController < LandingController
     def index
-      @cars = Car.friendly.order(Arel.sql('RANDOM()')).take(4)
+      @cars = Car.kept.friendly.order(Arel.sql('RANDOM()')).take(4)
     end
   end
 end

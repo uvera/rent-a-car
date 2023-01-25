@@ -13,7 +13,7 @@ module Landing
     end
 
     def show
-      @car = Car.friendly.find(params[:id])
+      @car = Car.kept.friendly.find(params[:id])
     end
 
     private
