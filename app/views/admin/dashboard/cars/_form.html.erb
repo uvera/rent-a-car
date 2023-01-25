@@ -1,7 +1,7 @@
 <%= form_with model: @car, id: dom_id(@car), multipart: true, url: @car.new_record? ? admin_dashboard_cars_path : admin_dashboard_car_path(@car) do |f| %>
   <div class="flex flex-col w-2/3 justify-center m-auto h-full gap-y-4">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, maxlength: 40 %>
     <%= f.error_messages_for :name %>
 
     <%= f.label :deposit %>
@@ -17,7 +17,7 @@
     <%= f.error_messages_for :price_in_eur %>
 
     <%= f.label :release_date %>
-    <%= f.select :release_date, (Date.today - 90.years).year..Date.today.year %>
+    <%= f.select :release_date, [*(Date.today - 90.years).year..Date.today.year].reverse %>
 
     <%= f.label :brand %>
     <%= f.react_select :brand, car_brands_for_select, default_value: @car.brand, select_label: Car.human_attribute_name(:brand) %>

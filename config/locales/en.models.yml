@@ -18,6 +18,9 @@ en:
       models:
         car:
           attributes:
+            gas_consumption_range:
+              greater_than: Must be greater than 0L
+              inclusion: not in range from 1 to 60L
             youtube_link:
               host_not_allowed: Only youtube.com or youtu.be allowed
               https_only: Link should be HTTPS only

@@ -15,9 +15,17 @@ ru:
         transmission: коробка передач
         youtube_link: Youtube link
     errors:
+      messages:
+        greater_than: должно быть больше
+        greater_than_or_equal_to: должно быть больше
+        invalid: недействительно
+        too_long: слишком долго
       models:
         car:
           attributes:
+            gas_consumption_range:
+              greater_than: Должно быть больше 0л
+              inclusion: не в диапазоне от 1 до 60л
             youtube_link:
               host_not_allowed: Разрешены только youtube.com или youtu.be
               https_only: Ссылка должна быть только HTTPS

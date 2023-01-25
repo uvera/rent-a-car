@@ -13,18 +13,20 @@ class Car < ApplicationRecord
 
   has_many_attached :images
 
-  before_save :convert_gas_consumption_range
+  before_validation :convert_gas_consumption_range, on: %i[create update]
 
   validates :body_configuration, presence: true
   validates :brand, presence: true
-  validates :deposit, presence: true
+  validates :deposit, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :engine_type, presence: true
   validates :gas_consumption_range, presence: true
-  validates :name, presence: true
-  validates :price_in_eur, presence: true
+  validates :name, presence: true, format: /\A[A-Za-z0-9\ \-_.,'"]+\z/, length: { maximum: 40 }
+  validates :price_in_eur, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :release_date, presence: true
   validates :horsepower, presence: true, numericality: { greater_than: 0 }
   validates :youtube_link, url: { host: /youtube\.com|youtu\.be/ }
+  validate :gas_consumption_range_inclusion
+  GAS_CONSUMPTION_RANGE_VALID = 1..60
 
   enum :brand, AVAILABLE_CAR_BRANDS_ENUM_HASH
   enum :engine_type, CAR_ENGINE_TYPES_ENUM_HASH
@@ -57,7 +59,17 @@ class Car < ApplicationRecord
     return unless start_number.is_a?(Integer)
     return unless end_number.is_a?(Integer)
 
+    start_number = end_number if start_number > end_number
+
     self.gas_consumption_range = start_number..end_number
+  end
+
+  def gas_consumption_range_inclusion
+    errors.add(:gas_consumption_range, :inclusion) unless GAS_CONSUMPTION_RANGE_VALID.include?(gas_consumption_range)
+
+    return unless gas_consumption_range.begin.negative? || gas_consumption_range.end.negative?
+
+    errors.add(:gas_consumption_range, :greater_than)
   end
 end
 
