@@ -17,7 +17,7 @@
         </svg>
       </button>
     </h2>
-    <div id="filters-collapse-body" class="mt-2 hidden md:visible grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 auto-rows-fr gap-4 p-5 font-light border border-gray-200 dark:border-gray-700 dark:bg-gray-900 rounded-t-xl">
+    <div id="filters-collapse-body" class="mt-2 hidden md:visible grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 auto-rows-fr gap-4 p-5 font-light border border-gray-200 dark:border-gray-700 dark:bg-gray-900 md:rounded-xl rounded-t-xl">
       <%= form.ransack_multi_select :brand_in, car_brands_for_select, default_values: Array.wrap(params.dig(:q, :brand_in)), select_label: I18n.t('activerecord.attributes.car.brand') %>
       <%= form.ransack_multi_select :engine_type_in, car_engine_types_for_select, default_values: Array.wrap(params.dig(:q, :engine_type_in)), select_label: I18n.t('activerecord.attributes.car.engine_type') %>
       <%= form.ransack_multi_select :body_configuration_in, car_body_configuration_types_for_select, default_values: Array.wrap(params.dig(:q, :body_configuration_in)), select_label: I18n.t('activerecord.attributes.car.body_configuration') %>
