@@ -17,4 +17,8 @@ module ApplicationHelper
   def entity_title(title)
     content_for(:entity_title, title)
   end
+
+  def no_turbo_cache
+    content_for(:no_turbo_cache, true)
+  end
 end

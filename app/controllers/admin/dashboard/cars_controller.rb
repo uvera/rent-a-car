@@ -5,7 +5,7 @@ module Admin
         @scope = Car.friendly.with_discarded.order(:name)
         @scope = @scope.ransack(search_params[:q])
 
-        @pagy, @cars = pagy_countless(@scope.result, items: 4)
+        @pagy, @cars = pagy_countless(@scope.result, items: 10)
         respond_to do |format|
           format.html
           format.turbo_stream

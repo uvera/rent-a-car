@@ -5,7 +5,7 @@ module Landing
       @scope = @scope.ransack(search_params[:q])
       @scope.sorts = 'name asc' if @scope.sorts.empty?
 
-      @pagy, @cars = pagy_countless(@scope.result(distinct: true), items: 4)
+      @pagy, @cars = pagy_countless(@scope.result(distinct: true), items: 10)
       respond_to do |format|
         format.html
         format.turbo_stream

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <% if content_for?(:no_turbo_cache) %>
+    <meta name="turbo-cache-control" content="no-cache">
+  <% end %>
+
   <title>
     <%= [
           site_title,
