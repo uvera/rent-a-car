@@ -33,9 +33,14 @@
           </li>
         </ul>
         </p>
-        <%= link_to edit_admin_dashboard_car_path(car) do %>
-          <button type="button" class=" inline-block px-6 py-2.5 bg-accent text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-accent hover:shadow-lg focus:bg-accent focus:shadow-lg focus:outline-none focus:ring-0 active:bg-accent active:shadow-lg transition duration-150 ease-in-out"><%= I18n.t('actions.edit') %></button>
-        <% end %>
+        <div class="flex flex-row gap-2">
+          <%= link_to edit_admin_dashboard_car_path(car) do %>
+            <button type="button" class=" inline-block px-6 py-2.5 bg-accent text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-accent hover:shadow-lg focus:bg-accent focus:shadow-lg focus:outline-none focus:ring-0 active:bg-accent active:shadow-lg transition duration-150 ease-in-out"><%= I18n.t('actions.edit') %></button>
+          <% end %>
+          <%= link_to admin_dashboard_car_schedules_path(car_id: car.id) do %>
+            <button type="button" class=" inline-block px-6 py-2.5 bg-gray-900 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-accent active:shadow-lg transition duration-150 ease-in-out"><%= I18n.t('cars.actions.schedules') %></button>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

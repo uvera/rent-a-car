@@ -18,13 +18,13 @@ en:
       models:
         car:
           attributes:
-            start_date:
-              overlaps: Start date overlaps with another record for same car
             end_date:
               overlaps: End date overlaps with another record for same car
             gas_consumption_range:
               greater_than: Must be greater than 0L
               inclusion: not in range from 1 to 60L
+            start_date:
+              overlaps: Start date overlaps with another record for same car
             youtube_link:
               host_not_allowed: Only youtube.com or youtu.be allowed
               https_only: Link should be HTTPS only

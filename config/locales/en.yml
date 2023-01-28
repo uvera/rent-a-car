@@ -3,12 +3,8 @@ en:
   actions:
     edit: Edit
   cars:
-    schedules:
-      start_date: Start date
-      end_date: End date
-      comment: Comment
-      car_name: Car name
-      creation_error: There was an error creating elements
+    actions:
+      schedules: See schedules
     body_types:
       convertible: Convertible
       coupe: Coupe
@@ -54,6 +50,12 @@ en:
       electric: Electric
       gas: Gas
       hybrid: Hybrid
+    schedules:
+      car_name: Car name
+      comment: Comment
+      creation_error: There was an error creating elements
+      end_date: End date
+      start_date: Start date
     transmission_types:
       automatic: Automatic
       manual: Manual
