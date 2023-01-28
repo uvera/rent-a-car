@@ -12,6 +12,7 @@ class Car < ApplicationRecord
   include CarTransmissionTypes
 
   has_many_attached :images
+  has_many :car_schedules
 
   before_validation :convert_gas_consumption_range, on: %i[create update]
 

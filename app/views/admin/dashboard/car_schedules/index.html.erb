@@ -1,0 +1,13 @@
+<div class="md:container md:p-4 md:m-auto">
+  <%= react_component 'Cars.CarScheduler', props: { postPath: admin_dashboard_car_schedules_path(car_id: @car.id), carName: @car.full_name, carEvents: @car.car_schedules.map do |schedule|
+    {
+      start: schedule.start_date,
+      end: schedule.end_date,
+      title: schedule.comment,
+      updatePath: admin_dashboard_car_schedule_path(id: schedule.id),
+      id: schedule.id,
+      allDay: false
+    }
+  end
+  } %>
+</div>

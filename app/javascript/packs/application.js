@@ -28,6 +28,7 @@ import { ScrollDisabler as NavbarScrollDisabler } from "../components/common/nav
 import { ImagesInput } from "../components/common/forms/imagesInput";
 
 const components = {
+  "Cars.CarScheduler": lazy(() => import("../components/cars/CarScheduler")),
   TagInput,
   "Configuration.ToastDismisser": ToastDismisser,
   "Common.Forms.ImagesInput": lazy(() =>

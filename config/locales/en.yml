@@ -3,6 +3,12 @@ en:
   actions:
     edit: Edit
   cars:
+    schedules:
+      start_date: Start date
+      end_date: End date
+      comment: Comment
+      car_name: Car name
+      creation_error: There was an error creating elements
     body_types:
       convertible: Convertible
       coupe: Coupe
