@@ -20,9 +20,7 @@ import * as Flowbite from "flowbite";
 import "@hotwired/turbo-rails";
 import ReactOnRails from "react-on-rails";
 import TagInput from "../components/common/./forms/tagInput";
-import ToastDismisser from "../components/common/configurations/toastDismisser";
 import { debounce } from "../util/debounce";
-import { ToastCloseButton } from "../components/common/toastCloseButton";
 import ScrollToTop from "../components/common/scrollToTop";
 import { ScrollDisabler as NavbarScrollDisabler } from "../components/common/navbar/scrollDisabler";
 import { ImagesInput } from "../components/common/forms/imagesInput";
@@ -30,7 +28,9 @@ import { ImagesInput } from "../components/common/forms/imagesInput";
 const components = {
   "Cars.CarScheduler": lazy(() => import("../components/cars/CarScheduler")),
   TagInput,
-  "Configuration.ToastDismisser": ToastDismisser,
+  "Common.Flashes.FlashMessages": lazy(() =>
+    import("../components/common/flashes/flashMessages")
+  ),
   "Common.Forms.ImagesInput": lazy(() =>
     import("../components/common/forms/imagesInput").then(
       ({ ImagesInput }) => ({ default: ImagesInput })
@@ -42,7 +42,6 @@ const components = {
   "Common.Forms.SingleSelect": lazy(() =>
     import("../components/common/forms/singleSelect")
   ),
-  "Common.ToastCloseButton": ToastCloseButton,
   "Common.Forms.TipTap": lazy(() =>
     import("../components/common/forms/tiptap/tipTapInput")
   ),

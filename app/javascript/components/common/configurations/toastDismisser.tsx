@@ -1,12 +1,10 @@
 type ToastDismisserProps = {
   timeout?: number;
-  msg: string;
-  type: string;
+  dismissAll: () => void;
 };
-const ToastDismisser = ({ timeout }: ToastDismisserProps) => {
+const ToastDismisser = ({ timeout, dismissAll }: ToastDismisserProps) => {
   setTimeout(() => {
-    const foundElements = document.querySelectorAll("[data-feature-toast]");
-    foundElements.forEach((element) => element.remove());
+    dismissAll();
   }, timeout ?? 25000);
   return null;
 };
