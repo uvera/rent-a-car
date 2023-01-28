@@ -26,6 +26,9 @@ import { ImagesInput } from "../components/common/forms/imagesInput";
 import * as Flowbite from "flowbite";
 
 const components = {
+  "Common.Forms.ErrorEraser": lazy(() =>
+    import("../components/common/forms/errorEraser")
+  ),
   "Cars.ImageModal": lazy(() => import("../components/cars/imageModal")),
   "Cars.CarScheduler": lazy(() => import("../components/cars/CarScheduler")),
   TagInput,

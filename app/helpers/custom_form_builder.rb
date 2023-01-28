@@ -31,7 +31,6 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def react_select(method, choices = [], options = {})
-
     options.reverse_merge!(select_label: '...', default_values: choices.first, class: '')
 
     @template.react_component 'Common.Forms.SingleSelect', props: {
@@ -44,7 +43,6 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def react_multi_select(method, choices = [], options = {})
-
     options.reverse_merge!(select_label: '...', default_values: [], class: '')
 
     @template.react_component 'Common.Forms.MultiSelect', props: {
@@ -75,7 +73,15 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     errors = @object.errors.full_messages_for(method)
     return nil unless errors.any?
 
-    @template.content_tag(:span, errors.join(', '), class: 'text-red-500')
+    @template.content_tag(:span, errors.join(', '), class: 'text-red-500',
+                          data: { for_input: "#{@object_name}[#{method}]" })
+  end
+
+  def error_eraser(options = {})
+    props = {}
+    props[:targetElementSelector] = options[:target]
+    props[:errorNodeSelector] = options[:error_node]
+    @template.react_component 'Common.Forms.ErrorEraser', props:
   end
 
   private
