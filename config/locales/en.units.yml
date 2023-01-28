@@ -1,0 +1,11 @@
+---
+en:
+  units:
+    currency:
+      eur:
+        plural: Euros
+        singular: Euro
+    volumetric:
+      litre:
+        plural: Litres
+        singular: Litre

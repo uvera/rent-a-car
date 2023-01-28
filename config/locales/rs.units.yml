@@ -1,0 +1,11 @@
+---
+rs:
+  units:
+    currency:
+      eur:
+        plural: Euri
+        singular: Evro
+    volumetric:
+      litre:
+        plural: Litara
+        singular: Litra

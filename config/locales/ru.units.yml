@@ -1,0 +1,11 @@
+---
+ru:
+  units:
+    currency:
+      eur:
+        plural: Евро
+        singular: Евро
+    volumetric:
+      litre:
+        plural: литры
+        singular: Литр

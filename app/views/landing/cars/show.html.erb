@@ -14,11 +14,11 @@
       <ul>
         <li>
           <%= Car.human_attribute_name(:price_in_eur) %> :
-          <%= car.price_in_eur %> EUR
+          <%= car.price_in_eur %> <%= I18n.t('units.currency.eur.plural') %>
         </li>
         <li>
           <%= Car.human_attribute_name(:deposit) %> :
-          <%= car.deposit %> EUR
+          <%= car.deposit %> <%= I18n.t('units.currency.eur.plural') %>
         </li>
         <li>
           <%= Car.human_attribute_name(:engine_type) %> :
@@ -30,7 +30,7 @@
         </li>
         <li>
           <%= Car.human_attribute_name(:gas_consumption_range) %> :
-          <%= car.gas_consumption_range.begin %> - <%= car.gas_consumption_range.end %> L
+          <%= car.gas_consumption_range.begin %> - <%= car.gas_consumption_range.end %> <%= I18n.t('units.volumetric.litre.plural') %>
         </li>
 
         <% if car.description? %>
