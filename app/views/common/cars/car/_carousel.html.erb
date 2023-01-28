@@ -8,7 +8,7 @@
         <div class="hidden duration-700 ease-in-out" data-carousel-item="<%= index == 0 ? 'active' : '' %>">
           <% img_url = url_for(image) %>
           <% if show_modal %>
-            <%= render partial: 'common/cars/car/image_modal', locals: { img_url:, download_img_url: rails_blob_path(image, disposition: 'attachment')  } %>
+            <%= render partial: 'common/cars/car/image_modal', locals: { img_url:, download_img_url: rails_blob_path(image, disposition: 'attachment') } %>
           <% end %>
           <img
             src="<%= img_url %>"
