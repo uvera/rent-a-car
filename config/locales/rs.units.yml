@@ -3,7 +3,7 @@ rs:
   units:
     currency:
       eur:
-        plural: Euri
+        plural: Eura
         singular: Evro
     volumetric:
       litre:
