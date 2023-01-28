@@ -5,6 +5,10 @@ module ApplicationHelper
     content_tag(:span, nil, data: { signal_react_rerender: true }, class: 'hidden')
   end
 
+  def signal_flowbite_reinit
+    content_tag(:span, nil, data: { signal_flowbite_reinit: true }, class: 'hidden')
+  end
+
   def site_title
     site_name = Configuration.value_site_name || {}
     site_name[I18n.locale]

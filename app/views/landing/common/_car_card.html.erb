@@ -1,7 +1,8 @@
 <div class="animate-in fade-in duration-1000" id="cars_car_card-<%= car.id %>">
+  <%= signal_flowbite_reinit %>
   <div class="flex justify-center">
     <div class="rounded-lg shadow-lg max-w-lg bg-cultured">
-      <div class="rounded-t-lg">
+      <div>
         <%= render partial: 'common/cars/car/carousel', locals: { car: car, show_modal: false } %>
       </div>
       <div class="p-6">
@@ -43,7 +44,7 @@
             <% end %>
 
             <li>
-              <%= link_to I18n.t('landing.cars.detail_button'), car, class: "text-white bg-accent hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-accent" %>
+              <%= link_to I18n.t('landing.cars.detail_button'), car, class: "text-white bg-accent hover:bg-accent-600 focus:outline-none focus:ring-4 focus:ring-accent font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-accent" %>
             </li>
 
           </div>

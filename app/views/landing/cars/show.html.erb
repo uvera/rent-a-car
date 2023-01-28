@@ -1,9 +1,9 @@
 <% car = @car %>
 <div class="md:container md:m-auto flex flex-row justify-center items-center p-4">
   <% entity_title @car.full_name %>
-  <div class="p-4 md:border md:border-solid md:border-gray-300 md:rounded-lg w-full md:w-[48rem] flex flex-col items-center bg-white">
-    <div class="rounded-t-lg p-4">
-      <%= render partial: 'common/cars/car/carousel', locals: { car: car, image_size_h_class: 'h-[15em]', image_size_w_class: 'w-[30em]', show_modal: true } %>
+  <div class="p-4 md:border md:border-solid md:border-gray-300 md:rounded-lg w-full md:w-[48rem] flex flex-col justify-center items-center bg-white">
+    <div class="w-full">
+      <%= render partial: 'common/cars/car/carousel', locals: { car: car, image_size_h_class: 'h-[30rem]', image_size_w_class: 'w-full', show_modal: true } %>
     </div>
     <div class="p-6 w-full">
       <h5 class="text-gray-900 text-xl font-medium mb-2">

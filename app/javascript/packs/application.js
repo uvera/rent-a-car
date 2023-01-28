@@ -15,8 +15,7 @@
 // const imagePath = (name) => images(name, true)
 
 import React, { lazy } from "react";
-import "tw-elements";
-import * as Flowbite from "flowbite";
+import "flowbite";
 import "@hotwired/turbo-rails";
 import ReactOnRails from "react-on-rails";
 import TagInput from "../components/common/./forms/tagInput";
@@ -24,8 +23,10 @@ import { debounce } from "../util/debounce";
 import ScrollToTop from "../components/common/scrollToTop";
 import { ScrollDisabler as NavbarScrollDisabler } from "../components/common/navbar/scrollDisabler";
 import { ImagesInput } from "../components/common/forms/imagesInput";
+import { initCarousels } from "flowbite";
 
 const components = {
+  "Cars.ImageModal": lazy(() => import("../components/cars/imageModal")),
   "Cars.CarScheduler": lazy(() => import("../components/cars/CarScheduler")),
   TagInput,
   "Common.Flashes.FlashMessages": lazy(() =>
@@ -51,30 +52,31 @@ const components = {
 ReactOnRails.register(components);
 ReactOnRails.setOptions({ turbo: true });
 
-const turboReloadJs = () => {
-  Flowbite.initDropdowns();
-  Flowbite.initCarousels();
-  Flowbite.initModals();
-  Flowbite.initAccordions();
-  Flowbite.initPopovers();
-  Flowbite.initTabs();
-  Flowbite.initTooltips();
-  Flowbite.initDrawers();
-  Flowbite.initDials();
-  Flowbite.initDismisses();
-  Flowbite.initCollapses();
+const flowbiteReinit = () => {
+  initCarousels();
 };
 
 const debouncedHandlerForNodes = debounce(() => {
-  const nodes = document.querySelectorAll("[data-signal-react-rerender]");
-  if (nodes.length) {
+  const reactRerenderNodes = document.querySelectorAll(
+    "[data-signal-react-rerender]"
+  );
+  if (reactRerenderNodes.length) {
     ReactOnRails.reactOnRailsPageLoaded();
 
-    nodes.forEach((each) => each.remove());
+    reactRerenderNodes.forEach((each) => each.remove());
+  }
+
+  const flowbiteNodes = document.querySelectorAll(
+    "[data-signal-flowbite-reinit]"
+  );
+  if (flowbiteNodes.length) {
+    flowbiteReinit();
+
+    flowbiteNodes.forEach((each) => each.remove());
   }
 }, 100);
 
-document.addEventListener("turbo:load", turboReloadJs);
+document.addEventListener("turbo:load", flowbiteReinit);
 document.addEventListener("turbo:before-stream-render", function () {
   debouncedHandlerForNodes();
 });

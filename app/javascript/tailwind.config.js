@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
@@ -9,17 +9,26 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
     "./app/javascript/components/**/*.tsx",
     "./src/**/*.{html,js}",
-    "./node_modules/tw-elements/dist/js/**/*.js",
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
+      zIndex: {
+        60: "60",
+        70: "70",
+        80: "80",
+        90: "90",
+        100: "100",
+      },
+      textColor: {
+        accent: { ...colors.amber, DEFAULT: colors.amber[500] },
+      },
       backgroundColor: {
         cultured: "#F5F4F5",
-        accent: "#DE9E36",
+        accent: { ...colors.amber, DEFAULT: colors.amber[500] },
       },
       colors: {
-        accent: { DEFAULT: "#DE9E36" },
+        accent: { ...colors.amber, DEFAULT: colors.amber[500] },
       },
     },
   },
@@ -29,7 +38,6 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
     require("flowbite/plugin"),
-    require("tw-elements/dist/plugin"),
     require("tailwindcss-animate"),
   ],
 };
