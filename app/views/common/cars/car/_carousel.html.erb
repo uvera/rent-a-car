@@ -34,9 +34,14 @@
     <% end %>
   </div>
 <% else %>
+  <% image = car.images.first %>
   <div class="<%= image_size_h_class %> relative overflow-hidden rounded-t-lg">
+    <% img_url = url_for(image) %>
+    <% if show_modal %>
+      <%= render partial: 'common/cars/car/image_modal', locals: { img_url:, download_img_url: rails_blob_path(image, disposition: 'attachment') } %>
+    <% end %>
     <img
-      src="<%= url_for(car.images.first) %>"
+      src="<%= img_url %>"
       class="absolute block object-cover <%= image_size_h_class %> <%= image_size_w_class %>"
       alt="..."
       />
