@@ -29,8 +29,9 @@
             <%= I18n.t("cars.transmission_types.#{car.transmission}") %>
           </li>
           <li>
-            <%= Car.human_attribute_name(:gas_consumption_range) %> :
-            <%= car.gas_consumption_range.begin %> - <%= car.gas_consumption_range.end %> <%= I18n.t('units.volumetric.litre.plural') %>
+            <%= Car.human_attribute_name(:gas_consumption_range) %>:
+            <%= number_with_precision(car.gas_consumption_range.begin, precision: 1, strip_insignificant_zeros: true) %>
+            - <%= number_with_precision(car.gas_consumption_range.end, precision: 1, strip_insignificant_zeros: true) %> <%= I18n.t('units.volumetric.litre.plural') %>
           </li>
         </ul>
         </p>
