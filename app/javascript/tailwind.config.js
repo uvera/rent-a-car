@@ -13,6 +13,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "400px",
+      },
       zIndex: {
         60: "60",
         70: "70",
