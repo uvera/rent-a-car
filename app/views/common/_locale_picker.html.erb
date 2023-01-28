@@ -1,4 +1,4 @@
-<button id="locale_button" data-dropdown-toggle="dropdown" class="z-20 flex justify-end w-full text-white bg-accent hover:bg-accent-600 focus:ring-4 focus:outline-none focus:ring-accent rounded-lg px-4 py-2.5 text-center inline-flex items-center dark:bg-accent dark:hover:bg-accent dark:focus:ring-accent" type="button">
+<button id="locale_button" data-dropdown-toggle="dropdown" class="z-100 flex justify-end w-full text-white bg-accent hover:bg-accent-600 focus:ring-4 focus:outline-none focus:ring-accent rounded-lg px-4 py-2.5 text-center inline-flex items-center dark:bg-accent dark:hover:bg-accent dark:focus:ring-accent" type="button">
   <div class="flex-1 text-left">
     <%= I18n.t("locales.button.title") %>
   </div>
@@ -7,7 +7,7 @@
   </svg>
 </button>
 <!-- Dropdown menu -->
-<div id="dropdown" class="z-20 hidden bg-white divide-y divide-gray-100 rounded shadow min-w-fit dark:bg-gray-700 w-64 md:w-32">
+<div id="dropdown" class="z-100 hidden bg-white divide-y divide-gray-100 rounded shadow min-w-fit dark:bg-gray-700 w-64 md:w-32">
   <ul class="py-1 text-sm text-gray-700 dark:text-gray-200 w-full" aria-labelledby="locale_button">
     <% locales = I18n.available_locales %>
     <% locales.each do |locale| %>
