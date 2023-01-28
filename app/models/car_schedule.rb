@@ -24,6 +24,10 @@ class CarSchedule < ApplicationRecord
   def siblings
     self.class.where('id != ?', id || -1).where(car_id:)
   end
+
+  def all_day?
+    (start_date - start_date.beginning_of_day).seconds < 30.seconds && (end_date - end_date.end_of_day).seconds < 30.seconds
+  end
 end
 
 # == Schema Information

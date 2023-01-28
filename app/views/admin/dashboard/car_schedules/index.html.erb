@@ -6,7 +6,7 @@
       title: schedule.comment,
       updatePath: admin_dashboard_car_schedule_path(id: schedule.id),
       id: schedule.id,
-      allDay: false
+      allDay: schedule.all_day?
     }
   end
   } %>

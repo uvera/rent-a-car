@@ -11,7 +11,7 @@ import {
   EventChangeArg,
   EventClickArg,
 } from "@fullcalendar/core";
-import { format, parseISO } from "date-fns";
+import { endOfDay, format, parseISO, startOfDay } from "date-fns";
 import axios from "axios";
 import { useCsrf } from "../../util/useCsrf";
 
@@ -86,9 +86,12 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
   };
 
   const dateClickHandler = (e: DateClickArg) => {
-    const endDate = addToDate(e.date, { minutes: 30 });
+    const startDate = e.allDay ? startOfDay(e.date) : e.date;
+    const endDate = e.allDay
+      ? endOfDay(e.date)
+      : addToDate(e.date, { minutes: 30 });
     setCurrentEvent({
-      start: e.date,
+      start: startDate,
       end: endDate,
       allDay: e.allDay,
       title: "",
@@ -226,7 +229,7 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
         eventDrop={eventResizeHandler}
         eventOverlap={false}
         eventResize={eventResizeHandler}
-        allDaySlot={false}
+        allDayMaintainDuration={true}
         events={events}
         eventClick={eventClickHandler}
         eventContent={(arg) => (

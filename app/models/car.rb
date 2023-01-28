@@ -11,6 +11,8 @@ class Car < ApplicationRecord
   include CarBodyConfigurations
   include CarTransmissionTypes
 
+  GAS_CONSUMPTION_RANGE_VALID = 1..60
+
   has_many_attached :images
   has_many :car_schedules
 
@@ -28,7 +30,6 @@ class Car < ApplicationRecord
   validates :horsepower, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 5000 }
   validates :youtube_link, url: { host: /youtube\.com|youtu\.be/ }
   validate :gas_consumption_range_inclusion
-  GAS_CONSUMPTION_RANGE_VALID = 1..60
 
   enum :brand, AVAILABLE_CAR_BRANDS_ENUM_HASH
   enum :engine_type, CAR_ENGINE_TYPES_ENUM_HASH
