@@ -23,7 +23,7 @@ import { debounce } from "../util/debounce";
 import ScrollToTop from "../components/common/scrollToTop";
 import { ScrollDisabler as NavbarScrollDisabler } from "../components/common/navbar/scrollDisabler";
 import { ImagesInput } from "../components/common/forms/imagesInput";
-import { initCarousels } from "flowbite";
+import { initAccordions, initCarousels } from "flowbite";
 
 const components = {
   "Cars.ImageModal": lazy(() => import("../components/cars/imageModal")),
@@ -54,6 +54,7 @@ ReactOnRails.setOptions({ turbo: true });
 
 const flowbiteReinit = () => {
   initCarousels();
+  initAccordions();
 };
 
 const debouncedHandlerForNodes = debounce(() => {
