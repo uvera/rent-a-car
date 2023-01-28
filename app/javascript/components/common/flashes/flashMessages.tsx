@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ToastDismisser from "../configurations/toastDismisser";
 import { ToastCloseButton } from "../toastCloseButton";
+import useMitt from "../../../util/useMitt";
+import { Handler } from "mitt";
+import uniqBy from "../../../util/uniqBy";
 
+type FlashRecord = { msg: string; type: "notice" | "alert" | "error" };
 type FlashMessagesProps = {
-  flashes: Array<{ msg: string; type: "notice" | "alert" | "error" }>;
+  flashes: Array<FlashRecord>;
   timeout: number;
 };
+export type FlashMitEvent = { type: FlashRecord["type"]; msg: string };
+
 const FlashMessages = ({ flashes: values, timeout }: FlashMessagesProps) => {
   const [flashes, setFlashes] = useState(values);
   const closeFlashByIndex = (idx: number) => {
@@ -16,25 +22,44 @@ const FlashMessages = ({ flashes: values, timeout }: FlashMessagesProps) => {
     });
   };
 
+  const mitt = useMitt<{ flash: FlashMitEvent }>();
+
+  const handleNewFlash: Handler<{ type: FlashRecord["type"]; msg: string }> = (
+    flash
+  ) => {
+    setFlashes((previous) => {
+      return uniqBy([...structuredClone(previous), flash], (f) => f.type);
+    });
+  };
+
+  useEffect(() => {
+    mitt.on("flash", handleNewFlash);
+    return () => mitt.off("flash", handleNewFlash);
+  });
+
   return (
     <>
-      <ToastDismisser dismissAll={() => setFlashes([])} timeout={timeout} />
       {flashes.map(({ msg, type }, idx) => (
-        <Flash type={type} msg={msg} onClose={() => closeFlashByIndex(idx)} />
+        <Flash
+          key={idx}
+          dismissTimeout={timeout}
+          type={type}
+          msg={msg}
+          onClose={() => closeFlashByIndex(idx)}
+        />
       ))}
     </>
   );
 };
 
-const Flash = ({
-  msg,
-  onClose,
-  type,
-}: {
+type FlashProps = {
+  dismissTimeout: number;
   msg: string;
   onClose: () => void;
   type: FlashMessagesProps["flashes"][0]["type"];
-}) => {
+};
+
+const Flash = ({ dismissTimeout, msg, onClose, type }: FlashProps) => {
   const Display = () => {
     switch (type) {
       case "notice":
@@ -105,6 +130,7 @@ const Flash = ({
         className="fixed top-5 left-1/2 transform -translate-x-1/2 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
         role="alert"
       >
+        <ToastDismisser close={onClose} timeout={dismissTimeout} />
         <Display />
         <div className="ml-3 text-sm font-normal">{msg}</div>
         <span className="inline-flex ml-auto">

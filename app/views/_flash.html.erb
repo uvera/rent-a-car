@@ -1,4 +1,4 @@
-<div id="flashes" class="relative z-50">
+<div id="flashes" class="relative z-100">
   <%= react_component "Common.Flashes.FlashMessages", props: { timeout: Configuration.value_for('toast_timeout', 2500),
                                                                flashes: flash.map { |(type, msg)| { type: type, msg: msg } } } %>
 </div>

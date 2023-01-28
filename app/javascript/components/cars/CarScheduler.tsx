@@ -14,6 +14,8 @@ import {
 import { endOfDay, format, parseISO, startOfDay } from "date-fns";
 import axios from "axios";
 import { useCsrf } from "../../util/useCsrf";
+import UseMitt, { useMitt } from "../../util/useMitt";
+import { FlashMitEvent } from "../common/flashes/flashMessages";
 
 type CarSchedulerProps = {
   carEvents: Array<
@@ -33,6 +35,8 @@ type ScheduleEvent = {
 };
 
 const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
+  const mitt = useMitt<{ flash: FlashMitEvent }>();
+
   const { token: csrfToken } = useCsrf();
   const [events, setEvents] = useState<Array<ScheduleEvent>>(() => {
     return carEvents.map((event) => ({
@@ -129,6 +133,9 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
           return newEvents;
         });
         closeModal();
+      })
+      .catch((err) => {
+        mitt.emit("flash", { type: "error", msg: err.response.data.error });
       });
   };
 
@@ -159,7 +166,9 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
         });
         closeModal();
       })
-      .catch(() => {});
+      .catch((err) => {
+        mitt.emit("flash", { type: "error", msg: err.response.data.error });
+      });
   };
 
   return (

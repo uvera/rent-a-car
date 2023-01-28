@@ -24,15 +24,17 @@ ru:
       models:
         car:
           attributes:
-            end_date:
-              overlaps: Дата окончания перекрывается с другой записью для того же автомобиля
             gas_consumption_range:
               greater_than: Должно быть больше 0л
               inclusion: не в диапазоне от 1 до 60л
-            start_date:
-              overlaps: Дата начала совпадает с другой записью для того же автомобиля
             youtube_link:
               host_not_allowed: Разрешены только youtube.com или youtu.be
               https_only: Ссылка должна быть только HTTPS
+        car_schedule:
+          attributes:
+            end_date:
+              overlaps: Дата окончания перекрывается с другой записью для того же автомобиля
+            start_date:
+              overlaps: Дата начала совпадает с другой записью для того же автомобиля
     models:
       car: автомобиль

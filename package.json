@@ -37,6 +37,7 @@
     "fork-ts-checker-webpack-plugin": "^7.3.0",
     "i18n-js": "^4.2.2",
     "mini-css-extract-plugin": "^2.7.2",
+    "mitt": "^3.0.0",
     "postcss": "^8.4.21",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^7.0.2",
