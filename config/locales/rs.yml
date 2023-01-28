@@ -3,6 +3,8 @@ rs:
   actions:
     edit: Izmena
   cars:
+    actions:
+      schedules: Vidi kalendar
     body_types:
       convertible: Kabriolet
       coupe: Kupe
@@ -48,6 +50,12 @@ rs:
       electric: Električna
       gas: Benzin
       hybrid: Hibrid
+    schedules:
+      car_name: Naziv automobila
+      comment: Komentar
+      creation_error: Došlo je do greške prilikom kreiranja termina
+      end_date: Krajnji datum
+      start_date: Početni datum
     transmission_types:
       automatic: Automatski
       manual: Manuelni

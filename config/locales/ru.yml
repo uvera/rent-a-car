@@ -3,6 +3,8 @@ ru:
   actions:
     edit: Редактировать
   cars:
+    actions:
+      schedules: Посмотреть расписание
     body_types:
       convertible: Кабриолет
       coupe: Купе
@@ -48,6 +50,12 @@ ru:
       electric: Электрический
       gas: газ
       hybrid: гибридный
+    schedules:
+      car_name: Название автомобиля
+      comment: комментарий
+      creation_error: Произошла ошибка при создании элементов
+      end_date: Дата окончания
+      start_date: Дата начала
     transmission_types:
       automatic: автоматический
       manual: Руководство по эксплуатации

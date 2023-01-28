@@ -9,6 +9,7 @@ en:
         description: Description
         engine_type: Engine type
         gas_consumption_range: Gas consumption range
+        horsepower: Horsepower
         name: Name
         price_in_eur: Price
         release_date: Release date

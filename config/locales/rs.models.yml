@@ -25,6 +25,8 @@ rs:
       models:
         car:
           attributes:
+            end_date:
+              overlaps: Krajnji datum se poklapa sa drugim terminima za ovaj automobil
             gas_consumption_range:
               greater_than: mora biti veća od 0L
               inclusion: nije u granicama od 1 do 60L
@@ -34,6 +36,8 @@ rs:
             price_in_eur:
               greater_than_or_equal_to: mora biti veća
               less_than_or_equal_to: mora biti manja
+            start_date:
+              overlaps: Početni datum se poklapa sa drugim terminima za ovaj automobil
             youtube_link:
               host_not_allowed: Samo youtube.com ili youtu.be je dozvoljen
               https_only: Link treba da bude samo HTTPS
