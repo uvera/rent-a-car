@@ -68,7 +68,8 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
     const eventToUpdate = events.find(
       (el) => el.id.toString() === e.event.id.toString()
     );
-    updateEvent(eventToUpdate, { start: e.event.start, end: e.event.end });
+    const end = e.event.end ?? addToDate(e.event.start, { minutes: 30 });
+    updateEvent(eventToUpdate, { start: e.event.start, end });
   };
 
   const eventClickHandler = (e: EventClickArg) => {
