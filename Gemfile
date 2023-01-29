@@ -75,6 +75,7 @@ gem "ruby-vips"
 gem "pg_search"
 gem "ransack"
 gem "turbo-rails"
+gem "stimulus-rails"
 gem "pagy", "~> 6.0"
 
 gem "i18n-js", "~> 4.2"
