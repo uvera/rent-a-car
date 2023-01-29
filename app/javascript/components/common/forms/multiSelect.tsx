@@ -50,8 +50,8 @@ const MultiSelect = ({
           clearIndicator: () => clearIndicatorStyles,
           container: (props) =>
             `${selectStyles} ${props.isFocused ? "z-50" : ""}`,
-          multiValue: () => "",
-          valueContainer: () => `${bgGrayStyles} border-0`,
+          multiValue: () => "bg-accent rounded-md p-1",
+          valueContainer: () => `${bgGrayStyles} border-0 ml-2 flex flex-row gap-1 flex-wrap`,
           input: () => `${bgGrayStyles} caret-accent ml-2`,
           loadingIndicator: () => bgGrayStyles,
           menu: () => menuStyles,
