@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'landing/home#index'
 
+  get '/check.txt', to: proc { [200, {}, ['simple_check']] }
+
   scope module: :landing do
     resources :cars, only: %i[index show]
     resources :terms, only: %i[index]
