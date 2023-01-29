@@ -102,7 +102,7 @@ const debouncedHandlerForNodes = debounce(() => {
 document.addEventListener("turbo:load", flowbiteReinit);
 document.addEventListener("turbo:before-stream-render", function (event) {
   let oldElement = document.getElementById(event.target.target);
-  oldElement.classList.add("animate-fade-out-opacity-250");
+  oldElement.classList.add("animate-fade-out-opacity-350");
 
   debouncedHandlerForNodes();
 });
