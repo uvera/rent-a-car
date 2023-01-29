@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:experimental
 FROM ruby:3.2.0
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -\
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -\
   && apt-get update -qq && apt-get install -qq --no-install-recommends \
     nodejs libvips \
   && apt-get upgrade -qq \
