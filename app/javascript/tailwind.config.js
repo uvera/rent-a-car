@@ -41,6 +41,5 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
     require("flowbite/plugin"),
-    require("tailwindcss-animate"),
   ],
 };

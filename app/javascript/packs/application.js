@@ -101,12 +101,10 @@ const debouncedHandlerForNodes = debounce(() => {
 
 document.addEventListener("turbo:load", flowbiteReinit);
 document.addEventListener("turbo:before-stream-render", function (event) {
-
   let oldElement = document.getElementById(event.target.target);
-  oldElement.classList.add("animate-out", "fade-out", "duration-700");
+  oldElement.classList.add("animate-fade-out-opacity-250");
 
   debouncedHandlerForNodes();
-  // });
 });
 
 // document.addEventListener("turbo:visit", () => {
