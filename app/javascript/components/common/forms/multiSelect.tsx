@@ -21,7 +21,8 @@ const controlStyles = `
 `;
 const bgGrayStyles = "bg-gray-50";
 
-const menuStyles = "-ml-1 bg-white mt-2 border border-gray-200 rounded-lg overflow-hidden";
+const menuStyles =
+  "-ml-1 bg-white mt-2 border border-gray-200 rounded-lg overflow-hidden";
 
 const clearIndicatorStyles = "cursor-pointer";
 
@@ -51,10 +52,11 @@ const MultiSelect = ({
             `${selectStyles} ${props.isFocused ? "z-50" : ""}`,
           multiValue: () => "",
           valueContainer: () => `${bgGrayStyles} border-0`,
-          input: () => `${bgGrayStyles} caret-accent`,
+          input: () => `${bgGrayStyles} caret-accent ml-2`,
           loadingIndicator: () => bgGrayStyles,
           menu: () => menuStyles,
           option: () => "p-2 hover:bg-accent rounded-sm",
+          placeholder: () => "text-gray-500 z-10 text-sm ml-3",
         }}
         className={className}
         placeholder={selectLabel}

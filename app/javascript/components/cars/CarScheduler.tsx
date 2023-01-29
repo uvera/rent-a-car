@@ -174,9 +174,11 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
   return (
     <>
       <Modal
+        size={"lg"}
         dismissible={true}
         show={modalState !== "closed"}
         onClose={closeModal}
+        className={"!z-100"}
       >
         <Modal.Body>
           {currentEvent ? (

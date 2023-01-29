@@ -75,7 +75,11 @@ const ToolbarLinkButton = ({ editor }: { editor: Editor }) => {
 
   return (
     <>
-      <Modal show={isModalShown} onClose={() => closeModal()}>
+      <Modal
+        show={isModalShown}
+        onClose={() => closeModal()}
+        className={"!z-100"}
+      >
         <Modal.Header>Link</Modal.Header>
         <Modal.Body>
           <TextInput
@@ -84,7 +88,11 @@ const ToolbarLinkButton = ({ editor }: { editor: Editor }) => {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => submitModal()}>
+          <Button
+            color={"accent"}
+            className={"bg-accent"}
+            onClick={() => submitModal()}
+          >
             {i18n.t("forms.buttons.save")}
           </Button>
           <Button color={"light"} onClick={() => closeModal()}>

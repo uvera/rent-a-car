@@ -34,7 +34,7 @@ const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
           ></path>
         </svg>
       </button>
-      <Modal show={shown} onClose={hideModal} size={"7xl"}>
+      <Modal show={shown} onClose={hideModal} size={"7xl"} className={"!z-100"}>
         <Modal.Header>
           <button
             type="button"

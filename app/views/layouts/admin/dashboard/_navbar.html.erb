@@ -17,8 +17,8 @@
       <ul class="flex flex-col items-stretch md:items-center gap-2 p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <% admin_navbar_links.each do |(name, link)| %>
           <li>
-            <%= link_to_unless request.path.include?(link), name, link, class: "block py-2 pl-3 pr-4 text-white bg-gray-700 rounded md:bg-transparent md:text-gray-700 md:p-0 dark:text-white" do
-              link_to name, link, class: "block py-2 pl-3 pr-4 text-white bg-accent rounded md:bg-transparent md:text-accent hover:text-accent-600 md:p-0 dark:text-white"
+            <%= link_to_unless request.path.include?(link), name, link, class: "block py-2 pl-3 pr-4 text-white bg-gray-700 rounded md:bg-transparent md:text-gray-700 md:p-0 dark:text-white hover:text-accent-600 md:hover:text-gray-900" do
+              link_to name, link, class: "block py-2 pl-3 pr-4 text-white bg-accent rounded md:bg-transparent hover:text-gray-700 md:hover:bg-transparent hover:bg-accent-600 md:text-accent md:hover:text-accent-600 md:p-0 dark:text-white"
             end
             %>
           </li>

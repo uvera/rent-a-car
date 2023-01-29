@@ -23,11 +23,11 @@ module.exports = {
         90: "90",
         100: "100",
       },
-      textColor: {
-        accent: { ...colors.amber, DEFAULT: colors.amber[500] },
-      },
       backgroundColor: {
         cultured: "#F5F4F5",
+        accent: { ...colors.amber, DEFAULT: colors.amber[500] },
+      },
+      textColor: {
         accent: { ...colors.amber, DEFAULT: colors.amber[500] },
       },
       colors: {
