@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import i18n from "../../util/i18n";
 import { Modal } from "flowbite-react";
+import useBodyOverflow from "../../util/useBodyOverflow";
 
 type ImageModalProps = {
   imgUrl: string;
@@ -9,6 +10,7 @@ type ImageModalProps = {
 
 const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
   const [shown, setShown] = useState(false);
+  const [addBodyOverflow, removeBodyOverflow] = useBodyOverflow();
 
   const ref = useRef<HTMLDivElement | null>(null);
   const showModal = () => {
@@ -17,9 +19,13 @@ const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
       parent.classList.remove("md:h-auto");
       parent.classList.remove("max-w-5xl");
     }
+    addBodyOverflow();
     setShown(true);
   };
-  const hideModal = () => setShown(false);
+  const hideModal = () => {
+    setShown(false);
+    removeBodyOverflow();
+  };
 
   return (
     <>
