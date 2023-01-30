@@ -1,5 +1,10 @@
 ---
 ru:
+  full_calendar:
+    button_text:
+      today: сегодня
+      week: неделя
+      month: месяц
   actions:
     edit: Редактировать
   cars:

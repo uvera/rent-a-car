@@ -1,5 +1,10 @@
 ---
 en:
+  full_calendar:
+    button_text:
+      today: today
+      week: week
+      month: month
   actions:
     edit: Edit
   cars:

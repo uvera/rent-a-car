@@ -1,5 +1,10 @@
 ---
 rs:
+  full_calendar:
+    button_text:
+      today: данас
+      week: недеља
+      month: месец
   actions:
     edit: Izmena
   cars:

@@ -14,8 +14,9 @@ import {
 import { endOfDay, format, parseISO, startOfDay } from "date-fns";
 import axios from "axios";
 import { useCsrf } from "../../util/useCsrf";
-import UseMitt, { useMitt } from "../../util/useMitt";
+import { useMitt } from "../../util/useMitt";
 import { FlashMitEvent } from "../common/flashes/flashMessages";
+import srLocale from "@fullcalendar/core/locales/sr-cyrl";
 
 type CarSchedulerProps = {
   carEvents: Array<
@@ -257,8 +258,15 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
       </Modal>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        locale={i18n.locale === "rs" ? srLocale : i18n.locale}
         selectOverlap={false}
         initialView="timeGridWeek"
+        firstDay={1}
+        buttonText={{
+          today: i18n.t("full_calendar.button_text.today"),
+          week: i18n.t("full_calendar.button_text.week"),
+          month: i18n.t("full_calendar.button_text.month"),
+        }}
         headerToolbar={{ end: "timeGridWeek,dayGridMonth today prev,next" }}
         selectable={true}
         select={dateSelectHandler}
