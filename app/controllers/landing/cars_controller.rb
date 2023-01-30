@@ -20,7 +20,11 @@ module Landing
 
     def search_params
       params.permit(q: [:full_search, :s,
-                        { brand_in: [], engine_type_in: [], body_configuration_in: [], transmission_in: [], s: [] }])
+                        { brand_in: [],
+                          engine_type_in: [],
+                          body_configuration_in: [],
+                          transmission_in: [],
+                          s: [] }])
     end
   end
 end

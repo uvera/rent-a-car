@@ -22,7 +22,7 @@
       <%= form.ransack_multi_select :engine_type_in, car_engine_types_for_select, default_values: Array.wrap(params.dig(:q, :engine_type_in)), select_label: I18n.t('activerecord.attributes.car.engine_type') %>
       <%= form.ransack_multi_select :body_configuration_in, car_body_configuration_types_for_select, default_values: Array.wrap(params.dig(:q, :body_configuration_in)), select_label: I18n.t('activerecord.attributes.car.body_configuration') %>
       <%= form.ransack_multi_select :transmission_in, car_transmission_types_for_select, default_values: Array.wrap(params.dig(:q, :transmission_in)), select_label: I18n.t('activerecord.attributes.car.transmission') %>
-      <%= form.ransack_multi_select :s, car_sortables_for_select, default_values: Array.wrap(params.dig(:q, :s)), select_label: I18n.t('forms.cars.sorting.title') %>
+      <%= form.ransack_select :s, car_sortables_for_select, name: 'q[s][]', default_value: params.dig(:q, :s), select_label: I18n.t('forms.cars.sorting.title') %>
     </div>
   </div>
 <% end %>

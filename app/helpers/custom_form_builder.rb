@@ -27,16 +27,24 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   def ransack_multi_select(method, choices = [], options = {})
     options.reverse_merge!(ransack: :q)
     name = "#{options[:ransack]}[#{method}][]" if options[:ransack]
+    name ||= method
     react_multi_select(name, choices, options)
   end
 
+  def ransack_select(method, choices = [], options = {})
+    name = options[:ransack] ? "#{options[:ransack]}[#{method}][]" : nil
+
+    options.reverse_merge!(ransack: :q, name: name)
+    react_select(method, choices, options)
+  end
+
   def react_select(method, choices = [], options = {})
-    options.reverse_merge!(select_label: '...', default_values: choices.first, class: '')
+    options.reverse_merge!(select_label: '...', default_value: choices.first, class: '')
 
     @template.react_component 'Common.Forms.SingleSelect', props: {
       choices:,
-      defaultValue: options[:default_value],
-      name: "#{@object_name}[#{method}]",
+      defaultValue: react_select_default_value(options),
+      name: options[:name] || "#{@object_name}[#{method}]",
       className: options[:class],
       selectLabel: options[:select_label]
     }
@@ -85,6 +93,14 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   private
+
+  def react_select_default_value(options)
+    if options[:default_value].is_a?(Array)
+      options[:default_value].last
+    else
+      options[:default_value]
+    end
+  end
 
   def wrap_class(options)
     options.reverse_merge!(class: <<-STRING.squish
