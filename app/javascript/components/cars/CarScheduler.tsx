@@ -102,35 +102,33 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
     setModalState("new");
   };
 
-  const destroyCurrentEvent = () => {
-    axios
-      .delete(`/admin/dashboard/schedules/${currentEvent.id}`, {
+  const destroyCurrentEvent = async () => {
+    try {
+      await axios.delete(`/admin/dashboard/schedules/${currentEvent.id}`, {
         headers: {
           "X-CSRF-Token": csrfToken,
         },
-      })
-      .then(() => {
-        setEvents((previous) => {
-          const newEvents = structuredClone(previous);
-          const idx = newEvents.findIndex(
-            (event) => currentEvent.id.toString() === event.id.toString()
-          );
-          newEvents.splice(idx, 1);
-          return newEvents;
-        });
-        closeModal();
-      })
-      .catch((err) => {
-        mitt.emit("flash", { type: "error", msg: err.response.data.error });
       });
+      setEvents((previous) => {
+        const newEvents = structuredClone(previous);
+        const idx = newEvents.findIndex(
+          (event) => currentEvent.id.toString() === event.id.toString()
+        );
+        newEvents.splice(idx, 1);
+        return newEvents;
+      });
+    } catch (err) {
+      mitt.emit("flash", { type: "error", msg: err.response.data.error });
+    }
+    closeModal();
   };
 
-  const updateEvent = (
+  const updateEvent = async (
     eventToUpdate: ScheduleEvent,
     changes: Partial<ScheduleEvent>
   ) => {
-    axios
-      .put(
+    try {
+      const { data } = await axios.put(
         `/admin/dashboard/schedules/${eventToUpdate.id}`,
         {
           comment: changes.title,
@@ -142,28 +140,28 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
             "X-CSRF-Token": csrfToken,
           },
         }
-      )
-      .then(({ data }) => {
-        setEvents((previous) => {
-          const newEvents = structuredClone(previous);
-          const eventToUpdate = newEvents.find(
-            (el) => el.id.toString() === data.id.toString()
-          );
-          eventToUpdate.start = parseISO(data.start_date);
-          eventToUpdate.end = parseISO(data.end_date);
-          eventToUpdate.title = data.comment;
-          return newEvents;
-        });
-        closeModal();
-      })
-      .catch((err) => {
-        mitt.emit("flash", { type: "error", msg: err.response.data.error });
+      );
+
+      setEvents((previous) => {
+        const newEvents = structuredClone(previous);
+        const eventToUpdate = newEvents.find(
+          (el) => el.id.toString() === data.id.toString()
+        );
+        eventToUpdate.start = parseISO(data.start_date);
+        eventToUpdate.end = parseISO(data.end_date);
+        eventToUpdate.title = data.comment;
+        return newEvents;
       });
+    } catch (err) {
+      mitt.emit("flash", { type: "error", msg: err.response.data.error });
+    }
+
+    closeModal();
   };
 
-  const submitNewEvent = () => {
-    axios
-      .post(
+  const submitNewEvent = async () => {
+    try {
+      const { data } = await axios.post(
         postPath,
         {
           start_date: currentEvent.start,
@@ -175,21 +173,20 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
             "X-CSRF-Token": csrfToken,
           },
         }
-      )
-      .then(({ data }) => {
-        setEvents((previousEvents) => {
-          const newEvents = structuredClone(previousEvents);
-          newEvents.push({
-            ...currentEvent,
-            id: data.id,
-          });
-          return newEvents;
+      );
+
+      setEvents((previousEvents) => {
+        const newEvents = structuredClone(previousEvents);
+        newEvents.push({
+          ...currentEvent,
+          id: data.id,
         });
-        closeModal();
-      })
-      .catch((err) => {
-        mitt.emit("flash", { type: "error", msg: err.response.data.error });
+        return newEvents;
       });
+    } catch (err) {
+      mitt.emit("flash", { type: "error", msg: err.response.data.error });
+    }
+    closeModal();
   };
 
   return (
