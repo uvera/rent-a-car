@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import i18n from "../../util/i18n";
 import { Modal } from "flowbite-react";
 
@@ -50,14 +49,16 @@ const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
         className={"!z-100"}
       >
         <Modal.Header>
-          <button
-            type="button"
-            className="focus:outline-none text-white bg-accent hover:bg-accent-600 focus:ring-4
+          <a href={downloadUrl}>
+            <button
+              type="button"
+              className="focus:outline-none text-white bg-accent hover:bg-accent-600 focus:ring-4
                             focus:ring-accent font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2
                             dark:focus:ring-accent"
-          >
-            {i18n.t("forms.buttons.download")}
-          </button>
+            >
+              {i18n.t("forms.buttons.download")}
+            </button>
+          </a>
         </Modal.Header>
         <Modal.Body>
           <span className="hidden" ref={ref}></span>
