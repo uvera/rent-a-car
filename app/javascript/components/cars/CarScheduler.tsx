@@ -16,7 +16,6 @@ import axios from "axios";
 import { useCsrf } from "../../util/useCsrf";
 import { useMitt } from "../../util/useMitt";
 import { FlashMitEvent } from "../common/flashes/flashMessages";
-import srLocale from "@fullcalendar/core/locales/sr-cyrl";
 
 type CarSchedulerProps = {
   carEvents: Array<
@@ -258,7 +257,7 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
       </Modal>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        locale={i18n.locale === "rs" ? srLocale : i18n.locale}
+        locale={i18n.locale === "rs" ? "sr" : i18n.locale}
         selectOverlap={false}
         initialView="timeGridWeek"
         firstDay={1}
