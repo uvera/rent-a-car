@@ -12,9 +12,10 @@ module Admin
 
         if schedule.save
           render status: :created, json: { id: schedule.id,
-                                           update_path: admin_dashboard_car_schedule_path(id: schedule.id) }
+                                           update_path: admin_dashboard_schedule_path(id: schedule.id) }
         else
-          render status: :unprocessable_entity, json: { error: schedule.errors.first.full_message || I18n.t('cars.schedules.creation_error') }
+          render status: :unprocessable_entity,
+                 json: { error: schedule.errors.first&.full_message || I18n.t('cars.schedules.creation_error') }
         end
       end
 
@@ -25,9 +26,20 @@ module Admin
         if schedule.save
           render status: :ok, json: schedule.slice(:id, :start_date, :end_date, :comment)
         else
-          render status: :unprocessable_entity, json: { error: schedule.errors.first.full_message || I18n.t('cars.schedules.creation_error') }
+          render status: :unprocessable_entity,
+                 json: { error: schedule.errors.first&.full_message || I18n.t('cars.schedules.update_error') }
         end
+      end
 
+      def destroy
+        schedule = CarSchedule.find(schedule_params[:id])
+
+        if schedule.destroy
+          render status: :ok, json: {}
+        else
+          render status: :unprocessable_entity,
+                 json: { error: schedule.errors.first&.full_message || I18n.t('cars.schedules.destroy_error') }
+        end
       end
 
       private

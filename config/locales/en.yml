@@ -53,9 +53,11 @@ en:
     schedules:
       car_name: Car name
       comment: Comment
-      creation_error: There was an error creating elements
+      creation_error: There was an error creating the schedule
+      destroy_error: There was an error destroying the schedule
       end_date: End date
       start_date: Start date
+      update_error: There was an error updating the schedule
     transmission_types:
       automatic: Automatic
       manual: Manual
@@ -75,6 +77,7 @@ en:
   forms:
     buttons:
       cancel: Cancel
+      delete: Delete
       discard: Discard
       download: Download
       new: Create new

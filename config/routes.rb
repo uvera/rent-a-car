@@ -28,7 +28,7 @@ Rails.application.routes.draw do
           post :undiscard, on: :member
           post :index
           resources :images, controller: :car_images, only: %i[destroy create index]
-          resources :schedules, controller: :car_schedules, only: %i[index create update]
+          resources :schedules, controller: :car_schedules, only: %i[index create update destroy], shallow: true
         end
         resources :configurations, except: [:destroy] do
           resources :images, controller: :configuration_images, only: %i[destroy create index]

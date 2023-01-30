@@ -103,6 +103,29 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
     setModalState("new");
   };
 
+  const destroyCurrentEvent = () => {
+    axios
+      .delete(`/admin/dashboard/schedules/${currentEvent.id}`, {
+        headers: {
+          "X-CSRF-Token": csrfToken,
+        },
+      })
+      .then(() => {
+        setEvents((previous) => {
+          const newEvents = structuredClone(previous);
+          const idx = newEvents.findIndex(
+            (event) => currentEvent.id.toString() === event.id.toString()
+          );
+          newEvents.splice(idx, 1);
+          return newEvents;
+        });
+        closeModal();
+      })
+      .catch((err) => {
+        mitt.emit("flash", { type: "error", msg: err.response.data.error });
+      });
+  };
+
   const updateEvent = (
     eventToUpdate: ScheduleEvent,
     changes: Partial<ScheduleEvent>
@@ -224,6 +247,16 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
             <Button type="button" onClick={() => closeModal()} color="gray">
               {i18n.t("forms.buttons.cancel")}
             </Button>
+            {currentEvent?.id ? (
+              <Button
+                type="button"
+                onClick={() => destroyCurrentEvent()}
+                color="red"
+                className="!bg-red-700 text-gray-300"
+              >
+                {i18n.t("forms.buttons.delete")}
+              </Button>
+            ) : null}
           </div>
         </Modal.Footer>
       </Modal>

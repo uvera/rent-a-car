@@ -53,9 +53,11 @@ ru:
     schedules:
       car_name: Название автомобиля
       comment: комментарий
-      creation_error: Произошла ошибка при создании элементов
+      creation_error: При создании расписания произошла ошибка
+      destroy_error: Произошла ошибка при удалении расписания
       end_date: Дата окончания
       start_date: Дата начала
+      update_error: При обновлении расписания произошла ошибка
     transmission_types:
       automatic: автоматический
       manual: Руководство по эксплуатации
@@ -75,6 +77,7 @@ ru:
   forms:
     buttons:
       cancel: Отмена
+      delete: Удалить
       discard: Отказаться
       download: Скачать
       new: Создайте новый
