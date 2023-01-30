@@ -34,7 +34,7 @@ const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
           ></path>
         </svg>
       </button>
-      <Modal show={shown} onClose={hideModal} size={"7xl"} className={"!z-100"}>
+      <Modal show={shown} onClose={hideModal} size={"5xl"} className={"!z-100"}>
         <Modal.Header>
           <button
             type="button"
@@ -46,12 +46,8 @@ const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
           </button>
         </Modal.Header>
         <Modal.Body>
-          <div className="relative w-auto h-auto">
-            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <div className="p-6 space-y-6">
-                <img src={imgUrl} alt="car" className="w-full h-full" />
-              </div>
-            </div>
+          <div className="p-6">
+            <img src={imgUrl} alt="car" className="w-full h-auto" />
           </div>
         </Modal.Body>
       </Modal>
