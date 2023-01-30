@@ -11,8 +11,7 @@ module Admin
         schedule = new_schedule_from_params
 
         if schedule.save
-          render status: :created, json: { id: schedule.id,
-                                           update_path: admin_dashboard_schedule_path(id: schedule.id) }
+          render status: :created, json: { id: schedule.id }
         else
           render status: :unprocessable_entity,
                  json: { error: schedule.errors.first&.full_message || I18n.t('cars.schedules.creation_error') }

@@ -26,7 +26,6 @@ type CarSchedulerProps = {
 };
 
 type ScheduleEvent = {
-  updatePath?: string;
   start: Date;
   end: Date;
   allDay: boolean;
@@ -132,7 +131,7 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
   ) => {
     axios
       .put(
-        eventToUpdate.updatePath,
+        `/admin/dashboard/schedules/${eventToUpdate.id}`,
         {
           comment: changes.title,
           start_date: changes.start,
@@ -183,7 +182,6 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
           newEvents.push({
             ...currentEvent,
             id: data.id,
-            updatePath: data.update_path,
           });
           return newEvents;
         });
