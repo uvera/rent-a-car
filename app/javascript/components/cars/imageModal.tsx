@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import i18n from "../../util/i18n";
 import { Modal } from "flowbite-react";
@@ -11,7 +11,15 @@ type ImageModalProps = {
 const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
   const [shown, setShown] = useState(false);
 
-  const showModal = () => setShown(true);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const showModal = () => {
+    if (ref.current) {
+      const parent = ref.current.parentElement.parentElement.parentElement;
+      parent.classList.remove("md:h-auto");
+      parent.classList.remove("max-w-5xl");
+    }
+    setShown(true);
+  };
   const hideModal = () => setShown(false);
 
   return (
@@ -34,7 +42,13 @@ const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
           ></path>
         </svg>
       </button>
-      <Modal show={shown} onClose={hideModal} size={"5xl"} className={"!z-100"}>
+      <Modal
+        ref={ref}
+        show={shown}
+        onClose={hideModal}
+        size={"5xl"}
+        className={"!z-100 [&>*]!:md:h-full [&>*]!:max-w-full"}
+      >
         <Modal.Header>
           <button
             type="button"
@@ -46,7 +60,8 @@ const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
           </button>
         </Modal.Header>
         <Modal.Body>
-          <div className="h-[50vh] flex items-center justify-center">
+          <span className="hidden" ref={ref}></span>
+          <div className="h-full flex items-center justify-center">
             <img
               src={imgUrl}
               alt="car"
