@@ -46,8 +46,12 @@ const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
           </button>
         </Modal.Header>
         <Modal.Body>
-          <div className="p-6">
-            <img src={imgUrl} alt="car" className="w-full h-auto" />
+          <div className="h-[50vh] flex items-center justify-center">
+            <img
+              src={imgUrl}
+              alt="car"
+              className="w-full h-full object-contain"
+            />
           </div>
         </Modal.Body>
       </Modal>
