@@ -2,8 +2,8 @@
 <div class="md:container md:m-auto flex flex-row justify-center items-center p-4" data-controller="transition">
   <% entity_title @car.full_name %>
   <div class="p-4 md:border md:border-solid md:border-gray-300 md:rounded-lg w-full md:w-[48rem] flex flex-col justify-center items-center bg-white">
-    <div class="w-full">
-      <%= render partial: 'common/cars/car/carousel', locals: { car: car, image_size_h_class: 'h-[30rem]', image_size_w_class: 'w-full', show_modal: true } %>
+    <div class="w-full mb-2">
+      <%= render partial: 'common/cars/car/carousel', locals: { car: car, image_additional_class: "rounded-lg", image_size_h_class: 'h-[30rem]', image_size_w_class: 'w-full', show_modal: true } %>
     </div>
     <div class="p-6 w-full">
       <h5 class="text-gray-900 text-xl font-medium mb-2">
@@ -30,7 +30,8 @@
         </li>
         <li>
           <%= Car.human_attribute_name(:gas_consumption_range) %> :
-          <%= car.gas_consumption_range.begin %> - <%= car.gas_consumption_range.end %> <%= I18n.t('units.volumetric.litre.plural') %>
+          <%= car.gas_consumption_range.begin %>
+          - <%= car.gas_consumption_range.end %> <%= I18n.t('units.volumetric.litre.plural') %>
         </li>
 
         <% if car.description? %>

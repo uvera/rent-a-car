@@ -1,9 +1,10 @@
 <% image_size_h_class ||= 'h-[20rem]' %>
 <% image_size_w_class ||= 'w-[40rem]' %>
+<% image_additional_class ||= 'rounded-t-lg' %>
 <% show_modal ||= false %>
 <% if car.images.length > 1 %>
   <div id="indicators-carousel" class="relative" data-carousel="static">
-    <div class="relative overflow-hidden rounded-t-lg <%= image_size_h_class %>">
+    <div class="relative overflow-hidden <%= image_size_h_class %>">
       <% car.images.each_with_index do |image, index| %>
         <div class="hidden duration-700 ease-in-out" data-carousel-item="<%= index == 0 ? 'active' : '' %>">
           <% img_url = url_for(image) %>
@@ -12,7 +13,7 @@
           <% end %>
           <img
             src="<%= img_url %>"
-            class="absolute block object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 <%= image_size_h_class %> <%= image_size_w_class %>"
+            class="absolute block object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 <%= image_size_h_class %> <%= image_size_w_class %> <%= image_additional_class %>"
             alt="..."
             />
         </div>
@@ -35,14 +36,14 @@
   </div>
 <% else %>
   <% image = car.images.first %>
-  <div class="<%= image_size_h_class %> relative overflow-hidden rounded-t-lg">
+  <div class="<%= image_size_h_class %> relative">
     <% img_url = url_for(image) %>
     <% if show_modal %>
       <%= render partial: 'common/cars/car/image_modal', locals: { img_url:, download_img_url: rails_blob_path(image, disposition: 'attachment') } %>
     <% end %>
     <img
       src="<%= img_url %>"
-      class="absolute block object-cover <%= image_size_h_class %> <%= image_size_w_class %>"
+      class="absolute block object-cover <%= image_size_h_class %> <%= image_size_w_class %> <%= image_additional_class %>"
       alt="..."
       />
   </div>
