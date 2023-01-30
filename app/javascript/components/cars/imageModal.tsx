@@ -47,7 +47,7 @@ const ImageModal = ({ imgUrl, downloadUrl }: ImageModalProps) => {
         show={shown}
         onClose={hideModal}
         size={"5xl"}
-        className={"!z-100 [&>*]!:md:h-full [&>*]!:max-w-full"}
+        className={"!z-100"}
       >
         <Modal.Header>
           <button
