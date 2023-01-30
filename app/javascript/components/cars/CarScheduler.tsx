@@ -242,7 +242,7 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
             <Button type="button" onClick={() => closeModal()} color="gray">
               {i18n.t("forms.buttons.cancel")}
             </Button>
-            {currentEvent?.id ? (
+            {modalState === "edit" ? (
               <Button
                 type="button"
                 onClick={() => destroyCurrentEvent()}
