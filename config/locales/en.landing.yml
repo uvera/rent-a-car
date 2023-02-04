@@ -1,8 +1,27 @@
 ---
 en:
   landing:
+    car_inquires:
+      labels:
+        arrival_flight_at: Flight arrival at
+        arrival_flight_number: Flight arrival number
+        driver_license_number: Driver license number
+        id: Inquire ID
+        passport_number: Passport number
+        phone_number: Phone number
+        pickup_at: Car pickup at
+        return_at: Car return at
+        status: Status
+        telegram_phone_number: Telegram phone number
+        viber_phone_number: Viber phone number
+        whatsapp_phone_number: Whatsapp phone number
+      status:
+        approved: approved
+        pending: pending
+        refused: refused
     cars:
       detail_button: Details
+      inquire_button: Schedule rent
     home:
       show_more_cars: Show more cars
       youtube_link: YouTube video

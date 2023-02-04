@@ -28,6 +28,9 @@ import { Application } from "@hotwired/stimulus";
 import TransitionController from "../controllers/transitionController";
 
 const components = {
+  "Common.Forms.LocationInput": lazy(() =>
+    import("../components/common/forms/locationInput")
+  ),
   "Common.Forms.ErrorEraser": lazy(() =>
     import("../components/common/forms/errorEraser")
   ),

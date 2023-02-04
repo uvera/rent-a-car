@@ -19,6 +19,10 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     super(method, wrap_class(options).reverse_merge(max: 1_000_000))
   end
 
+  def datetime_field(method, options = {})
+    super(method, wrap_class(options))
+  end
+
   def select(method, choices = nil, options = {}, html_options = {}, &block)
     wrap_class(html_options)
     super
@@ -34,7 +38,7 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   def ransack_select(method, choices = [], options = {})
     name = options[:ransack] ? "#{options[:ransack]}[#{method}][]" : nil
 
-    options.reverse_merge!(ransack: :q, name: name)
+    options.reverse_merge!(ransack: :q, name:)
     react_select(method, choices, options)
   end
 
@@ -90,6 +94,16 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     props[:targetElementSelector] = options[:target]
     props[:errorNodeSelector] = options[:error_node]
     @template.react_component 'Common.Forms.ErrorEraser', props:
+  end
+
+  def location_field(name_lat, name_lng, options = {})
+    lat_value = @object.send(name_lat) || Configuration.value_for('map_latitude_default', nil).try(:to_f)
+    lng_value = @object.send(name_lng) || Configuration.value_for('map_longitude_default', nil).try(:to_f)
+    options.reverse_merge!(name: @object_name, name_lat:, name_lng:,
+                           access_token: Configuration.value_for('map_access_token', nil),
+                           lat_value:,
+                           lng_value:)
+    @template.react_component 'Common.Forms.LocationInput', props: options
   end
 
   private

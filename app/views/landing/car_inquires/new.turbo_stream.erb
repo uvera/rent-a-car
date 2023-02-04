@@ -1,0 +1,5 @@
+<%= turbo_stream.replace dom_id(@inquire), target: '_top' do %>
+  <%= render partial: 'form' %>
+<% end %>
+
+<%= turbo_stream.replace "flashes", partial: "/flash" %>

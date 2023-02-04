@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get '/check.txt', to: proc { [200, {}, ['simple_check']] }
 
   scope module: :landing do
-    resources :cars, only: %i[index show]
+    resources :cars, only: %i[index show] do
+      resources :car_inquires, controller: :car_inquires, only: %i[create new show], shallow: true
+    end
     resources :terms, only: %i[index]
     resources :contacts, only: %i[index]
   end

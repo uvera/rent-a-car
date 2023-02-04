@@ -1,0 +1,110 @@
+<% page_title I18n.t('navbar.links.car_inquires') %>
+<div class="md:container md:m-auto flex flex-col justify-center items-center p-4 bg-white rounded-lg shadow" data-controller="transition">
+  <ul class="w-full p-4">
+    <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.id') %>:
+      </span>
+      <span>
+      <%= @inquire.friendly_id %>
+      </span>
+    </li>
+    <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.arrival_flight_number') %>:
+      </span>
+      <span>
+      <%= @inquire.arrival_flight_number %>
+      </span>
+    </li>
+    <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.arrival_flight_at') %>:
+      </span>
+      <span>
+      <%= I18n.l(@inquire.arrival_flight_at) %>
+      </span>
+    </li>
+    <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.driver_license_number') %>:
+      </span>
+      <span>
+      <%= @inquire.driver_license_number %>
+      </span>
+    </li>
+    <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.passport_number') %>:
+      </span>
+      <span>
+      <%= @inquire.passport_number %>
+      </span>
+    </li>
+    <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.phone_number') %>:
+      </span>
+      <span>
+      <%= @inquire.phone_number %>
+      </span>
+    </li>
+    <% if @inquire.telegram_phone_number? %>
+      <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.telegram_phone_number') %>:
+      </span>
+        <span>
+      <%= @inquire.telegram_phone_number %>
+      </span>
+      </li>
+    <% end %>
+    <% if @inquire.viber_phone_number? %>
+      <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.viber_phone_number') %>:
+      </span>
+        <span>
+      <%= @inquire.viber_phone_number %>
+      </span>
+      </li>
+    <% end %>
+    <% if @inquire.whatsapp_phone_number? %>
+      <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.whatsapp_phone_number') %>:
+      </span>
+        <span>
+      <%= @inquire.whatsapp_phone_number %>
+      </span>
+      </li>
+    <% end %>
+    <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.pickup_at') %>:
+      </span>
+      <span>
+      <%= I18n.l(@inquire.pickup_at) %>
+      </span>
+    </li>
+    <li class="border-b border-gray-200 w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.return_at') %>:
+      </span>
+      <span>
+      <%= I18n.l(@inquire.return_at) %>
+      </span>
+    </li>
+    <li class="w-full p-1">
+      <span>
+        <%= I18n.t('landing.car_inquires.labels.status') %>:
+      </span>
+      <span>
+      <%= I18n.t(@inquire.status, scope: 'landing.car_inquires.status') %>
+      </span>
+    </li>
+    <li class="w-full p-1 mt-4">
+      <%= render_tiptap_configuration('car_inquire_contact') %>
+    </li>
+  </ul>
+</div>

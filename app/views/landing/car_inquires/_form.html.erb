@@ -1,0 +1,54 @@
+<%= form_with model: @inquire, id: dom_id(@inquire), url: car_car_inquires_path, multipart: true do |f| %>
+  <%= f.error_eraser %>
+  <div class="flex flex-col w-2/3 justify-center m-auto h-full gap-y-4">
+    <%= f.label :arrival_flight_at %>
+    <%= f.datetime_field :arrival_flight_at %>
+    <%= f.error_messages_for :arrival_flight_at %>
+
+    <%= f.label :arrival_flight_number %>
+    <%= f.text_field :arrival_flight_number %>
+    <%= f.error_messages_for :arrival_flight_number %>
+
+    <%= f.label :driver_license_number %>
+    <%= f.text_field :driver_license_number %>
+    <%= f.error_messages_for :driver_license_number %>
+
+    <%= f.label :passport_number %>
+    <%= f.text_field :passport_number %>
+    <%= f.error_messages_for :passport_number %>
+
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
+    <%= f.error_messages_for :phone_number %>
+
+    <%= f.label :telegram_phone_number %>
+    <%= f.text_field :telegram_phone_number %>
+    <%= f.error_messages_for :telegram_phone_number %>
+
+    <%= f.label :viber_phone_number %>
+    <%= f.text_field :viber_phone_number %>
+    <%= f.error_messages_for :viber_phone_number %>
+
+    <%= f.label :whatsapp_phone_number %>
+    <%= f.text_field :whatsapp_phone_number %>
+    <%= f.error_messages_for :whatsapp_phone_number %>
+
+    <%= f.label :pickup_at %>
+    <%= f.datetime_field :pickup_at %>
+    <%= f.error_messages_for :pickup_at %>
+
+    <%= f.label :pickup_location %>
+    <%= f.location_field :pickup_lat, :pickup_long %>
+
+    <%= f.label :return_at %>
+    <%= f.datetime_field :return_at %>
+    <%= f.error_messages_for :return_at %>
+
+    <%= f.label :return_location %>
+    <%= f.location_field :return_lat, :return_long %>
+
+    <%= form_buttons(back_link: car_path(id: @car.friendly_id)) %>
+
+    <%= signal_react_rerender %>
+  </div>
+<% end %>

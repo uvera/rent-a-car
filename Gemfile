@@ -87,3 +87,5 @@ gem "friendly_id", "~> 5.5"
 gem "discard", "~> 1.2"
 
 gem "rodauth-i18n", "~> 0.7.0"
+
+gem "phonelib", "~> 0.7.7"

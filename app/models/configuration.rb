@@ -7,12 +7,15 @@ class Configuration < ApplicationRecord
 
   AVAILABLE_CONFIGURATION_VIEWS = {
     'main_banner' => 'multi_locale_tiptap',
+    'car_inquire_contact' => 'multi_locale_tiptap',
     'site_name' => 'multi_locale_text',
     'terms_and_conditions' => 'multi_locale_tiptap',
     'contact_page' => 'multi_locale_tiptap'
   }.freeze
 
-  AVAILABLE_CONFIGURATIONS = %w[toast_timeout] + AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
+  AVAILABLE_CONFIGURATIONS = %w[toast_timeout map_access_token
+                                map_latitude_default map_longitude_default] +
+                             AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
 
   AVAILABLE_CONFIGURATIONS.each do |configuration|
     define_singleton_method("value_#{configuration}") do

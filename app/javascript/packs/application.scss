@@ -17,6 +17,8 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
+@import "mapbox-gl/dist/mapbox-gl";
 
 input {
   --tw-ring-shadow: 0 0 #000 !important;
@@ -46,4 +48,8 @@ input {
   100% {
     opacity: 0;
   }
+}
+
+.mapboxgl-ctrl-geocoder {
+  @apply flex flex-row
 }

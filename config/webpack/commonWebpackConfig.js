@@ -12,7 +12,6 @@ const commonOptions = {
     extensions: [".css", ".scss", ".ts", ".tsx", ".js", ".jsx"],
   },
 };
-
 // Copy the object using merge b/c the baseClientWebpackConfig and commonOptions are mutable globals
 const commonWebpackConfig = () =>
   merge({}, baseClientWebpackConfig, commonOptions);

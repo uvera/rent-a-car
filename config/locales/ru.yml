@@ -1,10 +1,5 @@
 ---
 ru:
-  full_calendar:
-    button_text:
-      today: сегодня
-      week: неделя
-      month: месяц
   actions:
     edit: Редактировать
   cars:
@@ -68,8 +63,12 @@ ru:
       manual: Руководство по эксплуатации
   configurations:
     car_brands: Марки автомобилей
+    car_inquire_contact: Автомобиль запросить контактный баннер
     contact_page: Контактная страница
     main_banner: Главни банер
+    map_access_token: Токен доступа к карте
+    map_latitude_default: Широта по умолчанию для карты
+    map_longitude_default: Долгота по умолчанию для карты
     site_name: Название веб-сайта
     terms_and_conditions: Условия
     toast_timeout: Тайм-аут тоста
@@ -100,6 +99,11 @@ ru:
         title: Сортировка
     filters:
       title: Фильтры
+  full_calendar:
+    button_text:
+      month: месяц
+      today: сегодня
+      week: неделя
   locales:
     button:
       title: Языки
@@ -111,8 +115,12 @@ ru:
     buttons:
       logout: Выйти
     links:
+      car_inquires: Автомобиль спрашивает
       cars: автомобильный
       configurations: конфигурация
       contacts: Свяжитесь с нами
       terms: Условия
   no_content: Без содержания
+  time:
+    formats:
+      default: "%d.%m.%Y %M:%H"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_27_230655) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_05_132932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
   enable_extension "pg_trgm"
@@ -75,6 +75,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_27_230655) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "car_inquires", force: :cascade do |t|
+    t.string "driver_license_number", null: false
+    t.string "phone_number", null: false
+    t.string "passport_number", null: false
+    t.string "telegram_phone_number"
+    t.string "viber_phone_number"
+    t.string "whatsapp_phone_number"
+    t.string "arrival_flight_number", null: false
+    t.datetime "arrival_flight_at", null: false
+    t.datetime "pickup_at", null: false
+    t.datetime "return_at", null: false
+    t.decimal "pickup_lat", precision: 16, scale: 10, null: false
+    t.decimal "pickup_long", precision: 16, scale: 10, null: false
+    t.decimal "return_lat", precision: 16, scale: 10, null: false
+    t.decimal "return_long", precision: 16, scale: 10, null: false
+    t.string "status", default: "pending", null: false
+    t.bigint "car_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["car_id"], name: "index_car_inquires_on_car_id"
+    t.index ["slug"], name: "index_car_inquires_on_slug", unique: true
+  end
+
   create_table "car_schedules", force: :cascade do |t|
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
@@ -133,5 +157,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_27_230655) do
   add_foreign_key "account_verification_keys", "accounts", column: "id"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "car_inquires", "cars"
   add_foreign_key "car_schedules", "cars"
 end

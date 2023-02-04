@@ -1,10 +1,5 @@
 ---
 en:
-  full_calendar:
-    button_text:
-      today: today
-      week: week
-      month: month
   actions:
     edit: Edit
   cars:
@@ -68,8 +63,12 @@ en:
       manual: Manual
   configurations:
     car_brands: Car brands
+    car_inquire_contact: Car inquire contact banner
     contact_page: Contact page
     main_banner: Main banner
+    map_access_token: Map access token
+    map_latitude_default: Default latitude for map
+    map_longitude_default: Default longitude for map
     site_name: Website name
     terms_and_conditions: Terms
     toast_timeout: Toast timeout
@@ -100,6 +99,11 @@ en:
         title: Sorting
     filters:
       title: Filters
+  full_calendar:
+    button_text:
+      month: month
+      today: today
+      week: week
   locales:
     button:
       title: Languages
@@ -111,8 +115,12 @@ en:
     buttons:
       logout: Logout
     links:
+      car_inquires: Car inquires
       cars: Cars
       configurations: Configurations
       contacts: Contact us
       terms: Terms
   no_content: No content
+  time:
+    formats:
+      default: "%d.%m.%Y %M:%H"

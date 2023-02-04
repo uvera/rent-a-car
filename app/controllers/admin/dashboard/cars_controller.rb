@@ -1,6 +1,8 @@
 module Admin
   module Dashboard
     class CarsController < DashboardController
+      include FormResponses
+
       def index
         @scope = Car.friendly.with_discarded.order(:name)
         @scope = @scope.ransack(search_params[:q])
@@ -74,19 +76,6 @@ module Admin
 
       def redirect_success
         redirect_to admin_dashboard_cars_path(format: :html), notice: I18n.t('flash.update.success')
-      end
-
-      def form_respond_fail(template)
-        respond_to do |format|
-          format.html do
-            flash[:error] = I18n.t('flash.update.error')
-            render template
-          end
-          format.turbo_stream do
-            flash.now[:error] = I18n.t('flash.update.error')
-            render template
-          end
-        end
       end
 
       def create_new_car
