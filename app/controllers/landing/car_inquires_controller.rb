@@ -7,7 +7,7 @@ module Landing
       @car = Car.friendly.find(params[:car_id])
       @inquire.car = @car
       if @inquire.save
-        NotifyInquireCreatedService.new(@inquire)
+        NotifyInquireCreatedService.new(@inquire).perform
         redirect_success
       else
         form_respond_fail('new')
