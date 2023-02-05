@@ -28,4 +28,4 @@ COPY . .
 RUN bundle exec i18n export
 
 ENTRYPOINT ["bash"]
-CMD ["bundle", "exec", "good_job", "start"]
+CMD ["bin/bundle", "exec", "good_job", "start"]
