@@ -27,5 +27,5 @@ COPY . .
 
 RUN bundle exec i18n export
 
-ENTRYPOINT ["bash"]
+ENTRYPOINT ["ruby"]
 CMD ["bin/bundle", "exec", "good_job", "start"]
