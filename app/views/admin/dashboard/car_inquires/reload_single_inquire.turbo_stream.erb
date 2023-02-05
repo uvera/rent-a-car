@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "inquires_inquire_card-#{@inquire.id}" do %>
+  <%= render partial: 'inquire_view', locals: { inquire: @inquire } %>
+<% end %>

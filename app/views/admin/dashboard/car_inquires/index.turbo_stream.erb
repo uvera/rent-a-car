@@ -1,0 +1,12 @@
+<%= turbo_stream.append "car_inquires" do %>
+  <% if @inquires.any? %>
+    <%= render partial: 'inquire_view', collection: @inquires, as: :inquire %>
+  <% else %>
+    <span><%= I18n.t('no_content') %></span>
+  <% end %>
+  <% if @pagy.next.present? %>
+    <%= turbo_stream.replace "inquire_pagination" do %>
+      <%= turbo_frame_tag "inquire_pagination", src: admin_dashboard_car_inquires_path(page: @pagy.next, format: :turbo_stream), loading: :lazy %>
+    <% end %>
+  <% end %>
+<% end %>

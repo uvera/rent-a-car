@@ -100,6 +100,10 @@ ru:
         title: Сортировка
     filters:
       title: Фильтры
+    inquires:
+      buttons:
+        approve: Утвердить
+        refuse: Мусор
   full_calendar:
     button_text:
       month: месяц

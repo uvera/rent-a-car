@@ -3,7 +3,7 @@ class CarInquire < ApplicationRecord
 
   friendly_id :urlsafe_base64, use: :slugged
 
-  enum :status, pending: "pending", approved: "approved", rejected: "rejected"
+  enum :status, pending: "pending", approved: "approved", refused: "refused"
 
   belongs_to :car
 

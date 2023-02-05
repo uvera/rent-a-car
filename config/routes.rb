@@ -26,6 +26,10 @@ Rails.application.routes.draw do
       end
 
       namespace :dashboard do
+        resources :car_inquires, only: %i[index] do
+          post :refuse, on: :member
+          post :approve, on: :member
+        end
         resources :cars do
           post :undiscard, on: :member
           post :index

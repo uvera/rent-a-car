@@ -1,0 +1,10 @@
+<% page_title I18n.t('navbar.links.car_inquires') %>
+<div class="flex flex-col">
+  <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 mx-5">
+  <div id="car_inquires" class="flex flex-wrap justify-center gap-5 p-4 scroll-smooth">
+  </div>
+</div>
+
+<div class="bottom-1 relative">
+  <%= turbo_frame_tag "inquire_pagination", src: admin_dashboard_car_inquires_path(format: :turbo_stream), loading: :lazy %>
+</div>
