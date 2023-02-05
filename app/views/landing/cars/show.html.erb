@@ -34,7 +34,7 @@
           - <%= car.gas_consumption_range.end %> <%= I18n.t('units.volumetric.litre.plural') %>
         </li>
 
-        <% if car.description? %>
+        <% if car.description.present? %>
           <li>
             <span><%= Car.human_attribute_name(:description) %>:</span>
             <div class="prose prose-sm mt-2 break-words">
