@@ -89,3 +89,7 @@ gem "discard", "~> 1.2"
 gem "rodauth-i18n", "~> 0.7.0"
 
 gem "phonelib", "~> 0.7.7"
+
+gem "telegram-bot-ruby", "~> 0.23.0"
+
+gem "good_job", "~> 3.10"

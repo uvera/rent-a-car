@@ -70,6 +70,7 @@ ru:
     map_latitude_default: Широта по умолчанию для карты
     map_longitude_default: Долгота по умолчанию для карты
     site_name: Название веб-сайта
+    telegram_bot_owner_chat_id: Идентификация владельца услуги (telegram ID)
     terms_and_conditions: Условия
     toast_timeout: Тайм-аут тоста
   flash:

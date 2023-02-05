@@ -1,6 +1,24 @@
 ---
 ru:
   landing:
+    car_inquires:
+      labels:
+        arrival_flight_at: Прибытие рейса в
+        arrival_flight_number: Номер прибытия рейса
+        driver_license_number: Номер водительского удостоверения
+        id: Узнать ID
+        passport_number: Номер паспорта
+        phone_number: Номер телефона
+        pickup_at: Получение автомобиля в
+        return_at: Возврат автомобиля в
+        status: статус
+        telegram_phone_number: Телеграм номер телефона
+        viber_phone_number: Вайбер номер телефона
+        whatsapp_phone_number: ватсап номер телефона
+      status:
+        approved: одобренный
+        pending: в ожидании
+        refused: отказавшийся
     cars:
       detail_button: Подробности
       inquire_button: Аренда

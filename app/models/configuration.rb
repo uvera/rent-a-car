@@ -14,6 +14,7 @@ class Configuration < ApplicationRecord
   }.freeze
 
   AVAILABLE_CONFIGURATIONS = %w[toast_timeout map_access_token
+                                telegram_bot_owner_chat_id
                                 map_latitude_default map_longitude_default] +
                              AVAILABLE_CONFIGURATION_VIEWS.keys.freeze
 
