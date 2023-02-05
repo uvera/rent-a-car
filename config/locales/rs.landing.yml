@@ -1,6 +1,24 @@
 ---
 rs:
   landing:
+    car_inquires:
+      labels:
+        arrival_flight_at: Vreme dolaznog leta
+        arrival_flight_number: Broj dolaznog leta
+        driver_license_number: Broj vozačke dozvole
+        id: Identifikator upita
+        passport_number: Broj pasoša
+        phone_number: Broj telefona
+        pickup_at: Vreme preuzimanja automobila
+        return_at: Vreme vraćanja automobila
+        status: Status
+        telegram_phone_number: Telegram broj telefona
+        viber_phone_number: Viber broj telefona
+        whatsapp_phone_number: Whatsapp broj telefona
+      status:
+        approved: odobreno
+        pending: na čekanju
+        refused: odbijeno
     cars:
       detail_button: Detalji
       inquire_button: Zakazivanje
