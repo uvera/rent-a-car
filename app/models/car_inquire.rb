@@ -28,6 +28,10 @@ class CarInquire < ApplicationRecord
     slug.blank?
   end
 
+  def friendly_id_sanitized
+    friendly_id.gsub('_', '\\_')
+  end
+
   private
 
   def urlsafe_base64

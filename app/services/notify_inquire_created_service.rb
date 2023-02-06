@@ -20,7 +20,7 @@ class NotifyInquireCreatedService
     chat_id = owner_chat_id
     message = <<~STRING
       *Inquire*:\n
-      *#{I18n.t('id', scope:, locale:)}*: #{inquire.friendly_id}\n
+      *#{I18n.t('id', scope:, locale:)}*: #{inquire.friendly_id_sanitized}\n
       *#{I18n.t('arrival_flight_at', scope:, locale:)}*: #{I18n.l(inquire.arrival_flight_at)}
       *#{I18n.t('arrival_flight_number', scope:, locale:)}*: #{inquire.arrival_flight_number}
       *#{I18n.t('driver_license_number', scope:, locale:)}*: #{inquire.driver_license_number}
