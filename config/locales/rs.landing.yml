@@ -22,6 +22,7 @@ rs:
     cars:
       detail_button: Detalji
       inquire_button: Zakazivanje
+      load_more_button: Učitaj još
     home:
       show_more_cars: Prikaži još automobila
       youtube_link: YouTube video

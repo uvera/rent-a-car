@@ -22,6 +22,7 @@ en:
     cars:
       detail_button: Details
       inquire_button: Schedule rent
+      load_more_button: Load more
     home:
       show_more_cars: Show more cars
       youtube_link: YouTube video

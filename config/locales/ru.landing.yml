@@ -22,6 +22,7 @@ ru:
     cars:
       detail_button: Подробности
       inquire_button: Аренда
+      load_more_button: Загрузи больше
     home:
       show_more_cars: Показать больше автомобилей
       youtube_link: YouTube видео
