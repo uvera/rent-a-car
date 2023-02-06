@@ -26,6 +26,7 @@ import { ImagesInput } from "../components/common/forms/imagesInput";
 import * as Flowbite from "flowbite";
 import { Application } from "@hotwired/stimulus";
 import TransitionController from "../controllers/transitionController";
+import AutoclickController from "../controllers/autoclickController";
 
 const components = {
   "Common.Forms.LocationInput": lazy(() =>
@@ -67,6 +68,7 @@ application.debug = false;
 window.Stimulus = application;
 
 application.register("transition", TransitionController);
+application.register("autoclick", AutoclickController);
 
 const flowbiteReinit = () => {
   Flowbite.initDropdowns();
@@ -103,6 +105,10 @@ const debouncedHandlerForNodes = debounce(() => {
 }, 100);
 
 document.addEventListener("turbo:load", flowbiteReinit);
+
+document.addEventListener("turbo:frame-render", () => {
+  flowbiteReinit();
+});
 document.addEventListener("turbo:before-stream-render", function (event) {
   let oldElement = document.getElementById(event.target.target);
   oldElement.classList.add("animate-fade-out-opacity-350");

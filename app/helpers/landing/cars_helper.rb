@@ -8,7 +8,7 @@ module Landing
         ]
       )
 
-      cars_path(**options, **additional_params, format: :turbo_stream)
+      cars_path(**options, **additional_params)
     end
   end
 end
