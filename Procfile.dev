@@ -3,3 +3,4 @@
 rails: bundle exec rails s -p 3000 -b 0.0.0.0
 wp-client: HMR=true bin/webpacker-dev-server
 wp-server: HMR=true SERVER_BUNDLE_ONLY=yes bin/webpacker --watch
+good_job: bundle exec good_job start

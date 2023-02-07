@@ -7,3 +7,4 @@ web: rails s -p 3000
 # Note, if using React on Rails localization you will need to run
 # `bundle exec rake react_on_rails:locale` before you run bin/webpacker
 webpack: sh -c 'rm -rf public/packs/* || true && bin/webpacker -w'
+good_job: bundle exec good_job start
