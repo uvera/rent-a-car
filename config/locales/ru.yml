@@ -128,4 +128,4 @@ ru:
   no_content: Без содержания
   time:
     formats:
-      default: "%d.%m.%Y %M:%H"
+      default: "%d.%m.%Y %H:%M"

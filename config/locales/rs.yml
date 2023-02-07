@@ -128,4 +128,4 @@ rs:
   no_content: Nema sadržaja
   time:
     formats:
-      default: "%d.%m.%Y %M:%H"
+      default: "%d.%m.%Y %H:%M"
