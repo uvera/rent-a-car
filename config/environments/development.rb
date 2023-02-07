@@ -8,6 +8,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   config.good_job.execution_mode = :external
+  config.good_job.retry_on_unhandled_error = false
 
   # Do not eager load code on boot.
   config.eager_load = false
