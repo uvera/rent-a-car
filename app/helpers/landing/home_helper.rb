@@ -13,8 +13,8 @@ module Landing
           match = Regexp.last_match
           index = match[2].to_i
           leftover_match = match[3] || ''
-          size = (leftover_match.match(/size=(.*):/).try(:[], 1) || '').sub(/:size=/, '')
-          classes = (leftover_match.match(/class=(.*):/).try(:[], 1) || '').sub(/:class=/, '')
+          size = (leftover_match.match(/size=(.*):/).try(:[], 1) || '').sub(/:size=/, '').sub(/:.*/, '')
+          classes = (leftover_match.match(/class=(.*):/).try(:[], 1) || '').sub(/:class=/, '').sub(/:.*/, '')
           image = configuration.image_files[index]
           image_tag(url_for(image), size:, class: "h-auto max-w-full #{classes}".strip).html_safe if image
         end.html_safe
