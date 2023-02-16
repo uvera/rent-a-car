@@ -6,7 +6,9 @@
       </svg>
     </div>
     <%= form.text_field :full_search, value: params.dig(:q, :full_search), type: 'search', class: "block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent" %>
-    <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-accent-500 hover:bg-accent-600 focus:ring-4 focus:outline-none focus:ring-accent-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-accent-600 dark:hover:bg-accent-700 dark:focus:ring-accent-800">Search</button>
+    <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-accent-500 hover:bg-accent-600 focus:ring-4 focus:outline-none focus:ring-accent-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-accent-600 dark:hover:bg-accent-700 dark:focus:ring-accent-800">
+      <%= I18n.t('forms.buttons.search') %>
+    </button>
   </div>
   <div id="filters-collapse" data-accordion="filters-collapse">
     <h2 id="filters-collapse-heading" class="md:hidden">

@@ -15,6 +15,21 @@ rs:
         release_date: Godina proizvodnje
         transmission: Prenos
         youtube_link: Youtube link
+      car_inquire:
+        arrival_flight_at: Vreme dolaska leta
+        arrival_flight_number: Broj dolaznog leta
+        driver_license_number: Broj vozačke dozvole
+        id: Identifikator upita
+        passport_number: Broj pasoša
+        phone_number: Broj telefona
+        pickup_at: Datum i vreme preuzimanja automobila
+        pickup_location: Lokacija preuzimanja automobila
+        return_at: Datum i vreme povratka automobila
+        return_location: Lokacija povratka automobila
+        status: Status upita
+        telegram_phone_number: Broj telefona na Telegram-u
+        viber_phone_number: Broj telefona na Viber-u
+        whatsapp_phone_number: Broj telefona na WhatsApp-u
     errors:
       messages:
         greater_than: mora biti veći

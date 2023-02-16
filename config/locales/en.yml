@@ -88,6 +88,7 @@ en:
       new: Create new
       restore: Restore
       save: Save
+      search: Search
     cars:
       sorting:
         asc: ascending

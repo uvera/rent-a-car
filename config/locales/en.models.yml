@@ -15,6 +15,21 @@ en:
         release_date: Release date
         transmission: Transmission
         youtube_link: Youtube link
+      car_inquire:
+        arrival_flight_at: Flight arrival at
+        arrival_flight_number: Flight arrival number
+        driver_license_number: Driver license number
+        id: Inquire ID
+        passport_number: Passport number
+        phone_number: Phone number
+        pickup_at: Pickup car at
+        pickup_location: Pickup location
+        return_at: Return car at
+        return_location: Return location
+        status: Status
+        telegram_phone_number: Telegram phone number
+        viber_phone_number: Viber phone number
+        whatsapp_phone_number: Whatsapp phone number
     errors:
       models:
         car:
