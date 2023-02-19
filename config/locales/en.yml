@@ -69,6 +69,7 @@ en:
     map_access_token: Map access token
     map_latitude_default: Default latitude for map
     map_longitude_default: Default longitude for map
+    site_logo: Website logo
     site_name: Website name
     telegram_bot_owner_chat_id: Identification for service owner (telegram ID)
     terms_and_conditions: Terms

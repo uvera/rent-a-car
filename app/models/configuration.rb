@@ -9,6 +9,7 @@ class Configuration < ApplicationRecord
     'main_banner' => 'multi_locale_tiptap',
     'car_inquire_contact' => 'multi_locale_tiptap',
     'site_name' => 'multi_locale_text',
+    'site_logo' => 'default_form',
     'terms_and_conditions' => 'multi_locale_tiptap',
     'contact_page' => 'multi_locale_tiptap'
   }.freeze

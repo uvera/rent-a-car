@@ -69,6 +69,7 @@ rs:
     map_access_token: Pristupni token za mape
     map_latitude_default: Fabrička vrednost za latitudu na mapi
     map_longitude_default: Fabrička vrednost za longitudu na mapi
+    site_logo: Logo web-sajta
     site_name: Naziv web-sajta
     telegram_bot_owner_chat_id: Identifikator vlasnika servisa (telegram ID)
     terms_and_conditions: Uslovi

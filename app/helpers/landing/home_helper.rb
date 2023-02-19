@@ -2,6 +2,13 @@ module Landing
   module HomeHelper
     ATTACHMENT_REGEX = /{{(image:)(\d+)(:.*)?}}/
 
+    def render_raw_html_configuration(key)
+      configuration = ::Configuration.find_by(key:)
+      return nil unless configuration
+
+      configuration.value.html_safe
+    end
+
     # @param [String] key
     def render_tiptap_configuration(key)
       configuration = ::Configuration.find_by(key:)
