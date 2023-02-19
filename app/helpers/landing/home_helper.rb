@@ -10,6 +10,16 @@ module Landing
     end
 
     # @param [String] key
+    def render_multi_locale_configuration(key, default = '')
+      configuration = ::Configuration.find_by(key:)
+      return nil unless configuration
+
+      value = (configuration.value || {})[I18n.locale] || configuration.value[:en] || default
+
+      value.html_safe
+    end
+
+    # @param [String] key
     def render_tiptap_configuration(key)
       configuration = ::Configuration.find_by(key:)
       return nil unless configuration
