@@ -115,6 +115,12 @@ document.addEventListener("turbo:before-stream-render", function (event) {
   debouncedHandlerForNodes();
 });
 
+document.addEventListener("turbo:before-render", (event) => {
+  event?.detail?.newBody
+    ?.querySelector("main")
+    ?.classList?.add("animate-fade-in-opacity-350");
+});
+
 // document.addEventListener("turbo:visit", () => {
 //   let main = document.querySelector("main");
 //   if (main.dataset.turboTransition == "false") return;
