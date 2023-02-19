@@ -70,7 +70,7 @@ window.Stimulus = application;
 application.register("transition", TransitionController);
 application.register("autoclick", AutoclickController);
 
-const flowbiteReinit = () => {
+const flowbiteReinit = debounce(() => {
   Flowbite.initDropdowns();
   Flowbite.initCarousels();
   Flowbite.initModals();
@@ -82,7 +82,7 @@ const flowbiteReinit = () => {
   Flowbite.initDials();
   Flowbite.initDismisses();
   Flowbite.initCollapses();
-};
+}, 100);
 
 const debouncedHandlerForNodes = debounce(() => {
   const reactRerenderNodes = document.querySelectorAll(
