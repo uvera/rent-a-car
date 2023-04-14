@@ -5,12 +5,12 @@
 <% if car.images.length > 1 %>
   <div id="indicators-carousel" class="relative" data-carousel="static">
     <div class="relative overflow-hidden <%= image_size_h_class %>">
+      <% if show_modal %>
+        <%= render partial: 'common/cars/car/image_modal', locals: { images: car.images.map {|image| [url_for(image), image.metadata] } } %>
+      <% end %>
       <% car.images.each_with_index do |image, index| %>
         <div class="hidden duration-700 ease-in-out" data-carousel-item="<%= index == 0 ? 'active' : '' %>">
           <% img_url = url_for(image) %>
-          <% if show_modal %>
-            <%= render partial: 'common/cars/car/image_modal', locals: { img_url:, download_img_url: rails_blob_path(image, disposition: 'attachment') } %>
-          <% end %>
           <img
             src="<%= img_url %>"
             class="absolute block object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 <%= image_size_h_class %> <%= image_size_w_class %> <%= image_additional_class %>"
@@ -39,7 +39,7 @@
   <div class="<%= image_size_h_class %> relative">
     <% img_url = url_for(image) %>
     <% if show_modal %>
-      <%= render partial: 'common/cars/car/image_modal', locals: { img_url:, download_img_url: rails_blob_path(image, disposition: 'attachment') } %>
+      <%= render partial: 'common/cars/car/image_modal', locals: { images: [[img_url, image.metadata]] } %>
     <% end %>
     <img
       src="<%= img_url %>"
