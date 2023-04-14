@@ -48,6 +48,14 @@ class Car < ApplicationRecord
     [:full_search]
   end
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[brand engine_type body_configuration transmission]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    []
+  end
+
   def full_name
     "#{I18n.t("cars.brands.#{brand}")} #{name}"
   end
