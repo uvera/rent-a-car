@@ -2,49 +2,51 @@
 <% image_size_w_class ||= 'w-[40rem]' %>
 <% image_additional_class ||= 'rounded-t-lg' %>
 <% show_modal ||= false %>
-<% if car.images.length > 1 %>
-  <div id="indicators-carousel" class="relative" data-carousel="static">
-    <div class="relative overflow-hidden <%= image_size_h_class %>">
-      <% if show_modal %>
-        <%= render partial: 'common/cars/car/image_modal', locals: { images: car.images.map {|image| {url: url_for(image), metadata: image.metadata} } } %>
-      <% end %>
-      <% car.images.each_with_index do |image, index| %>
-        <div class="hidden duration-700 ease-in-out" data-carousel-item="<%= index == 0 ? 'active' : '' %>">
-          <% img_url = url_for(image) %>
-          <img
-            src="<%= img_url %>"
-            class="absolute block object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 <%= image_size_h_class %> <%= image_size_w_class %> <%= image_additional_class %>"
-            alt="..."
-            />
-        </div>
-      <% end %>
-    </div>
-    <% if car.images.length > 1 %>
-      <button type="button" class="absolute top-0 left-0 z-20 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+
+<% if show_modal %>
+  <%= render partial: 'common/cars/car/image_modal', locals: { image_classes: {image_size_h_class:, image_size_w_class:, image_additional_class:},
+                                                               images: car.images.map { |image| { url: url_for(image), metadata: image.metadata } }
+  } %>
+<% else %>
+  <% if car.images.length > 1 %>
+    <div id="indicators-carousel" class="relative" data-carousel="static">
+      <div class="relative overflow-hidden <%= image_size_h_class %>">
+        <% car.images.each_with_index do |image, index| %>
+          <div class="hidden duration-700 ease-in-out" data-carousel-item="<%= index == 0 ? 'active' : '' %>">
+            <% img_url = url_for(image) %>
+            <img
+              src="<%= img_url %>"
+              class="absolute block object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 <%= image_size_h_class %> <%= image_size_w_class %> <%= image_additional_class %>"
+              alt="..."
+              />
+          </div>
+        <% end %>
+
+      </div>
+      <% if car.images.length > 1 %>
+        <button type="button" class="absolute top-0 left-0 z-20 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
         <span class="bg-opacity-25 opacity-75 inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-300 dark:bg-gray-800/30 group-hover:bg-gray-500 dark:group-hover:bg-gray-800/60 group-focus:outline-none">
             <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
             <span class="sr-only">Previous</span>
         </span>
-      </button>
-      <button type="button" class="absolute top-0 right-0 z-20 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        </button>
+        <button type="button" class="absolute top-0 right-0 z-20 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
         <span class="bg-opacity-25 opacity-75 inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-300 dark:bg-gray-800/30 group-hover:bg-gray-500 dark:group-hover:bg-gray-800/60 group-focus:outline-none">
             <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             <span class="sr-only">Next</span>
         </span>
-      </button>
-    <% end %>
-  </div>
-<% else %>
-  <% image = car.images.first %>
-  <div class="<%= image_size_h_class %> relative">
-    <% img_url = url_for(image) %>
-    <% if show_modal %>
-      <%= render partial: 'common/cars/car/image_modal', locals: { images: [{url: img_url, metadata: image.metadata}] } %>
-    <% end %>
-    <img
-      src="<%= img_url %>"
-      class="absolute block object-cover <%= image_size_h_class %> <%= image_size_w_class %> <%= image_additional_class %>"
-      alt="..."
-      />
-  </div>
+        </button>
+      <% end %>
+    </div>
+  <% else %>
+    <% image = car.images.first %>
+    <div class="<%= image_size_h_class %> relative">
+      <% img_url = url_for(image) %>
+      <img
+        src="<%= img_url %>"
+        class="absolute block object-cover <%= image_size_h_class %> <%= image_size_w_class %> <%= image_additional_class %>"
+        alt="..."
+        />
+    </div>
+  <% end %>
 <% end %>

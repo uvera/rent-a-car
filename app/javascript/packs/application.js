@@ -35,7 +35,7 @@ const components = {
   "Common.Forms.ErrorEraser": lazy(() =>
     import("../components/common/forms/errorEraser")
   ),
-  "Cars.ImageModal": lazy(() => import("../components/cars/imageModal")),
+  "Cars.ImageGallery": lazy(() => import("../components/cars/ImageGallery")),
   "Cars.CarScheduler": lazy(() => import("../components/cars/CarScheduler")),
   TagInput,
   "Common.Flashes.FlashMessages": lazy(() =>

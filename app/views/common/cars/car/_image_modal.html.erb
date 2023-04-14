@@ -1,1 +1,2 @@
-<%= react_component 'Cars.ImageModal', props: { images: images }, html_options: {class: 'contents'} %>
+<% image_classes ||= {} %>
+<%= react_component 'Cars.ImageGallery', props: { images: images, imageClasses: image_classes || [] }, html_options: {class: 'contents'} %>
