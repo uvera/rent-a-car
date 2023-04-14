@@ -6,7 +6,7 @@
   <div id="indicators-carousel" class="relative" data-carousel="static">
     <div class="relative overflow-hidden <%= image_size_h_class %>">
       <% if show_modal %>
-        <%= render partial: 'common/cars/car/image_modal', locals: { images: car.images.map {|image| [url_for(image), image.metadata] } } %>
+        <%= render partial: 'common/cars/car/image_modal', locals: { images: car.images.map {|image| {url: url_for(image), metadata: image.metadata} } } %>
       <% end %>
       <% car.images.each_with_index do |image, index| %>
         <div class="hidden duration-700 ease-in-out" data-carousel-item="<%= index == 0 ? 'active' : '' %>">
@@ -39,7 +39,7 @@
   <div class="<%= image_size_h_class %> relative">
     <% img_url = url_for(image) %>
     <% if show_modal %>
-      <%= render partial: 'common/cars/car/image_modal', locals: { images: [[img_url, image.metadata]] } %>
+      <%= render partial: 'common/cars/car/image_modal', locals: { images: [{url: img_url, metadata: image.metadata}] } %>
     <% end %>
     <img
       src="<%= img_url %>"

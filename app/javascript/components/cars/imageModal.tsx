@@ -3,17 +3,17 @@ import React from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
 type ImageModalProps = {
-  images: Array<[string, { width: number; height: number }]>;
+  images: Array<{ url: string; metadata: { width: number; height: number } }>;
 };
 
 const ImageModal = ({ images }: ImageModalProps) => {
   return (
     <Gallery withDownloadButton>
-      {images.map(([imgUrl, { width, height }], index) => (
+      {images.map(({ url, metadata: { width, height } }, index) => (
         <Item
           id={`image-${index}`}
           key={index}
-          original={imgUrl}
+          original={url}
           width={width}
           height={height}
         >
