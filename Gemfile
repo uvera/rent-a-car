@@ -10,10 +10,10 @@ gem "rails", "~> 7.0.4.1"
 gem "sprockets-rails"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.0"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
+gem "redis", "~> 5.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -59,7 +59,7 @@ group :test do
   gem "webdrivers"
 end
 
-gem "shakapacker", "= 6.5"
+gem "shakapacker", "~> 6.5"
 
 gem "rodauth-rails", "~> 1.7"
 
@@ -69,7 +69,7 @@ gem "pry", "~> 0.14.2"
 
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
-gem "react_on_rails", "= 13.2"
+gem "react_on_rails", "~> 13.2"
 gem "aws-sdk-s3"
 gem "ruby-vips"
 gem "pg_search"
@@ -88,8 +88,8 @@ gem "discard", "~> 1.2"
 
 gem "rodauth-i18n", "~> 0.7.0"
 
-gem "phonelib", "~> 0.7.7"
+gem "phonelib", "~> 0.8.1"
 
-gem "telegram-bot-ruby", "~> 0.23.0"
+gem "telegram-bot-ruby", "~> 1.0"
 
 gem "good_job", "~> 3.10"
