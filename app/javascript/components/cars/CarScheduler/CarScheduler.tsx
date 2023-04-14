@@ -3,8 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
-import { Button, Modal } from "flowbite-react";
-import i18n from "../../util/i18n";
+import i18n from "../../../util/i18n";
 import { default as addToDate } from "date-fns/add";
 import {
   DateSelectArg,
@@ -13,9 +12,10 @@ import {
 } from "@fullcalendar/core";
 import { endOfDay, format, parseISO, startOfDay } from "date-fns";
 import axios from "axios";
-import { useCsrf } from "../../util/useCsrf";
-import { useMitt } from "../../util/useMitt";
-import { FlashMitEvent } from "../common/flashes/flashMessages";
+import { useCsrf } from "../../../util/useCsrf";
+import { useMitt } from "../../../util/useMitt";
+import { FlashMitEvent } from "../../common/flashes/flashMessages";
+import EventFormModal from "./EventFormModal";
 
 type CarSchedulerProps = {
   carEvents: Array<
@@ -25,7 +25,7 @@ type CarSchedulerProps = {
   carName: string;
 };
 
-type ScheduleEvent = {
+export type ScheduleEvent = {
   start: Date;
   end: Date;
   allDay: boolean;
@@ -44,35 +44,75 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
       end: parseISO(event.end),
     }));
   });
-  const [currentEvent, setCurrentEvent] = useState<ScheduleEvent>(null);
+  const [currentEvent, setCurrentEvent] = useState<ScheduleEvent>({
+    start: new Date(),
+    end: new Date(),
+    title: "",
+    allDay: false,
+  });
+
+  const appendNewEventToState = (event: ScheduleEvent, id: string) => {
+    setEvents((previousEvents) => {
+      const newEvents = structuredClone(previousEvents);
+      newEvents.push({
+        ...event,
+        id: id,
+      });
+      return newEvents;
+    });
+  };
+
+  const updateEventInState = (data: {
+    start_date: string;
+    end_date: string;
+    comment: string;
+    id: string;
+  }) => {
+    setEvents((previous) => {
+      const newEvents = structuredClone(previous);
+      const eventToUpdate = newEvents.find(
+        (el) => el.id.toString() === data.id.toString()
+      );
+      eventToUpdate.start = parseISO(data.start_date);
+      eventToUpdate.end = parseISO(data.end_date);
+      eventToUpdate.title = data.comment;
+      return newEvents;
+    });
+  };
+
+  const removeEventFromState = (id: string) => {
+    setEvents((previous) => {
+      const newEvents = structuredClone(previous);
+      const idx = newEvents.findIndex(
+        (event) => id.toString() === event.id.toString()
+      );
+      newEvents.splice(idx, 1);
+      return newEvents;
+    });
+  };
 
   const [modalState, setModalState] = useState<"closed" | "new" | "edit">(
     "closed"
   );
   const closeModal = () => setModalState("closed");
 
-  const modalSaveAction = () => {
-    if (modalState === "new") {
-      submitNewEvent();
-    } else if (modalState === "edit") {
-      updateEvent(currentEvent, currentEvent);
+  const submitEvent = async (value: ScheduleEvent) => {
+    switch (modalState) {
+      case "edit":
+        return await updateEvent(value, value);
+      case "new":
+        return await createNewEvent(value);
+      default:
+        return;
     }
   };
 
-  const updateTitle = (title: string) => {
-    setCurrentEvent((previous) => {
-      const newEvent = structuredClone(previous);
-      newEvent.title = title;
-      return newEvent;
-    });
-  };
-
-  const eventResizeHandler = (e: EventChangeArg) => {
+  const eventResizeHandler = async (e: EventChangeArg) => {
     const eventToUpdate = events.find(
       (el) => el.id.toString() === e.event.id.toString()
     );
     const end = e.event.end ?? addToDate(e.event.start, { minutes: 30 });
-    updateEvent(eventToUpdate, { start: e.event.start, end });
+    await updateEvent(eventToUpdate, { start: e.event.start, end });
   };
 
   const eventClickHandler = (e: EventClickArg) => {
@@ -102,21 +142,15 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
     setModalState("new");
   };
 
-  const destroyCurrentEvent = async () => {
+  const destroyEvent = async (value: ScheduleEvent) => {
     try {
-      await axios.delete(`/admin/dashboard/schedules/${currentEvent.id}`, {
+      await axios.delete(`/admin/dashboard/schedules/${value.id}`, {
         headers: {
           "X-CSRF-Token": csrfToken,
         },
       });
-      setEvents((previous) => {
-        const newEvents = structuredClone(previous);
-        const idx = newEvents.findIndex(
-          (event) => currentEvent.id.toString() === event.id.toString()
-        );
-        newEvents.splice(idx, 1);
-        return newEvents;
-      });
+
+      removeEventFromState(value.id);
     } catch (err) {
       mitt.emit("flash", { type: "error", msg: err.response.data.error });
     }
@@ -142,16 +176,7 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
         }
       );
 
-      setEvents((previous) => {
-        const newEvents = structuredClone(previous);
-        const eventToUpdate = newEvents.find(
-          (el) => el.id.toString() === data.id.toString()
-        );
-        eventToUpdate.start = parseISO(data.start_date);
-        eventToUpdate.end = parseISO(data.end_date);
-        eventToUpdate.title = data.comment;
-        return newEvents;
-      });
+      updateEventInState(data);
     } catch (err) {
       mitt.emit("flash", { type: "error", msg: err.response.data.error });
     }
@@ -159,14 +184,14 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
     closeModal();
   };
 
-  const submitNewEvent = async () => {
+  const createNewEvent = async (value: ScheduleEvent) => {
     try {
       const { data } = await axios.post(
         postPath,
         {
-          start_date: currentEvent.start,
-          end_date: currentEvent.end,
-          comment: currentEvent.title,
+          start_date: value.start,
+          end_date: value.end,
+          comment: value.title,
         },
         {
           headers: {
@@ -175,14 +200,7 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
         }
       );
 
-      setEvents((previousEvents) => {
-        const newEvents = structuredClone(previousEvents);
-        newEvents.push({
-          ...currentEvent,
-          id: data.id,
-        });
-        return newEvents;
-      });
+      appendNewEventToState(value, data.id);
     } catch (err) {
       mitt.emit("flash", { type: "error", msg: err.response.data.error });
     }
@@ -191,70 +209,14 @@ const CarScheduler = ({ carEvents, postPath, carName }: CarSchedulerProps) => {
 
   return (
     <>
-      <Modal
-        size={"lg"}
-        dismissible={true}
-        show={modalState !== "closed"}
-        onClose={closeModal}
-        className={"!z-100"}
-      >
-        <Modal.Body>
-          {currentEvent ? (
-            <>
-              <div className="flex flex-col">
-                <div>
-                  <span>{i18n.t("cars.schedules.start_date")}: </span>
-                  <span>{format(currentEvent.start, "dd.M.yyyy HH:mm")}</span>
-                </div>
-                <div>
-                  <span>{i18n.t("cars.schedules.end_date")}: </span>
-                  <span>{format(currentEvent.end, "dd.M.yyyy HH:mm")}</span>
-                </div>
-                <div>
-                  <span>{i18n.t("cars.schedules.car_name")}: </span>
-                  <span>{carName}</span>
-                </div>
-                <div>
-                  <span>{i18n.t("cars.schedules.comment")}: </span>
-                  <input
-                    type="text"
-                    value={currentEvent?.title}
-                    onChange={(e) => updateTitle(e.target.value)}
-                    className={`resize-none inline-block p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300
-                               focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                               dark:text-white dark:focus:ring-accent dark:focus:border-accent
-                  `}
-                  />
-                </div>
-              </div>
-            </>
-          ) : null}
-        </Modal.Body>
-        <Modal.Footer>
-          <div className="flex flex-row gap-2">
-            <Button
-              type="button"
-              onClick={modalSaveAction}
-              className="!bg-accent"
-            >
-              {i18n.t("forms.buttons.save")}
-            </Button>
-            <Button type="button" onClick={() => closeModal()} color="gray">
-              {i18n.t("forms.buttons.cancel")}
-            </Button>
-            {modalState === "edit" ? (
-              <Button
-                type="button"
-                onClick={() => destroyCurrentEvent()}
-                color="red"
-                className="!bg-red-700 text-gray-300"
-              >
-                {i18n.t("forms.buttons.delete")}
-              </Button>
-            ) : null}
-          </div>
-        </Modal.Footer>
-      </Modal>
+      <EventFormModal
+        carName={carName}
+        modalState={modalState}
+        closeModal={closeModal}
+        currentEvent={currentEvent}
+        submitEvent={submitEvent}
+        destroyEvent={() => destroyEvent(currentEvent)}
+      />
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         locale={i18n.locale === "rs" ? "sr" : i18n.locale}
