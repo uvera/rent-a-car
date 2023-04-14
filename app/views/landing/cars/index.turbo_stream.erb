@@ -1,0 +1,12 @@
+<%= turbo_stream.append "cars_list" do %>
+  <%= render partial: 'landing/common/car_card', collection: @cars, as: :car %>
+<% end %>
+
+<%= turbo_stream.update "pagination" do %>
+  <% if @pagy.next.present? %>
+    <span class="basis-full"></span>
+    <div class="flex flex-col justify-center items-center">
+      <%= link_to I18n.t('landing.cars.load_more_button'), landing_cars_turbo_pagination_path(page: @pagy.next), data: { turbo_stream: true, controller: 'autoclick' }, class: 'py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-accent-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' %>
+    </div>
+  <% end %>
+<% end %>

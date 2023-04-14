@@ -5,21 +5,21 @@
   </div>
   <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 mx-5">
   <div id="cars" class="flex flex-wrap justify-center gap-5 p-4 scroll-smooth">
-    <%= turbo_frame_tag "pagination-#{@pagy.page}", class: "contents" do %>
+    <%= turbo_frame_tag "cars_list", src: landing_cars_turbo_pagination_path(page: @pagy.page), loading: :lazy, class: "contents" do %>
       <% if @cars.any? %>
         <%= render partial: 'landing/common/car_card', collection: @cars, as: :car %>
-        <%= signal_react_rerender %>
       <% else %>
         <span><%= I18n.t('no_content') %></span>
       <% end %>
-      <%= turbo_frame_tag "pagination-#{@pagy.next}", class: "contents" do %>
-        <% if @pagy.next.present? %>
-          <span class="basis-full"></span>
-          <div class="flex flex-col justify-center items-center">
-            <%= link_to I18n.t('landing.cars.load_more_button'), landing_cars_turbo_pagination_path(page: @pagy.next), data: { controller: 'autoclick' }, class: 'py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-accent-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' %>
-          </div>
-        <% end %>
-      <% end %>
     <% end %>
   </div>
+
+  <%= turbo_frame_tag "pagination", class: "contents" do %>
+    <% if @pagy.next.present? %>
+      <span class="basis-full"></span>
+      <div class="flex flex-col justify-center items-center">
+        <%= link_to I18n.t('landing.cars.load_more_button'), landing_cars_turbo_pagination_path(page: @pagy.next), data: { turbo_stream: true, controller: 'autoclick' }, class: 'py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-accent-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

@@ -8,6 +8,7 @@ module Landing
       @pagy, @cars = pagy_countless(@scope.result(distinct: true), items: 20)
       respond_to do |format|
         format.html
+        format.turbo_stream
       end
     end
 
