@@ -6,8 +6,8 @@ action: configuration.new_record? ? 'create' : 'update' } do |f| %>
   I18n.available_locales.each do |locale| %>
   <div>
     <span class="font-bold"><%= I18n.t("locales.names.#{locale}") %></span>
-    <%= f.fields_for :value do |builder| %> <%= builder.text_area locale, value:
-    configuration.value.try(:[], locale), rows: '5' %> <% end %>
+    <%= f.text_area locale, index: 'value', value: configuration.value.try(:[],
+    locale), rows: '5' %>
   </div>
   <% end %> <%= form_buttons(back_link: admin_dashboard_configurations_path) %>
 </div>
