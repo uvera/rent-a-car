@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     post :set_locale
   end
 
-  constraints Rodauth::Rails.authenticated(:admin) do
+  constraints Rodauth::Rails.authenticate(:admin) do
     namespace :admin do
       resources :dashboard, only: [] do
         get '/', to: redirect('admin/dashboard/cars'), on: :collection

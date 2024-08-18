@@ -1,5 +1,5 @@
 class Configuration < ApplicationRecord
-  serialize :value, ::JsonbSerializers
+  serialize :value, coder: ::JsonbSerializers
   has_many_attached :files
 
   validates :key, uniqueness: true
