@@ -4,7 +4,7 @@ local_minio:
   secret_access_key: minioadmin
   region: eu-west-1
   bucket: racs
-  endpoint: "http://localhost:9000"
+  endpoint: "http://minio:9000"
   force_path_style: true
 
 prod_minio:
@@ -23,7 +23,6 @@ test:
 local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
-
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
