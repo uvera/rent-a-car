@@ -4,16 +4,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.2.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4.1"
+gem "rails", "~> 7.2.0"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 6.0"
+gem "puma", "~> 6.4"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 5.0"
+gem "redis", "~> 5.2"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -61,7 +61,7 @@ end
 
 gem "shakapacker", "~> 6.5"
 
-gem "rodauth-rails", "~> 1.7"
+gem "rodauth-rails", "~> 1.15"
 
 gem "pg", "~> 1.4"
 
@@ -69,27 +69,27 @@ gem "pry", "~> 0.14.2"
 
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
-gem "react_on_rails", "~> 13.2"
+gem "react_on_rails", "~> 14.0"
 gem "aws-sdk-s3"
 gem "ruby-vips"
 gem "pg_search"
 gem "ransack"
 gem "turbo-rails"
 gem "stimulus-rails"
-gem "pagy", "~> 6.0"
+gem "pagy", "~> 9.0"
 
 gem "i18n-js", "~> 4.2"
 
-gem "listen", "~> 3.8"
+gem "listen", "~> 3.9"
 
 gem "friendly_id", "~> 5.5"
 
-gem "discard", "~> 1.2"
+gem "discard", "~> 1.3"
 
-gem "rodauth-i18n", "~> 0.7.0"
+gem "rodauth-i18n", "~> 0.7.1"
 
 gem "phonelib", "~> 0.8.1"
 
 gem "telegram-bot-ruby", "~> 1.0"
 
-gem "good_job", "~> 3.10"
+gem "good_job", "~> 4.2.0"
