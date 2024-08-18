@@ -16,7 +16,7 @@ class RodauthAdmin < Rodauth::Rails::Auth
     # hmac_secret "6ad76ce04b3543007bc58ef5af1e27e5e386dfd8ecef0b1e04ddb7a6c3b2afc8e152209a36a7e6eab59cd0537848e0cabeba3e37b44987dbcb25d3898e151f56"
 
     # Specify the controller used for view rendering and CSRF verification.
-    rails_controller { RodauthController }
+    rails_controller { Admin::RodauthController }
 
     # Set on Rodauth controller with the title of the current page.
     title_instance_variable :@page_title
