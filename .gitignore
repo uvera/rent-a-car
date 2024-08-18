@@ -118,3 +118,4 @@ yarn-debug.log*
 .idea/*
 
 app/javascript/translations.json
+/config/credentials/development.key
