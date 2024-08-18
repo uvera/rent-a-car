@@ -60,7 +60,7 @@ group :test do
   gem "webdrivers"
 end
 
-gem "shakapacker", "~> 6.5"
+gem "shakapacker", "~> 8.0"
 
 gem "rodauth-rails", "~> 1.15"
 
