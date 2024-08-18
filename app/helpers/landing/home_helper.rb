@@ -14,7 +14,7 @@ module Landing
       configuration = ::Configuration.find_by(key:)
       return nil unless configuration
 
-      value = (configuration.value || {})[I18n.locale] || configuration.value[:en] || default
+      value = (configuration.value || {})[I18n.locale] || configuration.value.try(:[], :en) || default
 
       value.html_safe
     end
