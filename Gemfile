@@ -98,3 +98,5 @@ gem "good_job", "~> 4.2.0"
 gem "dry-schema", "~> 1.13"
 
 gem "dry-rails", "~> 0.7.0"
+
+gem "dry-monads", "~> 1.6"
