@@ -3,7 +3,6 @@
 module Admin
   module Dashboard
     class CarImagesController < ApplicationController
-
       schema(:index) do
         required(:car_id).filled(:integer)
       end
@@ -21,10 +20,10 @@ module Admin
         required(:file).filled(:any)
       end
       def create
-        car = Car.find(safe_params[:car_id])
-        return render status: :not_found, json: {} unless car
+        result = CreateImageAction.call(safe_params.to_h)
+        return render status: :unprocessable_entity, json: { errors: result.failure } if result.failure?
 
-        car.images.attach safe_params[:file]
+        render status: :ok, json: {}
       end
 
       schema(:destroy) do
