@@ -94,3 +94,5 @@ gem "phonelib", "~> 0.8.1"
 gem "telegram-bot-ruby", "~> 1.0"
 
 gem "good_job", "~> 4.2.0"
+
+gem "dry-schema", "~> 1.13"
