@@ -5,7 +5,7 @@
 #+begin_src sh
 devcontainer up --workspace-folder .
 #+end_src
-- Install Yarn
+- Install js dependencies with Yarn
 #+begin_src sh
 devcontainer exec --workspace-folder . yarn install
 #+end_src
