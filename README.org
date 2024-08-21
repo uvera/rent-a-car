@@ -1,6 +1,6 @@
 * Setup
 ** Devcontainers
-- First step is to install [[https://code.visualstudio.com/docs/devcontainers/devcontainer-cli][Devcontainers CLI]] or use VSCode extension
+- First step is to install [[https://code.visualstudio.com/docs/devcontainers/devcontainer-cli][Devcontainers CLI]] or use [[https://code.visualstudio.com/docs/devcontainers/containers][VSCode extension]]
 - Run the following command
 #+begin_src sh
 devcontainer up --workspace-folder .
