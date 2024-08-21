@@ -12,8 +12,14 @@ devcontainer exec --workspace-folder . overmind s -f ./Procfile.dev
 *
 ** Credentials store
 You need to setup credentials store. We have defaults stored in `config/credentials/development.yml.enc`
-To decrypt it, create a file `config/credentials/development.key`
-and paste the following token: `cd8acf7c6600a41406db310b49cb584f`
+To decrypt it, create a file
+#+begin_quote
+config/credentials/development.key
+#+end_quote
+and paste the following token:
+#+begin_quote
+cd8acf7c6600a41406db310b49cb584f
+#+end_quote
 ** Map token
 After you login as admin at [[http://localhost:3000/admin/login][localhost/admin/login]]
 you must setup the map acess token.
