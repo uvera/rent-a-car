@@ -14,7 +14,7 @@ You need to setup credentials store. We have defaults stored in
 #+begin_quote
 config/credentials/development.yml.enc
 #+end_quote
-To decrypt it, create a file
+For Rails app to be able decrypt it, create a file
 #+begin_quote
 config/credentials/development.key
 #+end_quote
