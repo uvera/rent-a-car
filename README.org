@@ -5,6 +5,10 @@
 #+begin_src sh
 devcontainer up --workspace-folder .
 #+end_src
+- Install Yarn
+#+begin_src sh
+devcontainer exec --workspace-folder . yarn install
+#+end_src
 - Start application
 #+begin_src sh
 devcontainer exec --workspace-folder . overmind s -f ./Procfile.dev
