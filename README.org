@@ -1,0 +1,23 @@
+* Setup
+** Devcontainers
+- First step is to install [[https://code.visualstudio.com/docs/devcontainers/devcontainer-cli][Devcontainers CLI]] or use VSCode extension
+- Run the following command
+  #+begin_src sh
+devcontainer up --workspace-folder .
+  #+end_src
+- Start application
+  #+begin_src sh
+devcontainer exec --workspace-folder . overmind s -f ./Procfile.dev
+  #+end_src
+
+* Seeds
+** Admin
+To create a admin
+ - Spawn the repl
+   #+begin_src sh
+devcontainer exec --workspace-folder . bin/rails console
+   #+end_src
+ - Execute the following block
+   #+begin_src ruby
+Account.create!(status: 'verified', email: 'youremail@email.com', kind: 'admin', password: 'your_password')
+   #+end_src
