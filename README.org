@@ -10,7 +10,10 @@ devcontainer up --workspace-folder .
 devcontainer exec --workspace-folder . overmind s -f ./Procfile.dev
 #+end_src
 ** Credentials store
-You need to setup credentials store. We have defaults stored in `config/credentials/development.yml.enc`
+You need to setup credentials store. We have defaults stored in
+#+begin_quote
+config/credentials/development.yml.enc
+#+end_quote
 To decrypt it, create a file
 #+begin_quote
 config/credentials/development.key
