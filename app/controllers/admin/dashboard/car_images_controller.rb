@@ -3,14 +3,20 @@
 module Admin
   module Dashboard
     class CarImagesController < ApplicationController
-      schema(:index) do
-        required(:car_id).filled(:integer)
-      end
+      schema(:index) { required(:car_id).filled(:integer) }
       def index
         car = Car.find(safe_params[:car_id])
-        images = car.images.map do |attachment|
-          { url: url_for(attachment), deletionUrl: admin_dashboard_car_image_path(car_id: car.id, id: attachment.id) }
-        end
+        images =
+          car.images.map do |attachment|
+            {
+              url: url_for(attachment),
+              deletionUrl:
+                admin_dashboard_car_image_path(
+                  car_id: car.id,
+                  id: attachment.id,
+                ),
+            }
+          end
 
         render json: { images: }
       end
@@ -21,7 +27,14 @@ module Admin
       end
       def create
         result = CreateImageAction.call(safe_params.to_h)
-        return render status: :unprocessable_entity, json: { errors: result.failure } if result.failure?
+        if result.failure?
+          return(
+            render status: :unprocessable_entity,
+                   json: {
+                     errors: error_to_json(result.failure),
+                   }
+          )
+        end
 
         render status: :ok, json: {}
       end

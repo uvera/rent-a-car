@@ -1,7 +1,7 @@
 module Admin
   module Dashboard
     class CreateImageAction
-      include Dry::Monads[:result]
+      include Dry::Monads[:result, :try]
 
       class << self
         delegate :call, to: :new
@@ -15,7 +15,7 @@ module Admin
 
         rule(:file) do
           file = value
-          key.failure('Invalid file') unless File.file?(file)
+          key.failure("Invalid file") unless File.file?(file)
         end
 
         rule(:car_id) do
@@ -23,22 +23,20 @@ module Admin
           if car.present?
             values[:car] = car
           else
-            key.failure('Car not found by ID')
+            key.failure("Car not found by ID")
           end
         end
       end
 
       def call(input)
         case Contract.new.call(input).to_monad
-        in Success(car:, file:)
-          car.images.attach file
-          if car.save
-            Success(true)
-          else
-            Failure({ base: 'Error persisting car' })
-          end
-        in Failure(result)
-          Failure(result.errors.to_h)
+        in Success[car:, file:]
+          Try do
+            car.images.attach file
+            car.save!
+          end.to_result
+        in Failure[result]
+          Failure(result)
         end
       end
     end
