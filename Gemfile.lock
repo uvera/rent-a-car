@@ -301,6 +301,7 @@ GEM
       activerecord (>= 6.1)
       activesupport (>= 6.1)
     phonelib (0.8.9)
+    prettier_print (1.2.1)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -449,6 +450,8 @@ GEM
       railties (>= 6.0.0)
     stringio (3.1.1)
     strscan (3.1.0)
+    syntax_tree (6.2.0)
+      prettier_print (>= 1.2.0)
     telegram-bot-ruby (1.0.0)
       dry-struct (~> 1.6)
       faraday (~> 2.0)
@@ -537,6 +540,7 @@ DEPENDENCIES
   shakapacker (~> 8.0)
   sprockets-rails
   stimulus-rails
+  syntax_tree (~> 6.2)
   telegram-bot-ruby (~> 1.0)
   turbo-rails
   tzinfo-data
