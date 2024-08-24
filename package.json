@@ -81,6 +81,7 @@
         ],
         "devDependencies": {
                 "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+                "@prettier/plugin-ruby": "^4.0.4",
                 "@types/mapbox-gl": "^3.4.0",
                 "react-refresh": "^0.14.2",
                 "webpack-bundle-analyzer": "^4.10.2"
