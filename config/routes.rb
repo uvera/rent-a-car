@@ -28,10 +28,6 @@ Rails.application.routes.draw do
 
   constraints Rodauth::Rails.authenticate(:admin) do
     namespace :admin do
-      match "/404", via: :all, to: "admin/errors#show"
-      match "/403", via: :all, to: "admin/errors#show"
-      match "/500", via: :all, to: "admin/errors#show"
-
       resources :dashboard, only: [] do
         get "/", to: redirect("admin/dashboard/cars"), on: :collection
       end
