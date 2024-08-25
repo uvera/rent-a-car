@@ -1,6 +1,8 @@
 ---
 en:
   activerecord:
+    exceptions:
+      not_found: "%{model_name} not found"
     attributes:
       car:
         body_configuration: Body configuration

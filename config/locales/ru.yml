@@ -1,5 +1,9 @@
 ---
 ru:
+  errors:
+    internal: Внутренняя ошибка сервера
+    forbidden: Запрещенная ошибка
+    not_found: Ошибка - не найдено
   actions:
     edit: Редактировать
   cars:

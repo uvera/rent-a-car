@@ -1,6 +1,8 @@
 ---
 ru:
   activerecord:
+    exceptions:
+      not_found: "%{model_name} не найдено"
     attributes:
       car:
         body_configuration: Конфигурация кузова

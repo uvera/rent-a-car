@@ -1,5 +1,9 @@
 ---
 en:
+  errors:
+    internal: Internal server error
+    forbidden: Forbidden error
+    not_found: Not found error
   actions:
     edit: Edit
   cars:

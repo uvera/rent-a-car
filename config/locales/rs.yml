@@ -1,5 +1,9 @@
 ---
 rs:
+  errors:
+    internal: Interna greška servera
+    forbidden: Zabranjena greška
+    not_found: Greška - nije pronađeno
   actions:
     edit: Izmena
   cars:

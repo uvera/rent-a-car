@@ -1,6 +1,8 @@
 ---
 rs:
   activerecord:
+    exceptions:
+      not_found: "%{model_name} nije pronađen"
     attributes:
       car:
         body_configuration: Tip automobila
@@ -59,4 +61,4 @@ rs:
             start_date:
               overlaps: Početni datum se poklapa sa drugim terminima za ovaj automobil
     models:
-      car: Car
+      car: Automobil
