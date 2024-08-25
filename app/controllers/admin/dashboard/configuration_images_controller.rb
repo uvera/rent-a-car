@@ -4,12 +4,18 @@ module Admin
   module Dashboard
     class ConfigurationImagesController < ApplicationController
       def index
-        configuration = ::Configuration.find_by(id: params[:configuration_id])
-        images = configuration.image_files.map do |attachment|
-          { url: url_for(attachment),
-            deletionUrl: admin_dashboard_configuration_image_path(configuration_id: configuration.id,
-                                                                  id: attachment.id) }
-        end
+        configuration = ::Configuration.find_by!(id: params[:configuration_id])
+        images =
+          configuration.image_files.map do |attachment|
+            {
+              url: url_for(attachment),
+              deletionUrl:
+                admin_dashboard_configuration_image_path(
+                  configuration_id: configuration.id,
+                  id: attachment.id,
+                ),
+            }
+          end
 
         render json: { images: }
       end

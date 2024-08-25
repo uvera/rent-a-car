@@ -7,7 +7,7 @@ module Admin
       end
 
       def edit
-        @configuration = ::Configuration.find_by(id: params[:id])
+        @configuration = ::Configuration.find_by!(id: params[:id])
       end
 
       def new
@@ -17,29 +17,36 @@ module Admin
       def create
         @configuration = ::Configuration.new(entity_params)
         if @configuration.save
-          redirect_to admin_dashboard_configurations_path, notice: I18n.t('flash.update.success')
+          redirect_to admin_dashboard_configurations_path,
+                      notice: I18n.t("flash.update.success")
         else
-          flash[:error] = I18n.t('flash.update.error')
-          render 'new'
+          flash[:error] = I18n.t("flash.update.error")
+          render "new"
         end
       end
 
       def update
-        @configuration = ::Configuration.find_by(key: entity_params[:key])
+        @configuration = ::Configuration.find_by!(key: entity_params[:key])
         @configuration.assign_attributes(entity_params)
         if @configuration.save
-          redirect_to admin_dashboard_configurations_path, notice: I18n.t('flash.update.success')
+          redirect_to admin_dashboard_configurations_path,
+                      notice: I18n.t("flash.update.success")
         else
-          flash[:error] = I18n.t('flash.update.error')
-          render 'edit'
+          flash[:error] = I18n.t("flash.update.error")
+          render "edit"
         end
       end
 
       private
 
       def entity_params
-        @entity_params ||= params.require(:configuration).permit(:key, :value, value: [*I18n.available_locales],
-                                                                               files: [])
+        @entity_params ||=
+          params.require(:configuration).permit(
+            :key,
+            :value,
+            value: [*I18n.available_locales],
+            files: [],
+          )
       end
     end
   end
