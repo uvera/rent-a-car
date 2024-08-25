@@ -12,11 +12,12 @@ module RentACarV2
     config.load_defaults 7.0
 
     # Check if we use Docker to allow docker ip through web-console
-    if File.file?('/.dockerenv') == true
+    if File.file?("/.dockerenv") == true
       host_ip = `/sbin/ip route|awk '/default/ { print $3 }'`.strip
       config.web_console.whitelisted_ips = [host_ip]
     end
 
+    config.exceptions_app = routes
 
     config.active_job.queue_adapter = :good_job
 
@@ -28,6 +29,7 @@ module RentACarV2
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{yml}')]
+    config.i18n.load_path +=
+      Dir[Rails.root.join("config", "locales", "*.{yml}")]
   end
 end

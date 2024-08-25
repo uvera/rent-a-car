@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   add_flash_types :error
   around_action :switch_locale
 
+  rescue_from ActiveRecord::RecordNotFound, with: :render_exception
+  rescue_from StandardError, with: :render_exception
+
   def switch_locale(&action)
     locale = cookies[:locale]&.to_sym || I18n.default_locale
     return unless I18n.locale_available?(locale)
@@ -28,5 +31,27 @@ class ApplicationController < ActionController::Base
         { path: path.to_s, messages: messages }
       end
     end
+  end
+
+  protected
+
+  def render_exception(exception)
+    @exception = exception
+    @status_code =
+      @exception.try(:status_code) ||
+        ActionDispatch::ExceptionWrapper.new(
+          request.env,
+          @exception,
+        ).status_code
+    render template: "errors/#{view_for_code(@status_code)}",
+           status: @status_code
+  end
+
+  def view_for_code(code)
+    supported_error_codes.fetch(code, "404")
+  end
+
+  def supported_error_codes
+    { 403 => "403", 404 => "404", 500 => "500" }
   end
 end

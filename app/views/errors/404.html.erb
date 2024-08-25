@@ -1,0 +1,10 @@
+<div class="md:container m-auto md:border md:border-gray-300 md:rounded-lg p-4 bg-white">
+    <%= @message %>
+    <% case @exception %>
+        <% when ActiveRecord::RecordNotFound %>
+        <%= t 'exceptions.not_found', scope: [:activerecord], model_name: t("models.#{@exception.model.downcase}", default: 'Record', scope: [:activerecord]) %>
+        <% else %>
+        <%= t('errors.not_found') %>:
+        <%= @exception.to_s %>
+    <% end %>
+</div>
