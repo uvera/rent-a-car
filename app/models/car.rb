@@ -37,8 +37,6 @@ class Car < ApplicationRecord
   enum :transmission, AVAILABLE_CAR_TRANSM_TYPES_ENUM_HASH
 
   pg_search_scope :full_search, against: %i[brand name], using: {
-    dmetaphone: {},
-    trigram: {},
     tsearch: { prefix: true }
   }
 

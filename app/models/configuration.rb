@@ -26,7 +26,7 @@ class Configuration < ApplicationRecord
   end
 
   def self.value_for(key, default = nil)
-    find_by(key:)&.value || default
+    find_by(key:).try(:value) || default
   end
 
   def self.localized_value_for(key, default = nil)

@@ -84,36 +84,36 @@ const flowbiteReinit = debounce(() => {
   Flowbite.initCollapses();
 }, 100);
 
-const debouncedHandlerForNodes = debounce(() => {
-  const reactRerenderNodes = document.querySelectorAll(
-    "[data-signal-react-rerender]"
-  );
-  if (reactRerenderNodes.length) {
-    ReactOnRails.reactOnRailsPageLoaded();
+// const debouncedHandlerForNodes = debounce(() => {
+//   const reactRerenderNodes = document.querySelectorAll(
+//     "[data-signal-react-rerender]"
+//   );
+//   if (reactRerenderNodes.length) {
+//     ReactOnRails.reactOnRailsPageLoaded();
 
-    reactRerenderNodes.forEach((each) => each.remove());
-  }
+//     reactRerenderNodes.forEach((each) => each.remove());
+//   }
 
-  const flowbiteNodes = document.querySelectorAll(
-    "[data-signal-flowbite-reinit]"
-  );
-  if (flowbiteNodes.length) {
-    flowbiteReinit();
+//   const flowbiteNodes = document.querySelectorAll(
+//     "[data-signal-flowbite-reinit]"
+//   );
+//   if (flowbiteNodes.length) {
+//     flowbiteReinit();
 
-    flowbiteNodes.forEach((each) => each.remove());
-  }
-}, 100);
+//     flowbiteNodes.forEach((each) => each.remove());
+//   }
+// }, 100);
 
 document.addEventListener("turbo:load", flowbiteReinit);
 
 document.addEventListener("turbo:frame-render", () => {
   flowbiteReinit();
 });
-document.addEventListener("turbo:before-stream-render", function (event) {
-  event.target?.classList?.add("animate-fade-out-opacity-350");
+// document.addEventListener("turbo:before-stream-render", function (event) {
+//   event.target?.classList?.add("animate-fade-out-opacity-350");
 
-  debouncedHandlerForNodes();
-});
+//   debouncedHandlerForNodes();
+// });
 
 document.addEventListener("turbo:before-render", (event) => {
   event?.detail?.newBody

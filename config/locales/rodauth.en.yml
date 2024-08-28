@@ -92,3 +92,4 @@ en:
     verify_login_change_page_title: Verify Login Change
     password_does_not_meet_requirements_message: Password does not meet requirement
     password_too_short_message: Password too short
+    password_changed_email_body: '?'

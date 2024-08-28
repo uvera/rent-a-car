@@ -5,6 +5,9 @@
 const { generateWebpackConfig, merge } = require("shakapacker");
 
 const commonOptions = {
+  optimization: {
+    runtimeChunk: "single",
+  },
   resolve: {
     extensions: [".css", ".scss", ".ts", ".tsx", ".js", ".jsx"],
   },
